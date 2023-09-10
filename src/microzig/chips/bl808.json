@@ -1,0 +1,4473 @@
+{
+  "version": "0.1.0",
+  "types": {
+    "peripherals": {
+      "CODEC": {
+        "description": "Codec miscellaneous control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "MJPEG": {
+        "description": "Motion JPEG encoder",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "H264": {
+        "description": "H.264 video codec control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "NPU": {
+        "description": "Bouffalo Convolutional Neural Network",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "MMGLB": {
+        "description": "Multimedia Global controller",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "PTA": {
+        "description": "Packet Traffic Arbitration",
+        "children": {
+          "registers": {
+            "revision": {
+              "description": "Peripheral silicon revision",
+              "offset": 1024,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "config_0": {
+              "description": "Arbitration configuration register 0",
+              "offset": 1028,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "function": {
+                    "description": "Enable packet traffic arbitration",
+                    "offset": 0,
+                    "size": 1
+                  },
+                  "wifi": {
+                    "description": "??",
+                    "offset": 1,
+                    "size": 1
+                  },
+                  "priority": {
+                    "description": "??",
+                    "offset": 4,
+                    "size": 1
+                  }
+                }
+              }
+            },
+            "bluetooth_transmit": {
+              "description": "??",
+              "offset": 1032,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "bluetooth_receive": {
+              "description": "??",
+              "offset": 1040,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "wifi_transmit": {
+              "description": "??",
+              "offset": 1048,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "wifi_receive": {
+              "description": "??",
+              "offset": 1056,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "config_1": {
+              "description": "??",
+              "offset": 1064,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "WIFI": {
+        "description": "Wireless Fidelity control",
+        "children": {
+          "registers": {
+            "coex_control_0": {
+              "description": "??",
+              "offset": 1024,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "coex_pti": {
+              "description": "??",
+              "offset": 1028,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "coex_state": {
+              "description": "??",
+              "offset": 1032,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "coex_interrupt": {
+              "description": "??",
+              "offset": 1036,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "coex_control_1": {
+              "description": "??",
+              "offset": 1040,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "EMAC": {
+        "description": "Ethernet Media Access Control",
+        "children": {
+          "registers": {
+            "mode": {
+              "description": "Interface enables and configurations",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "interrupt_source": {
+              "description": "Interrupt source register",
+              "offset": 4,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "control_receive": {
+                    "description": "Control frame received interrupt state",
+                    "offset": 6,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "control_transmit": {
+                    "description": "Control frame transmitted interrupt state",
+                    "offset": 5,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "busy": {
+                    "description": "Lack of buffer interrupt state",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_error": {
+                    "description": "Receive error interrupt state",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "frame_received": {
+                    "description": "Frame received interrupt state",
+                    "offset": 2,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "transmit_error": {
+                    "description": "Transmit error interrupt state",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "buffer_transmitted": {
+                    "description": "Buffer transmitted interrupt state",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  }
+                }
+              }
+            },
+            "interrupt_mask": {
+              "description": "Interrupt mask register",
+              "offset": 8,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "control_receive": {
+                    "description": "Control frame received interrupt mask",
+                    "offset": 6,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "control_transmit": {
+                    "description": "Control frame transmitted interrupt mask",
+                    "offset": 5,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "busy": {
+                    "description": "Lack of buffer interrupt mask",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_error": {
+                    "description": "Receive error interrupt mask",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "frame_received": {
+                    "description": "Frame received interrupt mask",
+                    "offset": 2,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "transmit_error": {
+                    "description": "Transmit error interrupt mask",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "buffer_transmitted": {
+                    "description": "Buffer transmitted interrupt mask",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  }
+                }
+              }
+            },
+            "backed_gap": {
+              "description": "Back-to-back inter-packet gap register",
+              "offset": 12,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "non_backed_gap_1": {
+              "description": "Non back-to-back inter-packet gap register 1",
+              "offset": 16,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "non_backed_gap_2": {
+              "description": "Non back-to-back inter-packet gap register 2",
+              "offset": 20,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "frame_length": {
+              "description": "Minimum and maximum ethernet frame length",
+              "offset": 24,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "collision": {
+              "description": "Collision time window and maximum retries",
+              "offset": 28,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "transmit_buffer": {
+              "description": "Transmit buffer descriptor",
+              "offset": 32,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "flow_control": {
+              "description": "Control frame function register",
+              "offset": 36,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "mii_mode": {
+              "description": "MII clock divider and premable enable",
+              "offset": 40,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "mii_command": {
+              "description": "MII control data, read and scan state",
+              "offset": 44,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "mii_address": {
+              "description": "Physical layer bus address",
+              "offset": 48,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "control_write": {
+              "description": "Write data to MII physcial layer",
+              "offset": 52,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "control_read": {
+              "description": "Read data from MII physcial layer",
+              "offset": 56,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "mii_state": {
+              "description": "MII bus and link layer state",
+              "offset": 60,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "mac_address": {
+              "description": "Media Access Control address",
+              "offset": 64,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "hash": {
+              "description": "Hash register",
+              "offset": 72,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "transmit_control": {
+              "description": "Transmit control register",
+              "offset": 80,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          },
+          "enums": {
+            "InterruptState": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "has_interrupt": {
+                    "description": "Has interrupt",
+                    "value": 1
+                  },
+                  "no_interrupt": {
+                    "description": "No interrupt occurred",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "InterruptMask": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "mask": {
+                    "description": "Mask interrupt",
+                    "value": 1
+                  },
+                  "unmask": {
+                    "description": "Unmask interrupt",
+                    "value": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "SDH": {
+        "description": "Secure Digital host control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "AUDIO": {
+        "description": "Audio codec controller",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "USB": {
+        "description": "Universal Serial Bus host"
+      },
+      "PSRAM": {
+        "description": "Pseudo Static Random Access Memory control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "AON": {
+        "description": "Always-On function control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "HBN": {
+        "description": "Hibernate (Deep sleep) control",
+        "children": {
+          "registers": {
+            "control": {
+              "description": "Miscellaneous control register",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "time_lo": {
+              "description": "Low bits of hibernate time",
+              "offset": 4,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "time_hi": {
+              "description": "High bits of hibernate time",
+              "offset": 8,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "rtc_time_lo": {
+              "description": "Low bits of Real-Time Clock time",
+              "offset": 12,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "rtc_time_hi": {
+              "description": "High bits of Real-Time Clock time",
+              "offset": 16,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "interrupt_mode": {
+              "description": "Hibernate interrupt contol",
+              "offset": 20,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "interrupt_state": {
+              "description": "Hibernate interrupt state",
+              "offset": 24,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "interrupt_clear": {
+              "description": "Clear hibernate interrupt",
+              "offset": 28,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "global": {
+              "description": "Global hibernate configuration",
+              "offset": 48,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "sram": {
+              "description": "Static Random-Access Memory hibernate control",
+              "offset": 52,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "rc32k": {
+              "description": "32-kHz internal RC oscillator control",
+              "offset": 512,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "xtal32k": {
+              "description": "External crystal oscillator control",
+              "offset": 516,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "rtc_control_0": {
+              "description": "Real-Time Clock control and reset register 0",
+              "offset": 520,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "rtc_control_1": {
+              "description": "Real-Time Clock control and reset register 1",
+              "offset": 524,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "PDS": {
+        "description": "Power-Down Sleep control",
+        "children": {
+          "registers": {
+            "touch_config": {
+              "description": "??",
+              "offset": 2560,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_channel": {
+              "description": "??",
+              "offset": 2564,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_process": {
+              "description": "??",
+              "offset": 2568,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_sleep": {
+              "description": "??",
+              "offset": 2572,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_delay": {
+              "description": "??",
+              "offset": 2576,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_force": {
+              "description": "??",
+              "offset": 2580,
+              "size": 32,
+              "count": 6,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_voltage": {
+              "description": "??",
+              "offset": 2604,
+              "size": 32,
+              "count": 3,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_raw": {
+              "description": "??",
+              "offset": 2616,
+              "size": 32,
+              "count": 12,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_interrupt_0": {
+              "description": "??",
+              "offset": 2764,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "touch_interrupt_1": {
+              "description": "??",
+              "offset": 2768,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "DMA": {
+        "description": "Direct Memory Access",
+        "size": 512,
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "FLASH": {
+        "description": "Quad Serial Flash control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "LZ4D": {
+        "description": "Hardware LZ4 Decompressor",
+        "children": {
+          "registers": {
+            "config": {
+              "description": "Decompressor peripheral configuration",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "enable": {
+                    "description": "Enable peripheral decompression",
+                    "offset": 0,
+                    "size": 1
+                  },
+                  "_suspend": {
+                    "description": "Suspend peripheral decompression",
+                    "offset": 1,
+                    "size": 1
+                  },
+                  "has_checksum": {
+                    "description": "Does this block includes an LZ4 checksum?\\n\\n\nUsers should read checksum flag from frame descriptor to fill in correct value\nfor this register field.",
+                    "offset": 4,
+                    "size": 1
+                  }
+                }
+              }
+            },
+            "source_start": {
+              "description": "Writes source address before decompression",
+              "offset": 16,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "start": {
+                    "description": "Start address",
+                    "offset": 0,
+                    "size": 26
+                  },
+                  "base": {
+                    "description": "Address base",
+                    "offset": 26,
+                    "size": 6
+                  }
+                }
+              }
+            },
+            "source_end": {
+              "description": "Reads the end address of source after decompression",
+              "offset": 20,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "end": {
+                    "description": "End of address",
+                    "offset": 0,
+                    "size": 26
+                  }
+                }
+              }
+            },
+            "destination_start": {
+              "description": "Writes destination address before decompression",
+              "offset": 24,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "start": {
+                    "description": "Start address",
+                    "offset": 0,
+                    "size": 26
+                  },
+                  "base": {
+                    "description": "Address base",
+                    "offset": 26,
+                    "size": 6
+                  }
+                }
+              }
+            },
+            "destination_end": {
+              "description": "Reads the end address of destination after decompression",
+              "offset": 28,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "end": {
+                    "description": "End of address",
+                    "offset": 0,
+                    "size": 26
+                  }
+                }
+              }
+            },
+            "interrupt_enable": {
+              "description": "Interrupt enable register",
+              "offset": 32,
+              "size": 32,
+              "reset_value": 3,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "done": {
+                    "description": "Decompliation finished",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "error": {
+                    "description": "Error occurred while decompliation",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  }
+                }
+              }
+            },
+            "interrupt_state": {
+              "description": "Interrupt state register",
+              "offset": 36,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "done": {
+                    "description": "Decompliation finished",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptState"
+                  },
+                  "error": {
+                    "description": "Error occurred while decompliation",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  }
+                }
+              }
+            }
+          },
+          "enums": {
+            "InterruptEnable": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "enable": {
+                    "description": "Enable interrupt",
+                    "value": 1
+                  },
+                  "disable": {
+                    "description": "Disable interrupt",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "InterruptState": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "has_interrupt": {
+                    "description": "Has interrupt",
+                    "value": 1
+                  },
+                  "no_interrupt": {
+                    "description": "No interrupt occurred",
+                    "value": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "PDM": {
+        "description": "Pulse Density Modulation",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "I2S": {
+        "description": "Inter-IC Sound controller",
+        "children": {
+          "registers": {
+            "config": {
+              "description": "Function configuration register",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "interrupt_state": {
+              "description": "Interrupt enables, masks and states",
+              "offset": 4,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "base_clock": {
+              "description": "Base clock divider",
+              "offset": 16,
+              "size": 32,
+              "reset_value": 65537,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "divide_high": {
+                    "description": "Higher half of base clock dividing factor",
+                    "offset": 16,
+                    "size": 12
+                  },
+                  "divide_low": {
+                    "description": "Lower half of base clock dividing factor",
+                    "offset": 0,
+                    "size": 12
+                  }
+                }
+              }
+            },
+            "fifo_config_0": {
+              "description": "FIFO configuration register 0",
+              "offset": 128,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "left_justified": {
+                    "offset": 10,
+                    "size": 1
+                  },
+                  "swap_left_right": {
+                    "offset": 9,
+                    "size": 1
+                  },
+                  "merge_left_right": {
+                    "offset": 8,
+                    "size": 1
+                  },
+                  "receive_underflow": {
+                    "description": "Receive FIFO underflow flag\\n\\n\nCan be cleared using `receive_clear`.",
+                    "offset": 7,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2S.children.enums.HasUnderflow"
+                  },
+                  "receive_overflow": {
+                    "description": "Receive FIFO overflow flag\\n\\n\nCan be cleared using `receive_clear`.",
+                    "offset": 6,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2S.children.enums.HasOverflow"
+                  },
+                  "transmit_underflow": {
+                    "description": "Transmit FIFO underflow flag\\n\\n\nCan be cleared using `transmit_clear`.",
+                    "offset": 5,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2S.children.enums.HasUnderflow"
+                  },
+                  "transmit_overflow": {
+                    "description": "Transmit FIFO overflow flag\\n\\n\nCan be cleared using `transmit_clear`.",
+                    "offset": 4,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2S.children.enums.HasOverflow"
+                  },
+                  "receive_clear": {
+                    "description": "Clears receive FIFO overflow and underflow flags",
+                    "offset": 3,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.I2S.children.enums.FlagClear"
+                  },
+                  "transmit_clear": {
+                    "description": "Clears transmit FIFO overflow and underflow flags",
+                    "offset": 2,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.I2S.children.enums.FlagClear"
+                  },
+                  "receive_dma": {
+                    "description": "Enable signal of receive DMA interface",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.I2S.children.enums.DmaEnable"
+                  },
+                  "transmit_dma": {
+                    "description": "Enable signal of transmit DMA interface",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.I2S.children.enums.DmaEnable"
+                  }
+                }
+              }
+            },
+            "fifo_config_1": {
+              "description": "FIFO configuration register 1",
+              "offset": 132,
+              "size": 32,
+              "reset_value": 16,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "receive_threshold": {
+                    "description": "Receive FIFO threshold\\n\\n\nDMA request will not be asserted if `receive_available` is less than this value",
+                    "offset": 24,
+                    "size": 4
+                  },
+                  "transmit_threshold": {
+                    "description": "Transmit FIFO threshold\\n\\n\nDMA request will not be asserted if `transmit_available` is less than this value",
+                    "offset": 16,
+                    "size": 4
+                  },
+                  "receive_count": {
+                    "description": "Count of available data in receive FIFO",
+                    "offset": 8,
+                    "size": 5,
+                    "access": "read-only"
+                  },
+                  "transmit_count": {
+                    "description": "Count of available data in transmit FIFO",
+                    "offset": 0,
+                    "size": 5,
+                    "access": "read-only"
+                  }
+                }
+              }
+            },
+            "data_write": {
+              "description": "FIFO write data register",
+              "offset": 136,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "write-only",
+              "children": {
+                "fields": {
+                  "value": {
+                    "description": "Write data to FIFO",
+                    "offset": 0,
+                    "size": 8
+                  }
+                }
+              }
+            },
+            "data_read": {
+              "description": "FIFO read data register",
+              "offset": 140,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "value": {
+                    "description": "Read data from FIFO",
+                    "offset": 0,
+                    "size": 8
+                  }
+                }
+              }
+            }
+          },
+          "enums": {
+            "HasUnderflow": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "not_underflow": {
+                    "description": "No FIFO buffer underflow",
+                    "value": 0
+                  },
+                  "underflow": {
+                    "description": "Has FIFO buffer underflow",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "HasOverflow": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "not_overflow": {
+                    "description": "No FIFO buffer overflow",
+                    "value": 0
+                  },
+                  "overflow": {
+                    "description": "Has FIFO buffer overflow",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "FlagClear": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "clear": {
+                    "description": "Write 1 to clear fifo flags",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "DmaEnable": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "enable": {
+                    "description": "Enable DMA interface",
+                    "value": 1
+                  },
+                  "disable": {
+                    "description": "Disable DMA interface",
+                    "value": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ISO11898": {
+        "description": "ISO 11898 communication protocol",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "IPC": {
+        "description": "Inter-processor Channel",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "IR": {
+        "description": "Infrared Remote module",
+        "children": {
+          "registers": {
+            "transmit_config": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "transmit_interrupt": {
+              "description": "??",
+              "offset": 4,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "transmit_data": {
+              "description": "??",
+              "offset": 8,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "transmit_width": {
+              "description": "??",
+              "offset": 16,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "receive_config": {
+              "description": "??",
+              "offset": 128,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "receive_interrupt": {
+              "description": "??",
+              "offset": 132,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "receive_width": {
+              "description": "??",
+              "offset": 136,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "receive_bit_count": {
+              "description": "??",
+              "offset": 144,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "receive_data": {
+              "description": "??",
+              "offset": 148,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "TIMER": {
+        "description": "Timer control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "PWM": {
+        "description": "Pulse-Width Modulation module",
+        "children": {
+          "registers": {
+            "interrupt_config": {
+              "description": "Interrupt state and clear register",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "I2C": {
+        "description": "Inter-Integrated Circuit bus",
+        "size": 1536,
+        "children": {
+          "registers": {
+            "config": {
+              "description": "Function configuration register",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 10,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "deglitch_cycle": {
+                    "description": "De-glitch function cycle count",
+                    "offset": 28,
+                    "size": 4
+                  },
+                  "packet_length": {
+                    "description": "Byte count for each packet",
+                    "offset": 16,
+                    "size": 8
+                  },
+                  "slave_address": {
+                    "description": "I2C transaction slave address",
+                    "offset": 8,
+                    "size": 7
+                  },
+                  "sub_address_length": {
+                    "description": "Byte count for I2C sub-address",
+                    "offset": 5,
+                    "size": 2,
+                    "enum": {
+                      "size": 2,
+                      "children": {
+                        "enum_fields": {
+                          "one": {
+                            "description": "Sub-addresses include 1 byte",
+                            "value": 0
+                          },
+                          "two": {
+                            "description": "Sub-addresses include 2 bytes",
+                            "value": 1
+                          },
+                          "three": {
+                            "description": "Sub-addresses include 3 bytes",
+                            "value": 2
+                          },
+                          "four": {
+                            "description": "Sub-addresses include 4 bytes",
+                            "value": 3
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "sub_address_enable": {
+                    "description": "Enable sub-address fields",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable sub-address fields",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable sub-address fields",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "clock_synchronize": {
+                    "description": "Enable I2C clock synchronization\\n\\n\nEnable this bit to support multi-master and clock-stretching. It should not be turned-off normally.",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable clock synchronization",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable clock synchronization",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "deglitch_enable": {
+                    "description": "Enable de-glitch function on all input pins",
+                    "offset": 2,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable de-glitch function on inputs",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable de-glitch function on inputs",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "transfer_direction": {
+                    "description": "Packet transfer direction",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "write": {
+                            "description": "Write from master side",
+                            "value": 0
+                          },
+                          "read": {
+                            "description": "Read from master side",
+                            "value": 1
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "master_enable": {
+                    "description": "Enable signal of I2C master function\\n\\n\nAsserting this bit will trigger the transaction, and should be de-asserted after finish.",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable I2C master function",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable I2C master function",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "interrupt": {
+              "description": "Interrupt enables, states and masks",
+              "offset": 4,
+              "size": 32,
+              "reset_value": 1056980736,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "fifo_error_enable": {
+                    "description": "Transmit or receive FIFO error interrupt enable",
+                    "offset": 29,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptEnable"
+                  },
+                  "arbitrate_lost_enable": {
+                    "description": "Arbitration lost interrupt enable",
+                    "offset": 28,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "not_acknowledged_enable": {
+                    "description": "Not-acknowledged response interrupt enable",
+                    "offset": 27,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "receive_fifo_ready_enable": {
+                    "description": "Receive FIFO ready interrupt enable",
+                    "offset": 26,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "transmit_fifo_ready_enable": {
+                    "description": "Transmit FIFO ready interrupt enable",
+                    "offset": 25,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "transfer_end_enable": {
+                    "description": "Transfer ended interrupt enable",
+                    "offset": 24,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "arbitrate_lost_clear": {
+                    "description": "Write 1 to clear arbitration lost",
+                    "offset": 20,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "not_acknowledged_clear": {
+                    "description": "Write 1 to clear not-acknowledged response",
+                    "offset": 19,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "transfer_end_clear": {
+                    "description": "Write 1 to clear transfer ended",
+                    "offset": 16,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "fifo_error_mask": {
+                    "description": "Transmit or receive FIFO error interrupt mask",
+                    "offset": 13,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptMask"
+                  },
+                  "arbitrate_lost_mask": {
+                    "description": "Arbitration lost interrupt mask",
+                    "offset": 12,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "not_acknowledged_mask": {
+                    "description": "Not-acknowledged response interrupt mask",
+                    "offset": 11,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_fifo_ready_mask": {
+                    "description": "Receive FIFO ready interrupt mask",
+                    "offset": 10,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "transmit_fifo_ready_mask": {
+                    "description": "Transmit FIFO ready interrupt mask",
+                    "offset": 9,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "transfer_end_mask": {
+                    "description": "Transfer ended interrupt mask",
+                    "offset": 8,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "fifo_error_state": {
+                    "description": "Transmit or receive FIFO error interrupt state\\n\\n\nAuto cleared when FIFO overflow or underflow error flag is cleared.",
+                    "offset": 5,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2C.children.enums.InterruptState"
+                  },
+                  "arbitrate_lost_state": {
+                    "description": "Arbitration lost interrupt state",
+                    "offset": 4,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "not_acknowledged_state": {
+                    "description": "Not-acknowledged response interrupt state",
+                    "offset": 3,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_fifo_ready_state": {
+                    "description": "Receive FIFO ready interrupt state\\n\\n\nAuto cleared when data is popped from receive FIFO.",
+                    "offset": 2,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "transmit_fifo_ready_state": {
+                    "description": "Transmit FIFO ready interrupt state\\n\\n\nAuto cleared when data is pushed into transmit FIFO.",
+                    "offset": 1,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "transfer_end_state": {
+                    "description": "Transfer ended interrupt state",
+                    "offset": 0,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  }
+                }
+              }
+            },
+            "sub_address": {
+              "description": "Register address of slave device",
+              "offset": 8,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "byte": {
+                    "description": "I2C sub-address byte %s",
+                    "offset": 0,
+                    "size": 8,
+                    "count": 4
+                  }
+                }
+              }
+            },
+            "bus_busy": {
+              "description": "Bus busy state indicator",
+              "offset": 12,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "force_clear": {
+                    "description": "Force clear I2C bus busy state\\n\\n\nNot for normal use; only use when I2C bus hangs",
+                    "offset": 1,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "clear": {
+                            "description": "Write 1 to force clear busy flag",
+                            "value": 1
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "busy": {
+                    "description": "Indicator to I2C bus busy signal",
+                    "offset": 0,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "busy": {
+                            "description": "Bus is busy",
+                            "value": 1
+                          },
+                          "idle": {
+                            "description": "Bus is not busy",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "period_start": {
+              "description": "Duration of start phase",
+              "offset": 16,
+              "size": 32,
+              "reset_value": 252645135,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "phase": {
+                    "description": "Length of start condition phase %s",
+                    "offset": 0,
+                    "size": 8,
+                    "count": 4
+                  }
+                }
+              }
+            },
+            "period_stop": {
+              "description": "Duration of stop phase",
+              "offset": 20,
+              "size": 32,
+              "reset_value": 252645135,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "phase": {
+                    "description": "Length of stop condition phase %s",
+                    "offset": 0,
+                    "size": 8,
+                    "count": 4
+                  }
+                }
+              }
+            },
+            "period_data": {
+              "description": "Duration of data phase",
+              "offset": 24,
+              "size": 32,
+              "reset_value": 252645135,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "phase": {
+                    "description": "Length of data condition phase %s",
+                    "offset": 0,
+                    "size": 8,
+                    "count": 4
+                  }
+                }
+              }
+            },
+            "fifo_config_0": {
+              "description": "FIFO configuration register 0",
+              "offset": 128,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "receive_underflow": {
+                    "description": "Receive FIFO underflow flag\\n\\n\nCan be cleared using `receive_clear`.",
+                    "offset": 7,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2C.children.enums.HasUnderflow"
+                  },
+                  "receive_overflow": {
+                    "description": "Receive FIFO overflow flag\\n\\n\nCan be cleared using `receive_clear`.",
+                    "offset": 6,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2C.children.enums.HasOverflow"
+                  },
+                  "transmit_underflow": {
+                    "description": "Transmit FIFO underflow flag\\n\\n\nCan be cleared using `transmit_clear`.",
+                    "offset": 5,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2S.children.enums.HasUnderflow"
+                  },
+                  "transmit_overflow": {
+                    "description": "Transmit FIFO overflow flag\\n\\n\nCan be cleared using `transmit_clear`.",
+                    "offset": 4,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2S.children.enums.HasOverflow"
+                  },
+                  "receive_clear": {
+                    "description": "Clears receive FIFO overflow and underflow flags",
+                    "offset": 3,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.I2C.children.enums.FlagClear"
+                  },
+                  "transmit_clear": {
+                    "description": "Clears transmit FIFO overflow and underflow flags",
+                    "offset": 2,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.I2S.children.enums.FlagClear"
+                  },
+                  "receive_dma": {
+                    "description": "Enable signal of receive DMA interface",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.DmaEnable"
+                  },
+                  "transmit_dma": {
+                    "description": "Enable signal of transmit DMA interface",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.I2S.children.enums.DmaEnable"
+                  }
+                }
+              }
+            },
+            "fifo_config_1": {
+              "description": "FIFO configuration register 1",
+              "offset": 132,
+              "size": 32,
+              "reset_value": 2,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "receive_threshold": {
+                    "description": "Receive FIFO threshold\\n\\n\nDMA request will not be asserted if `receive_available` is less than this value",
+                    "offset": 24,
+                    "size": 1
+                  },
+                  "transmit_threshold": {
+                    "description": "Transmit FIFO threshold\\n\\n\nDMA request will not be asserted if `transmit_available` is less than this value",
+                    "offset": 16,
+                    "size": 1
+                  },
+                  "receive_count": {
+                    "description": "Count of available data in receive FIFO",
+                    "offset": 8,
+                    "size": 2,
+                    "access": "read-only"
+                  },
+                  "transmit_count": {
+                    "description": "Count of available data in transmit FIFO",
+                    "offset": 0,
+                    "size": 2,
+                    "access": "read-only"
+                  }
+                }
+              }
+            },
+            "data_write": {
+              "description": "FIFO write data register",
+              "offset": 136,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "write-only",
+              "children": {
+                "fields": {
+                  "value": {
+                    "description": "Write data to FIFO",
+                    "offset": 0,
+                    "size": 8
+                  }
+                }
+              }
+            },
+            "data_read": {
+              "description": "FIFO read data register",
+              "offset": 140,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "value": {
+                    "description": "Read data from FIFO",
+                    "offset": 0,
+                    "size": 8
+                  }
+                }
+              }
+            }
+          },
+          "enums": {
+            "InterruptEnable": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "enable": {
+                    "description": "Enable interrupt",
+                    "value": 1
+                  },
+                  "disable": {
+                    "description": "Disable interrupt",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "InterruptClear": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "clear": {
+                    "description": "Write 1 to clear interrupt state",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "InterruptMask": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "mask": {
+                    "description": "Mask interrupt",
+                    "value": 1
+                  },
+                  "unmask": {
+                    "description": "Unmask interrupt",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "InterruptState": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "has_interrupt": {
+                    "description": "Has interrupt",
+                    "value": 1
+                  },
+                  "no_interrupt": {
+                    "description": "No interrupt occurred",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "HasUnderflow": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "not_underflow": {
+                    "description": "No FIFO buffer underflow",
+                    "value": 0
+                  },
+                  "underflow": {
+                    "description": "Has FIFO buffer underflow",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "HasOverflow": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "not_overflow": {
+                    "description": "No FIFO buffer overflow",
+                    "value": 0
+                  },
+                  "overflow": {
+                    "description": "Has FIFO buffer overflow",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "FlagClear": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "clear": {
+                    "description": "Write 1 to clear fifo flags",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "DmaEnable": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "enable": {
+                    "description": "Enable DMA interface",
+                    "value": 1
+                  },
+                  "disable": {
+                    "description": "Disable DMA interface",
+                    "value": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "SPI": {
+        "description": "Serial Peripheral Interface",
+        "size": 256,
+        "children": {
+          "registers": {
+            "config": {
+              "description": "Function configuration register",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "interrupt_state": {
+              "description": "Interrupt enables, masks and states",
+              "offset": 4,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "bus_busy": {
+              "description": "Bus busy state indicator",
+              "offset": 8,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "period_control": {
+              "description": "Duration of control signals",
+              "offset": 16,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "period_interval": {
+              "description": "Interval bitween frames",
+              "offset": 20,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "ignore_index": {
+              "description": "Receive ignore index configuration",
+              "offset": 24,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "timeout": {
+              "description": "Slave mode transmit timeout values",
+              "offset": 28,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "fifo_config_0": {
+              "description": "FIFO configuration register 0",
+              "offset": 128,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "fifo_config_1": {
+              "description": "FIFO configuration register 1",
+              "offset": 132,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "data_write": {
+              "description": "FIFO write data register",
+              "offset": 136,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "data_read": {
+              "description": "FIFO read data register",
+              "offset": 140,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "UART": {
+        "description": "Universal Asynchronous Receiver Transmitter",
+        "size": 256,
+        "children": {
+          "registers": {
+            "transmit_config": {
+              "description": "Transmit configuration register",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 36608,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "transfer_length": {
+                    "description": "Length of words per UART transmit transfer\\n\\n\nThis field is ignored when `freerun` mode is enabled.",
+                    "offset": 16,
+                    "size": 16
+                  },
+                  "break_bits": {
+                    "description": "Number of break bits for LIN protocol",
+                    "offset": 13,
+                    "size": 3
+                  },
+                  "stop_bits": {
+                    "description": "Number of stop bits",
+                    "offset": 11,
+                    "size": 2,
+                    "enum": {
+                      "size": 2,
+                      "children": {
+                        "enum_fields": {
+                          "zero_p_five": {
+                            "description": "0.5 stop bits",
+                            "value": 0
+                          },
+                          "one": {
+                            "description": "1 stop bit",
+                            "value": 1
+                          },
+                          "one_p_five": {
+                            "description": "1.5 stop bits",
+                            "value": 2
+                          },
+                          "two": {
+                            "description": "2 stop bits",
+                            "value": 3
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "word_length": {
+                    "description": "Bit count for each transmit data word",
+                    "offset": 8,
+                    "size": 3,
+                    "enum": {
+                      "size": 3,
+                      "children": {
+                        "enum_fields": {
+                          "five": {
+                            "description": "Each word includes 5 bits",
+                            "value": 4
+                          },
+                          "six": {
+                            "description": "Each word includes 6 bits",
+                            "value": 5
+                          },
+                          "seven": {
+                            "description": "Each word includes 7 bits",
+                            "value": 6
+                          },
+                          "eight": {
+                            "description": "Each word includes 8 bits",
+                            "value": 7
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ir_inverse": {
+                    "description": "Inverse transmit signal output in IR mode",
+                    "offset": 7,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "inverse": {
+                            "description": "Inverse transmit input in IR mode",
+                            "value": 1
+                          },
+                          "no_inverse": {
+                            "description": "Don't inverse transmit input in IR mode",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ir_transmit": {
+                    "description": "Enable IR transmit mode",
+                    "offset": 6,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable IR transmit mode",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable IR transmit mode",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "parity_mode": {
+                    "description": "Select transmit parity mode if enabled",
+                    "offset": 5,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "odd": {
+                            "description": "Odd parity if `parity_enable` is set",
+                            "value": 1
+                          },
+                          "even": {
+                            "description": "Even parity if `parity_enable` is set",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "parity_enable": {
+                    "description": "Enable transmit parity check",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable transmit parity check",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable transmit parity check",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "lin_transmit": {
+                    "description": "Local Interconnect Network protocol enable",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable Local Interconnect Network protocol",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable Local Interconnect Network protocol",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "freerun": {
+                    "description": "Enable freerun mode",
+                    "offset": 2,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable freerun mode",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable freerun mode",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "cts": {
+                    "description": "Enable Clear-to-Send flow control signal",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable Clear-to-Send flow control signal",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable Clear-to-Send flow control signal",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "function": {
+                    "description": "Enable transmit function",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable UART receive function signal",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable UART receive function signal",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "receive_config": {
+              "description": "Receive configuration register",
+              "offset": 4,
+              "size": 32,
+              "reset_value": 1792,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "transfer_length": {
+                    "description": "Length of words per UART receive transfer",
+                    "offset": 16,
+                    "size": 16
+                  },
+                  "deglitch_cycle": {
+                    "description": "De-glitch function cycle count",
+                    "offset": 12,
+                    "size": 4
+                  },
+                  "deglitch_enable": {
+                    "description": "Enable receive de-glitch function",
+                    "offset": 11,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable de-glitch function upon receive",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable de-glitch function upon receive",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "word_length": {
+                    "description": "Bit count for each receive data word",
+                    "offset": 8,
+                    "size": 3,
+                    "enum": {
+                      "size": 3,
+                      "children": {
+                        "enum_fields": {
+                          "five": {
+                            "description": "Each word includes 5 bits",
+                            "value": 4
+                          },
+                          "six": {
+                            "description": "Each word includes 6 bits",
+                            "value": 5
+                          },
+                          "seven": {
+                            "description": "Each word includes 7 bits",
+                            "value": 6
+                          },
+                          "eight": {
+                            "description": "Each word includes 8 bits",
+                            "value": 7
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ir_inverse": {
+                    "description": "Inverse receive signal output in IR mode",
+                    "offset": 7,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "inverse": {
+                            "description": "Inverse receive input in IR mode",
+                            "value": 1
+                          },
+                          "no_inverse": {
+                            "description": "Don't inverse receive input in IR mode",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ir_receive": {
+                    "description": "Enable IR receive mode",
+                    "offset": 6,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable IR receive mode",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable IR receive mode",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "parity_mode": {
+                    "description": "Select receive parity mode if enabled",
+                    "offset": 5,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "odd": {
+                            "description": "Odd parity if `parity_enable` is set",
+                            "value": 1
+                          },
+                          "even": {
+                            "description": "Even parity if `parity_enable` is set",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "parity_enable": {
+                    "description": "Enable receive parity check",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable receive parity check",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable receive parity check",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "lin_receive": {
+                    "description": "Local Interconnect Network protocol enable",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable Local Interconnect Network protocol",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable Local Interconnect Network protocol",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "auto_baudrate": {
+                    "description": "Enable receive auto baudrate detection",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable auto baudrate upon receive",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable auto baudrate upon receive",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "function": {
+                    "description": "Enable receive function",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable UART receive function signal",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable UART receive function signal",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "bit_period": {
+              "description": "Bit period control register",
+              "offset": 8,
+              "size": 32,
+              "reset_value": 16711935,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "receive": {
+                    "description": "Period of each receive bit\\n\\n\nAdd 1 to this value and divide by clock to get receive baudrate.",
+                    "offset": 16,
+                    "size": 16
+                  },
+                  "transmit": {
+                    "description": "Period of each transmit bit\\n\\n\nAdd 1 to this value and divide by clock to get transmit baudrate.",
+                    "offset": 0,
+                    "size": 16
+                  }
+                }
+              }
+            },
+            "data_config": {
+              "description": "Data configuration register",
+              "offset": 12,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "bit_order": {
+                    "description": "Enable bit inverse in each data word",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "inverse": {
+                            "description": "Each byte is sent out MSB-first",
+                            "value": 1
+                          },
+                          "no_inverse": {
+                            "description": "Each byte is sent out LSB-first",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "transmit_position": {
+              "description": "IR-mode transmit position control",
+              "offset": 16,
+              "size": 32,
+              "reset_value": 10420336,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "stop": {
+                    "description": "Stop position of transmit IR pulse",
+                    "offset": 16,
+                    "size": 16
+                  },
+                  "start": {
+                    "description": "Start position of transmit IR pulse",
+                    "offset": 0,
+                    "size": 16
+                  }
+                }
+              }
+            },
+            "receive_position": {
+              "description": "IR-mode receive position control",
+              "offset": 20,
+              "size": 32,
+              "reset_value": 111,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "start": {
+                    "description": "Start position of received pulse recovered from IR signal",
+                    "offset": 0,
+                    "size": 16
+                  }
+                }
+              }
+            },
+            "receive_timeout": {
+              "description": "Receive Time-Out interrupt control",
+              "offset": 24,
+              "size": 32,
+              "reset_value": 15,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "value": {
+                    "description": "Timeout interrupt triggering value by bits received",
+                    "offset": 0,
+                    "size": 8
+                  }
+                }
+              }
+            },
+            "signal_override": {
+              "description": "Manual override of flow control signal",
+              "offset": 28,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "rts_value": {
+                    "description": "Value to override Request-to-Send signal if override is enabled",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.SignalAssert"
+                  },
+                  "rts_signal": {
+                    "description": "Enable manual override of Request-to-Send flow control signal",
+                    "offset": 2,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.OverrideEnable"
+                  },
+                  "transmit_value": {
+                    "description": "Value to override transmit signal if override is enabled",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.SignalAssert"
+                  },
+                  "transmit_signal": {
+                    "description": "Enable manual override of transmit signal",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.OverrideEnable"
+                  }
+                }
+              }
+            },
+            "interrupt_state": {
+              "description": "Interrupt state register",
+              "offset": 32,
+              "size": 32,
+              "reset_value": 4,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "auto_baudrate_five_five": {
+                    "description": "Receive auto baudrate detection finished using 0x55 occurred",
+                    "offset": 11,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.InterruptState"
+                  },
+                  "auto_baudrate_start_bit": {
+                    "description": "Receive auto baudrate detection finished using start bit occurred",
+                    "offset": 10,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_byte_count": {
+                    "description": "Receive byte count reached occurred",
+                    "offset": 9,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_sync_error": {
+                    "description": "Receive LIN mode synchronization field error occurred",
+                    "offset": 8,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_fifo_error": {
+                    "description": "Receive FIFO overflow or underflow occurred",
+                    "offset": 7,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "transmit_fifo_error": {
+                    "description": "Transmit FIFO overflow or underflow occurred",
+                    "offset": 6,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_parity": {
+                    "description": "Receive parity check failure occurred",
+                    "offset": 5,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_timeout": {
+                    "description": "Receive timed-out interrupt occurred",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_fifo_ready": {
+                    "description": "Receive FIFO ready signal raised",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "transmit_fifo_ready": {
+                    "description": "Transmit FIFO ready signal raised",
+                    "offset": 2,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "receive_transfer": {
+                    "description": "Receive transfer finish signal raised",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  },
+                  "transmit_transfer": {
+                    "description": "Transmit transfer finish signal raised",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptState"
+                  }
+                }
+              }
+            },
+            "interrupt_mask": {
+              "description": "Interrupt mask register",
+              "offset": 36,
+              "size": 32,
+              "reset_value": 4095,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "auto_baudrate_five_five": {
+                    "description": "Receive auto baudrate detection finished using 0x55 occurred",
+                    "offset": 11,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.InterruptMask"
+                  },
+                  "auto_baudrate_start_bit": {
+                    "description": "Receive auto baudrate detection finished using start bit interrupt mask",
+                    "offset": 10,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_byte_count": {
+                    "description": "Receive byte count reached interrupt mask",
+                    "offset": 9,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_sync_error": {
+                    "description": "Receive LIN mode synchronization field error interrupt mask",
+                    "offset": 8,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_fifo_error": {
+                    "description": "Receive FIFO overflow or underflow interrupt mask",
+                    "offset": 7,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "transmit_fifo_error": {
+                    "description": "Transmit FIFO overflow or underflow interrupt mask",
+                    "offset": 6,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_parity": {
+                    "description": "Receive parity check failure interrupt mask",
+                    "offset": 5,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_timeout": {
+                    "description": "Receive timed-out interrupt mask",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_fifo_ready": {
+                    "description": "Receive FIFO ready signal interrupt mask",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "transmit_fifo_ready": {
+                    "description": "Transmit FIFO ready signal interrupt mask",
+                    "offset": 2,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "receive_transfer": {
+                    "description": "Receive transfer finish signal interrupt mask",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  },
+                  "transmit_transfer": {
+                    "description": "Transmit transfer finish signal interrupt mask",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.EMAC.children.enums.InterruptMask"
+                  }
+                }
+              }
+            },
+            "interrupt_clear": {
+              "description": "Clear interrupt register",
+              "offset": 40,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "write-only",
+              "children": {
+                "fields": {
+                  "auto_baudrate_five_five": {
+                    "description": "Write 1 to clear receive auto baudrate detection finished using 0x55",
+                    "offset": 11,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.InterruptClear"
+                  },
+                  "auto_baudrate_start_bit": {
+                    "description": "Write 1 to clear receive auto baudrate detection finished using start bit",
+                    "offset": 10,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "receive_byte_count": {
+                    "description": "Write 1 to clear receive byte count reached",
+                    "offset": 9,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "receive_sync_error": {
+                    "description": "Write 1 to clear receive LIN mode synchronization field error",
+                    "offset": 8,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "receive_parity": {
+                    "description": "Write 1 to clear receive parity check failure",
+                    "offset": 5,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "receive_timeout": {
+                    "description": "Write 1 to clear receive timed-out",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "receive_transfer": {
+                    "description": "Write 1 to clear receive transfer finish signal",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  },
+                  "transmit_transfer": {
+                    "description": "Write 1 to clear transmit transfer finish signal",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.I2C.children.enums.InterruptClear"
+                  }
+                }
+              }
+            },
+            "interrupt_enable": {
+              "description": "Interrupt enable register",
+              "offset": 44,
+              "size": 32,
+              "reset_value": 255,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "auto_baudrate_five_five": {
+                    "description": "Receive auto baudrate detection finished using 0x55 interrupt enable",
+                    "offset": 11,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.InterruptEnable"
+                  },
+                  "auto_baudrate_start_bit": {
+                    "description": "Receive auto baudrate detection finished using start bit interrupt enable",
+                    "offset": 10,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "receive_byte_count": {
+                    "description": "Receive byte count reached interrupt enable",
+                    "offset": 9,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "receive_sync_error": {
+                    "description": "Receive LIN mode synchronization field error interrupt enable",
+                    "offset": 8,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "receive_fifo_error": {
+                    "description": "Receive FIFO overflow or underflow interrupt enable",
+                    "offset": 7,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "transmit_fifo_error": {
+                    "description": "Transmit FIFO overflow or underflow interrupt enable",
+                    "offset": 6,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "receive_parity": {
+                    "description": "Receive parity check failure interrupt enable",
+                    "offset": 5,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "receive_timeout": {
+                    "description": "Receive timed-out interrupt enable",
+                    "offset": 4,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "receive_fifo_ready": {
+                    "description": "Receive FIFO ready signal interrupt enable",
+                    "offset": 3,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "transmit_fifo_ready": {
+                    "description": "Transmit FIFO ready signal interrupt enable",
+                    "offset": 2,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "receive_transfer": {
+                    "description": "Receive transfer signal interrupt enable",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  },
+                  "transmit_transfer": {
+                    "description": "Transmit transfer signal interrupt enable",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.LZ4D.children.enums.InterruptEnable"
+                  }
+                }
+              }
+            },
+            "bus_state": {
+              "description": "Bus state register",
+              "offset": 48,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "receive_busy": {
+                    "description": "Indicates that UART receive bus is busy",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.BusBusy"
+                  },
+                  "transmit_busy": {
+                    "description": "Indicates that UART transmit bus is busy",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.BusBusy"
+                  }
+                }
+              }
+            },
+            "auto_baudrate": {
+              "description": "Auto baudrate detection register",
+              "offset": 52,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "by_five_five": {
+                    "description": "Bit period of auto baudrate detection using codeword 0x55",
+                    "offset": 16,
+                    "size": 16
+                  },
+                  "by_start_bit": {
+                    "description": "Bit period of auto baudrate detection using start bit",
+                    "offset": 0,
+                    "size": 16
+                  }
+                }
+              }
+            },
+            "pulse_tolerance": {
+              "description": "Pulse width tolerance for auto baudrate",
+              "offset": 72,
+              "size": 32,
+              "reset_value": 3,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "by_five_five": {
+                    "description": "Pulse width tolerance of auto baudrate detection using codeword 0x55",
+                    "offset": 0,
+                    "size": 8
+                  }
+                }
+              }
+            },
+            "rs485_transmit": {
+              "description": "RS-485 mode transmit configuration",
+              "offset": 84,
+              "size": 32,
+              "reset_value": 2,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "polarity": {
+                    "description": "RS-485 pin polarity of Driver Enable (DE) pin",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.Polarity"
+                  },
+                  "function": {
+                    "description": "RS-485 transceiver mode enable",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": {
+                      "size": 1,
+                      "children": {
+                        "enum_fields": {
+                          "enable": {
+                            "description": "Enable RS-485 transceiver mode\\n\\n\nThe peripheral is connected to RS-485 transceiver, and RTS signal output becomes Driver Enable (DE) signal.",
+                            "value": 1
+                          },
+                          "disable": {
+                            "description": "Disable RS-485 transceiver mode\\n\\n\nThe peripheral operates as normal UART.",
+                            "value": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "fifo_config_0": {
+              "description": "FIFO configuration register 0",
+              "offset": 128,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "receive_underflow": {
+                    "description": "Receive FIFO underflow flag\\n\\n\nCan be cleared using `receive_clear`.",
+                    "offset": 7,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.UART.children.enums.HasUnderflow"
+                  },
+                  "receive_overflow": {
+                    "description": "Receive FIFO overflow flag\\n\\n\nCan be cleared using `receive_clear`.",
+                    "offset": 6,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.UART.children.enums.HasOverflow"
+                  },
+                  "transmit_underflow": {
+                    "description": "Transmit FIFO underflow flag\\n\\n\nCan be cleared using `transmit_clear`.",
+                    "offset": 5,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2S.children.enums.HasUnderflow"
+                  },
+                  "transmit_overflow": {
+                    "description": "Transmit FIFO overflow flag\\n\\n\nCan be cleared using `transmit_clear`.",
+                    "offset": 4,
+                    "size": 1,
+                    "access": "read-only",
+                    "enum": "types.peripherals.I2S.children.enums.HasOverflow"
+                  },
+                  "receive_clear": {
+                    "description": "Clears receive FIFO overflow and underflow flags",
+                    "offset": 3,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.UART.children.enums.FlagClear"
+                  },
+                  "transmit_clear": {
+                    "description": "Clears transmit FIFO overflow and underflow flags",
+                    "offset": 2,
+                    "size": 1,
+                    "access": "write-only",
+                    "enum": "types.peripherals.I2S.children.enums.FlagClear"
+                  },
+                  "receive_dma": {
+                    "description": "Enable signal of receive DMA interface",
+                    "offset": 1,
+                    "size": 1,
+                    "enum": "types.peripherals.UART.children.enums.DmaEnable"
+                  },
+                  "transmit_dma": {
+                    "description": "Enable signal of transmit DMA interface",
+                    "offset": 0,
+                    "size": 1,
+                    "enum": "types.peripherals.I2S.children.enums.DmaEnable"
+                  }
+                }
+              }
+            },
+            "fifo_config_1": {
+              "description": "FIFO configuration register 1",
+              "offset": 132,
+              "size": 32,
+              "reset_value": 32,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "receive_threshold": {
+                    "description": "Receive FIFO threshold\\n\\n\nDMA request will not be asserted if `receive_available` is less than this value",
+                    "offset": 24,
+                    "size": 5
+                  },
+                  "transmit_threshold": {
+                    "description": "Transmit FIFO threshold\\n\\n\nDMA request will not be asserted if `transmit_available` is less than this value",
+                    "offset": 16,
+                    "size": 5
+                  },
+                  "receive_count": {
+                    "description": "Count of available data in receive FIFO",
+                    "offset": 8,
+                    "size": 6,
+                    "access": "read-only"
+                  },
+                  "transmit_count": {
+                    "description": "Count of available data in transmit FIFO",
+                    "offset": 0,
+                    "size": 6,
+                    "access": "read-only"
+                  }
+                }
+              }
+            },
+            "data_write": {
+              "description": "FIFO write data register",
+              "offset": 136,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "write-only",
+              "children": {
+                "fields": {
+                  "value": {
+                    "description": "Write data to FIFO",
+                    "offset": 0,
+                    "size": 8
+                  }
+                }
+              }
+            },
+            "data_read": {
+              "description": "FIFO read data register",
+              "offset": 140,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "value": {
+                    "description": "Read data from FIFO",
+                    "offset": 0,
+                    "size": 8
+                  }
+                }
+              }
+            }
+          },
+          "enums": {
+            "SignalAssert": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "high": {
+                    "description": "Assert this signal",
+                    "value": 1
+                  },
+                  "low": {
+                    "description": "Deassert this signal",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "OverrideEnable": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "enable": {
+                    "description": "Enable manual override of this signal",
+                    "value": 1
+                  },
+                  "disable": {
+                    "description": "Disable manual override of this signal",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "InterruptState": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "has_interrupt": {
+                    "description": "Has interrupt",
+                    "value": 1
+                  },
+                  "no_interrupt": {
+                    "description": "No interrupt occurred",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "InterruptMask": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "mask": {
+                    "description": "Mask interrupt",
+                    "value": 1
+                  },
+                  "unmask": {
+                    "description": "Unmask interrupt",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "InterruptClear": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "clear": {
+                    "description": "Write 1 to clear interrupt state",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "InterruptEnable": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "enable": {
+                    "description": "Enable interrupt",
+                    "value": 1
+                  },
+                  "disable": {
+                    "description": "Disable interrupt",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "BusBusy": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "busy": {
+                    "description": "Bus is busy",
+                    "value": 1
+                  },
+                  "idle": {
+                    "description": "Bus is not busy",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "Polarity": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "active_high": {
+                    "description": "Driver Enable (DE) pin is active high",
+                    "value": 1
+                  },
+                  "active_low": {
+                    "description": "Driver Enable (DE) pin is active low",
+                    "value": 0
+                  }
+                }
+              }
+            },
+            "HasUnderflow": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "not_underflow": {
+                    "description": "No FIFO buffer underflow",
+                    "value": 0
+                  },
+                  "underflow": {
+                    "description": "Has FIFO buffer underflow",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "HasOverflow": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "not_overflow": {
+                    "description": "No FIFO buffer overflow",
+                    "value": 0
+                  },
+                  "overflow": {
+                    "description": "Has FIFO buffer overflow",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "FlagClear": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "clear": {
+                    "description": "Write 1 to clear fifo flags",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "DmaEnable": {
+              "size": 1,
+              "children": {
+                "enum_fields": {
+                  "enable": {
+                    "description": "Enable DMA interface",
+                    "value": 1
+                  },
+                  "disable": {
+                    "description": "Disable DMA interface",
+                    "value": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "MISC": {
+        "description": "Chip Miscellaneous control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "CCI": {
+        "description": "Camera Control Interface",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "EFUSE": {
+        "description": "eFuse memory control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "SEC": {
+        "description": "Digest, Encryption and Signing accelerator",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "DEBUG": {
+        "description": "Secure debug configuration",
+        "children": {
+          "registers": {
+            "identify": {
+              "description": "Unique module identifier",
+              "offset": 0,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "access": "read-only",
+              "children": {
+                "fields": {
+                  "word": {
+                    "description": "Read identifier part in word",
+                    "offset": 0,
+                    "size": 32
+                  }
+                }
+              }
+            },
+            "password": {
+              "description": "Password of debug module",
+              "offset": 8,
+              "size": 32,
+              "count": 4,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "word": {
+                    "description": "Read or write password in word",
+                    "offset": 0,
+                    "size": 32
+                  }
+                }
+              }
+            },
+            "control": {
+              "description": "Module control register",
+              "offset": 24,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "password_busy": {
+                    "description": "??",
+                    "offset": 0,
+                    "size": 1,
+                    "access": "read-only"
+                  },
+                  "password_trigger": {
+                    "description": "??",
+                    "offset": 1,
+                    "size": 1
+                  },
+                  "password_count": {
+                    "description": "??",
+                    "offset": 4,
+                    "size": 20
+                  },
+                  "debug_mode": {
+                    "description": "??",
+                    "offset": 24,
+                    "size": 4,
+                    "access": "read-only"
+                  },
+                  "debug_enable": {
+                    "description": "Read if debug module is enabled",
+                    "offset": 28,
+                    "size": 4,
+                    "access": "read-only"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "AGC": {
+        "description": "Automatic Gain Control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "GPIP": {
+        "description": "Generic DAC, ADC and ACOMP interface control",
+        "children": {
+          "registers": {
+            "todo": {
+              "description": "??",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          }
+        }
+      },
+      "GLB": {
+        "description": "Global configuration register",
+        "children": {
+          "registers": {
+            "chip_inform": {
+              "description": "Chip information register",
+              "offset": 0,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_16": {
+              "description": "Core configuration register 16",
+              "offset": 80,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_17": {
+              "description": "Core configuration register 17",
+              "offset": 84,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_18": {
+              "description": "Core configuration register 18",
+              "offset": 88,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_19": {
+              "description": "Core configuration register 19",
+              "offset": 92,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_20": {
+              "description": "Core configuration register 20",
+              "offset": 96,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_21": {
+              "description": "Core configuration register 21",
+              "offset": 100,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_22": {
+              "description": "Core configuration register 22",
+              "offset": 104,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_23": {
+              "description": "Core configuration register 23",
+              "offset": 108,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_24": {
+              "description": "Core configuration register 24",
+              "offset": 112,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "core_config_25": {
+              "description": "Core configuration register 25",
+              "offset": 116,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "sys_config_0": {
+              "description": "System configuration register 0",
+              "offset": 144,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "sys_config_1": {
+              "description": "System configuration register 1",
+              "offset": 148,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "bus_config_0": {
+              "description": "Bus configuration register 0",
+              "offset": 160,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "emi_config": {
+              "description": "Electromagnetic interference configuration",
+              "offset": 224,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "rtc_config": {
+              "description": "Real-time clock configuration",
+              "offset": 240,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpadc_config": {
+              "description": "General Purpose Analog-to-digital convert configuration",
+              "offset": 272,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpdac_config_0": {
+              "description": "General Purpose Digital-to-analog convert configuration 0",
+              "offset": 288,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpdac_config_1": {
+              "description": "General Purpose Digital-to-analog convert configuration 1",
+              "offset": 292,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpdac_config_2": {
+              "description": "General Purpose Digital-to-analog convert configuration 2",
+              "offset": 296,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpdac_config_3": {
+              "description": "General Purpose Digital-to-analog convert configuration 3",
+              "offset": 300,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "dma_config_0": {
+              "description": "Direct Memory Access configuration 0",
+              "offset": 304,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "dma_config_1": {
+              "description": "Direct Memory Access configuration 1",
+              "offset": 308,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "dma_config_2": {
+              "description": "Direct Memory Access configuration 2",
+              "offset": 312,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "ir_config_0": {
+              "description": "Infrared configuration register 0",
+              "offset": 320,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "ir_config_1": {
+              "description": "Infrared configuration register 1",
+              "offset": 324,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "uart_config": {
+              "description": "Universal Asynchronous Receiver/Transmitter configuration",
+              "offset": 336,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "clock_divide": {
+                    "description": "Peripheral clock divide factor",
+                    "offset": 0,
+                    "size": 3
+                  },
+                  "clock_enable": {
+                    "description": "Peripheral level clock gate enable",
+                    "offset": 4,
+                    "size": 1
+                  },
+                  "hibernate_clock_source": {
+                    "description": "Reads clock source from hibernate registers",
+                    "offset": 7,
+                    "size": 1,
+                    "access": "read-only"
+                  },
+                  "hibernate_clock_source_2": {
+                    "description": "Reads clock source from hibernate registers",
+                    "offset": 22,
+                    "size": 1,
+                    "access": "read-only"
+                  },
+                  "uart2_mode": {
+                    "description": "Select interface mode for UART2 peripheral",
+                    "offset": 25,
+                    "size": 7,
+                    "enum": "types.peripherals.GLB.children.enums.Uart2Mode"
+                  }
+                }
+              }
+            },
+            "uart_signal_0": {
+              "description": "Universal Asynchronous Receiver/Transmitter signal configuration 0",
+              "offset": 340,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "function_0": {
+                    "description": "Select peripheral function for UART signal %s",
+                    "offset": 0,
+                    "size": 4,
+                    "count": 8,
+                    "enum": "types.peripherals.GLB.children.enums.@\"uart_signal.Function\""
+                  }
+                }
+              }
+            },
+            "uart_signal_1": {
+              "description": "Universal Asynchronous Receiver/Transmitter signal configuration 1",
+              "offset": 344,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "function_1": {
+                    "description": "Select peripheral function for UART signal %s (offset by 8)",
+                    "offset": 0,
+                    "size": 4,
+                    "count": 4,
+                    "enum": "types.peripherals.GLB.children.enums.@\"uart_signal.Function\""
+                  }
+                }
+              }
+            },
+            "flash_config": {
+              "description": "Serial flash configuration",
+              "offset": 368,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "i2c_config": {
+              "description": "Inter-Integrated Circuit bus configuration",
+              "offset": 384,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "i2s_config": {
+              "description": "Inter-IC Sound configuration",
+              "offset": 400,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "spi_config": {
+              "description": "Serial Peripheral Interface configuration",
+              "offset": 432,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "quad_config": {
+              "description": "Quadrature decoder configuration",
+              "offset": 448,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "digit_clock_0": {
+              "description": "Digital clock configuration 0",
+              "offset": 592,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "digit_clock_1": {
+              "description": "Digital clock configuration 1",
+              "offset": 596,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "digit_clock_2": {
+              "description": "Digital clock configuration 2",
+              "offset": 600,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "radio_config": {
+              "description": "Radio configuration register",
+              "offset": 608,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "debug_config_0": {
+              "description": "Debug configuration register 0",
+              "offset": 736,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "debug_config_1": {
+              "description": "Debug configuration register 1",
+              "offset": 740,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "debug_config_2": {
+              "description": "Debug configuration register 2",
+              "offset": 744,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "debug_config_3": {
+              "description": "Debug configuration register 3",
+              "offset": 748,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "debug_config_4": {
+              "description": "Debug configuration register 4",
+              "offset": 752,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "test_mode": {
+              "description": "Memory Built-in Self Test mode",
+              "offset": 768,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "test_done": {
+              "description": "Memory Built-in Self Test done state",
+              "offset": 776,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "test_fail": {
+              "description": "Memory Built-in Self Test fail state",
+              "offset": 784,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "audio_config_0": {
+              "description": "Audio configuration register 0",
+              "offset": 832,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "audio_config_1": {
+              "description": "Audio configuration register 1",
+              "offset": 836,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "emac_config": {
+              "description": "Ethernet Media Access Control register",
+              "offset": 912,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "cam_config": {
+              "description": "??",
+              "offset": 1056,
+              "size": 32,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpio_config": {
+              "description": "Generic Purpose Input/Output config",
+              "offset": 2244,
+              "size": 32,
+              "count": 46,
+              "reset_value": 0,
+              "reset_mask": 4294967295,
+              "children": {
+                "fields": {
+                  "pin_mode": {
+                    "description": "Pin input/output mode switch",
+                    "offset": 30,
+                    "size": 2,
+                    "enum": "types.peripherals.GLB.children.enums.PinMode"
+                  },
+                  "input_value": {
+                    "description": "Input value",
+                    "offset": 28,
+                    "size": 1
+                  },
+                  "output_clear": {
+                    "description": "Clear output value to 0",
+                    "offset": 26,
+                    "size": 1
+                  },
+                  "output_set": {
+                    "description": "Set output value to 1",
+                    "offset": 25,
+                    "size": 1
+                  },
+                  "output_value": {
+                    "description": "Output value",
+                    "offset": 24,
+                    "size": 1
+                  },
+                  "interrupt_mask": {
+                    "description": "Pin interrupt mask",
+                    "offset": 22,
+                    "size": 1
+                  },
+                  "interrupt_state": {
+                    "description": "Pin interrupt state",
+                    "offset": 21,
+                    "size": 1
+                  },
+                  "interrupt_clear": {
+                    "description": "Clear pin interrupt flag",
+                    "offset": 20,
+                    "size": 1
+                  },
+                  "interrupt_mode": {
+                    "description": "Select pin interrupt mode",
+                    "offset": 16,
+                    "size": 4
+                  },
+                  "alternate": {
+                    "description": "Pin alternate function switch",
+                    "offset": 8,
+                    "size": 5,
+                    "enum": "types.peripherals.GLB.children.enums.Alternate"
+                  },
+                  "output_function": {
+                    "description": "Enable output signal",
+                    "offset": 6,
+                    "size": 1
+                  },
+                  "pull_down": {
+                    "description": "Enable internal pull-down",
+                    "offset": 5,
+                    "size": 1
+                  },
+                  "pull_up": {
+                    "description": "Enable internal pull-up",
+                    "offset": 4,
+                    "size": 1
+                  },
+                  "drive": {
+                    "description": "Drive strength",
+                    "offset": 2,
+                    "size": 2
+                  },
+                  "schmitt": {
+                    "description": "Enable schmitt trigger",
+                    "offset": 1,
+                    "size": 1
+                  },
+                  "input_function": {
+                    "description": "Enable input signal",
+                    "offset": 0,
+                    "size": 1
+                  }
+                }
+              }
+            },
+            "gpio_input": {
+              "description": "Read value from Generic Purpose Input/Output pins",
+              "offset": 2756,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpio_output": {
+              "description": "Write value to Generic Purpose Input/Output pins",
+              "offset": 2788,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpio_set": {
+              "description": "Set pin output value to high",
+              "offset": 2796,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            },
+            "gpio_clear": {
+              "description": "Set pin output value to low",
+              "offset": 2804,
+              "size": 32,
+              "count": 2,
+              "reset_value": 0,
+              "reset_mask": 4294967295
+            }
+          },
+          "enums": {
+            "Uart2Mode": {
+              "size": 7,
+              "children": {
+                "enum_fields": {
+                  "uart": {
+                    "description": "Universal Asynchronous Receiver/Transmitter interface",
+                    "value": 0
+                  },
+                  "iso11898": {
+                    "description": "ISO 11898 communication protocol interface",
+                    "value": 1
+                  }
+                }
+              }
+            },
+            "uart_signal.Function": {
+              "size": 4,
+              "children": {
+                "enum_fields": {
+                  "uart0_rts": {
+                    "description": "UART0 Request-to-Send flow control",
+                    "value": 0
+                  },
+                  "uart0_cts": {
+                    "description": "UART0 Clear-to-Send flow control",
+                    "value": 1
+                  },
+                  "uart0_txd": {
+                    "description": "UART0 transmit data",
+                    "value": 2
+                  },
+                  "uart0_rxd": {
+                    "description": "UART0 receive data",
+                    "value": 3
+                  },
+                  "uart1_rts": {
+                    "description": "UART1 Request-to-Send flow control",
+                    "value": 4
+                  },
+                  "uart1_cts": {
+                    "description": "UART1 Clear-to-Send flow control",
+                    "value": 5
+                  },
+                  "uart1_txd": {
+                    "description": "UART1 transmit data",
+                    "value": 6
+                  },
+                  "uart1_rxd": {
+                    "description": "UART1 receive data",
+                    "value": 7
+                  },
+                  "uart2_rts": {
+                    "description": "UART2 Request-to-Send flow control",
+                    "value": 8
+                  },
+                  "uart2_cts": {
+                    "description": "UART2 Clear-to-Send flow control",
+                    "value": 9
+                  },
+                  "uart2_txd": {
+                    "description": "UART2 transmit data",
+                    "value": 10
+                  },
+                  "uart2_rxd": {
+                    "description": "UART2 receive data",
+                    "value": 11
+                  }
+                }
+              }
+            },
+            "PinMode": {
+              "size": 2,
+              "children": {
+                "enum_fields": {
+                  "input": {
+                    "description": "Digital input mode",
+                    "value": 0
+                  },
+                  "output": {
+                    "description": "Digital output mode",
+                    "value": 1
+                  },
+                  "alternate": {
+                    "description": "Alternate function mode",
+                    "value": 2
+                  },
+                  "analog": {
+                    "description": "Analog mode",
+                    "value": 3
+                  }
+                }
+              }
+            },
+            "Alternate": {
+              "size": 5,
+              "children": {
+                "enum_fields": {
+                  "sdh": {
+                    "description": "Secure Digital host",
+                    "value": 0
+                  },
+                  "spi0": {
+                    "description": "Serial Peripheral Interface 0",
+                    "value": 1
+                  },
+                  "flash": {
+                    "description": "Flash control",
+                    "value": 2
+                  },
+                  "i2s": {
+                    "description": "Inter-IC Sound",
+                    "value": 3
+                  },
+                  "pdm": {
+                    "description": "Pulse Density Modulation",
+                    "value": 4
+                  },
+                  "i2c0": {
+                    "description": "Inter-Integrated Circuit bus 0",
+                    "value": 5
+                  },
+                  "i2c1": {
+                    "description": "Inter-Integrated Circuit bus 1",
+                    "value": 6
+                  },
+                  "uart": {
+                    "description": "Universal Asynchronous Receiver/Transmitter",
+                    "value": 7
+                  },
+                  "emac": {
+                    "description": "Ethernet Media Access Control",
+                    "value": 8
+                  },
+                  "cam": {
+                    "description": "??",
+                    "value": 9
+                  },
+                  "analog": {
+                    "description": "??",
+                    "value": 10
+                  },
+                  "gpio": {
+                    "description": "Generic Purpose Input/Output",
+                    "value": 11
+                  },
+                  "pwm0": {
+                    "description": "Pulse-Width Modulation module 0",
+                    "value": 16
+                  },
+                  "pwm1": {
+                    "description": "Pulse-Width Modulation module 1",
+                    "value": 17
+                  },
+                  "spi1": {
+                    "description": "Serial Peripheral Interface 1",
+                    "value": 18
+                  },
+                  "i2c2": {
+                    "description": "Inter-Integrated Circuit bus 2",
+                    "value": 19
+                  },
+                  "i2c3": {
+                    "description": "Inter-Integrated Circuit bus 3",
+                    "value": 20
+                  },
+                  "mm_uart": {
+                    "description": "Multimedia subsystem Universal Asynchronous Receiver/Transmitter",
+                    "value": 21
+                  },
+                  "dbi_b": {
+                    "description": "??",
+                    "value": 22
+                  },
+                  "dbi_c": {
+                    "description": "??",
+                    "value": 23
+                  },
+                  "dpi": {
+                    "description": "??",
+                    "value": 24
+                  },
+                  "jtag_lp": {
+                    "description": "Low power core JTAG interface",
+                    "value": 25
+                  },
+                  "jtag_m0": {
+                    "description": "M0 core JTAG interface",
+                    "value": 26
+                  },
+                  "jtag_d0": {
+                    "description": "D0 core JTAG interface",
+                    "value": 27
+                  },
+                  "clock_out": {
+                    "description": "Clock output",
+                    "value": 31
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "devices": {
+    "BL808": {
+      "arch": "unknown",
+      "description": "Bouffalo BL808 chip",
+      "properties": {
+        "license": "\nCopyright (c) 2022 Bouffalo Lab\nbl808-pac is licensed under Mulan PSL v2.\nYou can use this software according to the terms and conditions of the Mulan PSL v2.\nYou may obtain a copy of Mulan PSL v2 at:\n         http://license.coscl.org.cn/MulanPSL2\nTHIS SOFTWARE IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTIES OF ANY KIND,\nEITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,\nMERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.\nSee the Mulan PSL v2 for more details.\n  "
+      },
+      "children": {
+        "peripheral_instances": {
+          "CODEC": {
+            "description": "Codec miscellaneous control",
+            "offset": 805437440,
+            "type": "types.peripherals.CODEC"
+          },
+          "MJPEG": {
+            "description": "Motion JPEG encoder",
+            "offset": 805441536,
+            "type": "types.peripherals.MJPEG"
+          },
+          "H264": {
+            "description": "H.264 video codec control",
+            "offset": 805445632,
+            "type": "types.peripherals.H264"
+          },
+          "NPU": {
+            "description": "Bouffalo Convolutional Neural Network",
+            "offset": 805453824,
+            "type": "types.peripherals.NPU"
+          },
+          "MMGLB": {
+            "description": "Multimedia Global controller",
+            "offset": 805335040,
+            "type": "types.peripherals.MMGLB"
+          },
+          "PTA": {
+            "description": "Packet Traffic Arbitration",
+            "offset": 613548032,
+            "type": "types.peripherals.PTA"
+          },
+          "WIFI": {
+            "description": "Wireless Fidelity control",
+            "offset": 615514112,
+            "type": "types.peripherals.WIFI"
+          },
+          "EMAC": {
+            "description": "Ethernet Media Access Control",
+            "offset": 537329664,
+            "type": "types.peripherals.EMAC"
+          },
+          "SDH": {
+            "description": "Secure Digital host control",
+            "offset": 537264128,
+            "type": "types.peripherals.SDH"
+          },
+          "AUDIO": {
+            "description": "Audio codec controller",
+            "offset": 537219072,
+            "type": "types.peripherals.AUDIO"
+          },
+          "USB": {
+            "description": "Universal Serial Bus host",
+            "offset": 537337856,
+            "type": "types.peripherals.USB"
+          },
+          "PSRAM": {
+            "description": "Pseudo Static Random Access Memory control",
+            "offset": 537206784,
+            "type": "types.peripherals.PSRAM"
+          },
+          "AON": {
+            "description": "Always-On function control",
+            "offset": 536934400,
+            "type": "types.peripherals.AON"
+          },
+          "HBN": {
+            "description": "Hibernate (Deep sleep) control",
+            "offset": 536932352,
+            "type": "types.peripherals.HBN"
+          },
+          "PDS": {
+            "description": "Power-Down Sleep control",
+            "offset": 536928256,
+            "type": "types.peripherals.PDS"
+          },
+          "DMA": {
+            "description": "Direct Memory Access",
+            "offset": 536920064,
+            "count": 2,
+            "type": "types.peripherals.DMA"
+          },
+          "FLASH": {
+            "description": "Quad Serial Flash control",
+            "offset": 536915968,
+            "type": "types.peripherals.FLASH"
+          },
+          "LZ4D": {
+            "description": "Hardware LZ4 Decompressor",
+            "offset": 536915200,
+            "type": "types.peripherals.LZ4D"
+          },
+          "PDM": {
+            "description": "Pulse Density Modulation",
+            "offset": 536914944,
+            "type": "types.peripherals.PDM"
+          },
+          "I2S": {
+            "description": "Inter-IC Sound controller",
+            "offset": 536914688,
+            "type": "types.peripherals.I2S"
+          },
+          "ISO11898": {
+            "description": "ISO 11898 communication protocol",
+            "offset": 536914432,
+            "type": "types.peripherals.ISO11898"
+          },
+          "IPC": {
+            "description": "Inter-processor Channel",
+            "offset": 536913920,
+            "type": "types.peripherals.IPC"
+          },
+          "IR": {
+            "description": "Infrared Remote module",
+            "offset": 536913408,
+            "type": "types.peripherals.IR"
+          },
+          "TIMER": {
+            "description": "Timer control",
+            "offset": 536913152,
+            "type": "types.peripherals.TIMER"
+          },
+          "PWM": {
+            "description": "Pulse-Width Modulation module",
+            "offset": 536912896,
+            "type": "types.peripherals.PWM"
+          },
+          "I2C": {
+            "description": "Inter-Integrated Circuit bus",
+            "offset": 536912640,
+            "count": 2,
+            "type": "types.peripherals.I2C"
+          },
+          "SPI": {
+            "description": "Serial Peripheral Interface",
+            "offset": 536912384,
+            "count": 1,
+            "type": "types.peripherals.SPI"
+          },
+          "UART": {
+            "description": "Universal Asynchronous Receiver Transmitter",
+            "offset": 536911872,
+            "count": 2,
+            "type": "types.peripherals.UART"
+          },
+          "MISC": {
+            "description": "Chip Miscellaneous control",
+            "offset": 536907776,
+            "type": "types.peripherals.MISC"
+          },
+          "CCI": {
+            "description": "Camera Control Interface",
+            "offset": 536903680,
+            "type": "types.peripherals.CCI"
+          },
+          "EFUSE": {
+            "description": "eFuse memory control",
+            "offset": 537223168,
+            "type": "types.peripherals.EFUSE"
+          },
+          "SEC": {
+            "description": "Digest, Encryption and Signing accelerator",
+            "offset": 536887296,
+            "type": "types.peripherals.SEC"
+          },
+          "DEBUG": {
+            "description": "Secure debug configuration",
+            "offset": 536883200,
+            "type": "types.peripherals.DEBUG"
+          },
+          "AGC": {
+            "description": "Automatic Gain Control",
+            "offset": 536882176,
+            "type": "types.peripherals.AGC"
+          },
+          "GPIP": {
+            "description": "Generic DAC, ADC and ACOMP interface control",
+            "offset": 536879104,
+            "type": "types.peripherals.GPIP"
+          },
+          "GLB": {
+            "description": "Global configuration register",
+            "offset": 536870912,
+            "type": "types.peripherals.GLB"
+          }
+        }
+      }
+    }
+  }
+}

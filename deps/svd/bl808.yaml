@@ -1,0 +1,3683 @@
+---
+vendor: Bouffalo Lab
+vendorID: bouffalolab
+name: BL808
+version: "1.0"
+description: Bouffalo BL808 chip
+licenseText: "\nCopyright (c) 2022 Bouffalo Lab\nbl808-pac is licensed under Mulan PSL v2.\nYou can use this software according to the terms and conditions of the Mulan PSL v2.\nYou may obtain a copy of Mulan PSL v2 at:\n         http://license.coscl.org.cn/MulanPSL2\nTHIS SOFTWARE IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTIES OF ANY KIND,\nEITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,\nMERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.\nSee the Mulan PSL v2 for more details.\n  "
+addressUnitBits: 8
+width: 64
+size: 32
+access: read-write
+resetValue: 0
+resetMask: 4294967295
+peripherals:
+  - name: CODEC
+    description: Codec miscellaneous control
+    baseAddress: 805437440
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: MJPEG
+    description: Motion JPEG encoder
+    baseAddress: 805441536
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: H264
+    description: H.264 video codec control
+    baseAddress: 805445632
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: NPU
+    description: Bouffalo Convolutional Neural Network
+    baseAddress: 805453824
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: MMGLB
+    description: Multimedia Global controller
+    baseAddress: 805335040
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: PTA
+    description: Packet Traffic Arbitration
+    baseAddress: 613548032
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: revision
+          description: Peripheral silicon revision
+          addressOffset: 1024
+          fields: []
+      - register:
+          name: config_0
+          description: Arbitration configuration register 0
+          addressOffset: 1028
+          fields:
+            - name: function
+              description: Enable packet traffic arbitration
+              lsb: 0
+              msb: 0
+            - name: wifi
+              description: "??"
+              lsb: 1
+              msb: 1
+            - name: priority
+              description: "??"
+              lsb: 4
+              msb: 4
+      - register:
+          name: bluetooth_transmit
+          description: "??"
+          addressOffset: 1032
+          fields: []
+      - register:
+          name: bluetooth_receive
+          description: "??"
+          addressOffset: 1040
+          fields: []
+      - register:
+          name: wifi_transmit
+          description: "??"
+          addressOffset: 1048
+          fields: []
+      - register:
+          name: wifi_receive
+          description: "??"
+          addressOffset: 1056
+          fields: []
+      - register:
+          name: config_1
+          description: "??"
+          addressOffset: 1064
+          fields: []
+  - name: WIFI
+    description: Wireless Fidelity control
+    baseAddress: 615514112
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: coex_control_0
+          description: "??"
+          addressOffset: 1024
+          fields: []
+      - register:
+          name: coex_pti
+          description: "??"
+          addressOffset: 1028
+          fields: []
+      - register:
+          name: coex_state
+          description: "??"
+          addressOffset: 1032
+          fields: []
+      - register:
+          name: coex_interrupt
+          description: "??"
+          addressOffset: 1036
+          fields: []
+      - register:
+          name: coex_control_1
+          description: "??"
+          addressOffset: 1040
+          fields: []
+  - name: EMAC
+    description: Ethernet Media Access Control
+    baseAddress: 537329664
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: mode
+          description: Interface enables and configurations
+          addressOffset: 0
+          fields: []
+      - register:
+          name: interrupt_source
+          description: Interrupt source register
+          addressOffset: 4
+          access: read-write
+          resetValue: 0
+          resetMask: 4294967295
+          modifiedWriteValues: oneToClear
+          fields:
+            - name: control_receive
+              description: Control frame received interrupt state
+              lsb: 6
+              msb: 6
+              enumeratedValues:
+                - name: InterruptState
+                  values:
+                    - name: has_interrupt
+                      description: Has interrupt
+                      value: 1
+                    - name: no_interrupt
+                      description: No interrupt occurred
+                      value: 0
+            - name: control_transmit
+              description: Control frame transmitted interrupt state
+              lsb: 5
+              msb: 5
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: busy
+              description: Lack of buffer interrupt state
+              lsb: 4
+              msb: 4
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_error
+              description: Receive error interrupt state
+              lsb: 3
+              msb: 3
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: frame_received
+              description: Frame received interrupt state
+              lsb: 2
+              msb: 2
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: transmit_error
+              description: Transmit error interrupt state
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: buffer_transmitted
+              description: Buffer transmitted interrupt state
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: InterruptState
+      - register:
+          name: interrupt_mask
+          description: Interrupt mask register
+          addressOffset: 8
+          access: read-write
+          resetValue: 0
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: control_receive
+              description: Control frame received interrupt mask
+              lsb: 6
+              msb: 6
+              enumeratedValues:
+                - name: InterruptMask
+                  values:
+                    - name: mask
+                      description: Mask interrupt
+                      value: 1
+                    - name: unmask
+                      description: Unmask interrupt
+                      value: 0
+            - name: control_transmit
+              description: Control frame transmitted interrupt mask
+              lsb: 5
+              msb: 5
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: busy
+              description: Lack of buffer interrupt mask
+              lsb: 4
+              msb: 4
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_error
+              description: Receive error interrupt mask
+              lsb: 3
+              msb: 3
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: frame_received
+              description: Frame received interrupt mask
+              lsb: 2
+              msb: 2
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: transmit_error
+              description: Transmit error interrupt mask
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: buffer_transmitted
+              description: Buffer transmitted interrupt mask
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: InterruptMask
+      - register:
+          name: backed_gap
+          description: Back-to-back inter-packet gap register
+          addressOffset: 12
+          fields: []
+      - register:
+          name: non_backed_gap_1
+          description: Non back-to-back inter-packet gap register 1
+          addressOffset: 16
+          fields: []
+      - register:
+          name: non_backed_gap_2
+          description: Non back-to-back inter-packet gap register 2
+          addressOffset: 20
+          fields: []
+      - register:
+          name: frame_length
+          description: Minimum and maximum ethernet frame length
+          addressOffset: 24
+          fields: []
+      - register:
+          name: collision
+          description: Collision time window and maximum retries
+          addressOffset: 28
+          fields: []
+      - register:
+          name: transmit_buffer
+          description: Transmit buffer descriptor
+          addressOffset: 32
+          fields: []
+      - register:
+          name: flow_control
+          description: Control frame function register
+          addressOffset: 36
+          fields: []
+      - register:
+          name: mii_mode
+          description: MII clock divider and premable enable
+          addressOffset: 40
+          fields: []
+      - register:
+          name: mii_command
+          description: "MII control data, read and scan state"
+          addressOffset: 44
+          fields: []
+      - register:
+          name: mii_address
+          description: Physical layer bus address
+          addressOffset: 48
+          fields: []
+      - register:
+          name: control_write
+          description: Write data to MII physcial layer
+          addressOffset: 52
+          fields: []
+      - register:
+          name: control_read
+          description: Read data from MII physcial layer
+          addressOffset: 56
+          fields: []
+      - register:
+          name: mii_state
+          description: MII bus and link layer state
+          addressOffset: 60
+          fields: []
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "mac_address[%s]"
+          description: Media Access Control address
+          addressOffset: 64
+          fields: []
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "hash[%s]"
+          description: Hash register
+          addressOffset: 72
+          fields: []
+      - register:
+          name: transmit_control
+          description: Transmit control register
+          addressOffset: 80
+          fields: []
+  - name: SDH
+    description: Secure Digital host control
+    baseAddress: 537264128
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: AUDIO
+    description: Audio codec controller
+    baseAddress: 537219072
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: USB
+    description: Universal Serial Bus host
+    baseAddress: 537337856
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - cluster:
+          name: capability
+          description: Host Controller Capability Registers
+          addressOffset: 0
+          children: []
+      - cluster:
+          name: operation
+          description: Host Controller Operational Registers
+          addressOffset: 16
+          children: []
+  - name: PSRAM
+    description: Pseudo Static Random Access Memory control
+    baseAddress: 537206784
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: AON
+    description: Always-On function control
+    baseAddress: 536934400
+    addressBlock:
+      - offset: 0
+        size: 2048
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: HBN
+    description: Hibernate (Deep sleep) control
+    baseAddress: 536932352
+    addressBlock:
+      - offset: 0
+        size: 2048
+        usage: registers
+    registers:
+      - register:
+          name: control
+          description: Miscellaneous control register
+          addressOffset: 0
+          fields: []
+      - register:
+          name: time_lo
+          description: Low bits of hibernate time
+          addressOffset: 4
+          fields: []
+      - register:
+          name: time_hi
+          description: High bits of hibernate time
+          addressOffset: 8
+          fields: []
+      - register:
+          name: rtc_time_lo
+          description: Low bits of Real-Time Clock time
+          addressOffset: 12
+          fields: []
+      - register:
+          name: rtc_time_hi
+          description: High bits of Real-Time Clock time
+          addressOffset: 16
+          fields: []
+      - register:
+          name: interrupt_mode
+          description: Hibernate interrupt contol
+          addressOffset: 20
+          fields: []
+      - register:
+          name: interrupt_state
+          description: Hibernate interrupt state
+          addressOffset: 24
+          fields: []
+      - register:
+          name: interrupt_clear
+          description: Clear hibernate interrupt
+          addressOffset: 28
+          fields: []
+      - register:
+          name: global
+          description: Global hibernate configuration
+          addressOffset: 48
+          fields: []
+      - register:
+          name: sram
+          description: Static Random-Access Memory hibernate control
+          addressOffset: 52
+          fields: []
+      - register:
+          name: rc32k
+          description: 32-kHz internal RC oscillator control
+          addressOffset: 512
+          fields: []
+      - register:
+          name: xtal32k
+          description: External crystal oscillator control
+          addressOffset: 516
+          fields: []
+      - register:
+          name: rtc_control_0
+          description: Real-Time Clock control and reset register 0
+          addressOffset: 520
+          fields: []
+      - register:
+          name: rtc_control_1
+          description: Real-Time Clock control and reset register 1
+          addressOffset: 524
+          fields: []
+  - name: PDS
+    description: Power-Down Sleep control
+    baseAddress: 536928256
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: touch_config
+          description: "??"
+          addressOffset: 2560
+          fields: []
+      - register:
+          name: touch_channel
+          description: "??"
+          addressOffset: 2564
+          fields: []
+      - register:
+          name: touch_process
+          description: "??"
+          addressOffset: 2568
+          fields: []
+      - register:
+          name: touch_sleep
+          description: "??"
+          addressOffset: 2572
+          fields: []
+      - register:
+          name: touch_delay
+          description: "??"
+          addressOffset: 2576
+          fields: []
+      - register:
+          dim: 6
+          dimIncrement: 4
+          name: "touch_force[%s]"
+          description: "??"
+          addressOffset: 2580
+          fields: []
+      - register:
+          dim: 3
+          dimIncrement: 4
+          name: "touch_voltage[%s]"
+          description: "??"
+          addressOffset: 2604
+          fields: []
+      - register:
+          dim: 12
+          dimIncrement: 4
+          name: "touch_raw[%s]"
+          description: "??"
+          addressOffset: 2616
+          fields: []
+      - register:
+          name: touch_interrupt_0
+          description: "??"
+          addressOffset: 2764
+          fields: []
+      - register:
+          name: touch_interrupt_1
+          description: "??"
+          addressOffset: 2768
+          fields: []
+  - dim: 2
+    dimIncrement: 512
+    name: DMA%s
+    description: Direct Memory Access
+    baseAddress: 536920064
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: FLASH
+    description: Quad Serial Flash control
+    baseAddress: 536915968
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: LZ4D
+    description: Hardware LZ4 Decompressor
+    baseAddress: 536915200
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: config
+          description: Decompressor peripheral configuration
+          addressOffset: 0
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: enable
+              description: Enable peripheral decompression
+              lsb: 0
+              msb: 0
+            - name: suspend
+              description: Suspend peripheral decompression
+              lsb: 1
+              msb: 1
+            - name: has_checksum
+              description: "Does this block includes an LZ4 checksum?\\n\\n\nUsers should read checksum flag from frame descriptor to fill in correct value\nfor this register field."
+              lsb: 4
+              msb: 4
+      - register:
+          name: source_start
+          description: Writes source address before decompression
+          addressOffset: 16
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: start
+              description: Start address
+              lsb: 0
+              msb: 25
+            - name: base
+              description: Address base
+              lsb: 26
+              msb: 31
+      - register:
+          name: source_end
+          description: Reads the end address of source after decompression
+          addressOffset: 20
+          access: read-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: end
+              description: End of address
+              lsb: 0
+              msb: 25
+      - register:
+          name: destination_start
+          description: Writes destination address before decompression
+          addressOffset: 24
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: start
+              description: Start address
+              lsb: 0
+              msb: 25
+            - name: base
+              description: Address base
+              lsb: 26
+              msb: 31
+      - register:
+          name: destination_end
+          description: Reads the end address of destination after decompression
+          addressOffset: 28
+          access: read-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: end
+              description: End of address
+              lsb: 0
+              msb: 25
+      - register:
+          name: interrupt_enable
+          description: Interrupt enable register
+          addressOffset: 32
+          resetValue: 3
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: done
+              description: Decompliation finished
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - name: InterruptEnable
+                  values:
+                    - name: enable
+                      description: Enable interrupt
+                      value: 1
+                    - name: disable
+                      description: Disable interrupt
+                      value: 0
+            - name: error
+              description: Error occurred while decompliation
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: InterruptEnable
+      - register:
+          name: interrupt_state
+          description: Interrupt state register
+          addressOffset: 36
+          access: read-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: done
+              description: Decompliation finished
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - name: InterruptState
+                  values:
+                    - name: has_interrupt
+                      description: Has interrupt
+                      value: 1
+                    - name: no_interrupt
+                      description: No interrupt occurred
+                      value: 0
+            - name: error
+              description: Error occurred while decompliation
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: InterruptState
+  - name: PDM
+    description: Pulse Density Modulation
+    baseAddress: 536914944
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: I2S
+    description: Inter-IC Sound controller
+    baseAddress: 536914688
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: config
+          description: Function configuration register
+          addressOffset: 0
+          fields: []
+      - register:
+          name: interrupt_state
+          description: "Interrupt enables, masks and states"
+          addressOffset: 4
+          fields: []
+      - register:
+          name: base_clock
+          description: Base clock divider
+          addressOffset: 16
+          resetValue: 65537
+          resetMask: 4294967295
+          fields:
+            - name: divide_high
+              description: Higher half of base clock dividing factor
+              lsb: 16
+              msb: 27
+              access: read-write
+            - name: divide_low
+              description: Lower half of base clock dividing factor
+              lsb: 0
+              msb: 11
+              access: read-write
+      - register:
+          name: fifo_config_0
+          description: FIFO configuration register 0
+          addressOffset: 128
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: left_justified
+              lsb: 10
+              msb: 10
+            - name: swap_left_right
+              lsb: 9
+              msb: 9
+            - name: merge_left_right
+              lsb: 8
+              msb: 8
+            - name: receive_underflow
+              description: "Receive FIFO underflow flag\\n\\n\nCan be cleared using `receive_clear`."
+              lsb: 7
+              msb: 7
+              access: read-only
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - name: HasUnderflow
+                  values:
+                    - name: not_underflow
+                      description: No FIFO buffer underflow
+                      value: 0
+                    - name: underflow
+                      description: Has FIFO buffer underflow
+                      value: 1
+            - name: receive_overflow
+              description: "Receive FIFO overflow flag\\n\\n\nCan be cleared using `receive_clear`."
+              lsb: 6
+              msb: 6
+              access: read-only
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - name: HasOverflow
+                  values:
+                    - name: not_overflow
+                      description: No FIFO buffer overflow
+                      value: 0
+                    - name: overflow
+                      description: Has FIFO buffer overflow
+                      value: 1
+            - name: transmit_underflow
+              description: "Transmit FIFO underflow flag\\n\\n\nCan be cleared using `transmit_clear`."
+              lsb: 5
+              msb: 5
+              access: read-only
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - derived_from: HasUnderflow
+            - name: transmit_overflow
+              description: "Transmit FIFO overflow flag\\n\\n\nCan be cleared using `transmit_clear`."
+              lsb: 4
+              msb: 4
+              access: read-only
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - derived_from: HasOverflow
+            - name: receive_clear
+              description: Clears receive FIFO overflow and underflow flags
+              lsb: 3
+              msb: 3
+              access: write-only
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - name: FlagClear
+                  values:
+                    - name: clear
+                      description: Write 1 to clear fifo flags
+                      value: 1
+            - name: transmit_clear
+              description: Clears transmit FIFO overflow and underflow flags
+              lsb: 2
+              msb: 2
+              access: write-only
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - derived_from: FlagClear
+            - name: receive_dma
+              description: Enable signal of receive DMA interface
+              lsb: 1
+              msb: 1
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - name: DmaEnable
+                  values:
+                    - name: enable
+                      description: Enable DMA interface
+                      value: 1
+                    - name: disable
+                      description: Disable DMA interface
+                      value: 0
+            - name: transmit_dma
+              description: Enable signal of transmit DMA interface
+              lsb: 0
+              msb: 0
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - derived_from: DmaEnable
+      - register:
+          name: fifo_config_1
+          description: FIFO configuration register 1
+          addressOffset: 132
+          resetValue: 16
+          resetMask: 4294967295
+          fields:
+            - name: receive_threshold
+              description: "Receive FIFO threshold\\n\\n\nDMA request will not be asserted if `receive_available` is less than this value"
+              lsb: 24
+              msb: 27
+            - name: transmit_threshold
+              description: "Transmit FIFO threshold\\n\\n\nDMA request will not be asserted if `transmit_available` is less than this value"
+              lsb: 16
+              msb: 19
+            - name: receive_count
+              description: Count of available data in receive FIFO
+              lsb: 8
+              msb: 12
+              access: read-only
+            - name: transmit_count
+              description: Count of available data in transmit FIFO
+              lsb: 0
+              msb: 4
+              access: read-only
+      - register:
+          name: data_write
+          description: FIFO write data register
+          addressOffset: 136
+          access: write-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: value
+              description: Write data to FIFO
+              lsb: 0
+              msb: 7
+      - register:
+          name: data_read
+          description: FIFO read data register
+          addressOffset: 140
+          access: read-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: value
+              description: Read data from FIFO
+              lsb: 0
+              msb: 7
+  - name: ISO11898
+    description: ISO 11898 communication protocol
+    baseAddress: 536914432
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: IPC
+    description: Inter-processor Channel
+    baseAddress: 536913920
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: IR
+    description: Infrared Remote module
+    baseAddress: 536913408
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: transmit_config
+          description: "??"
+          addressOffset: 0
+          fields: []
+      - register:
+          name: transmit_interrupt
+          description: "??"
+          addressOffset: 4
+          fields: []
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "transmit_data[%s]"
+          description: "??"
+          addressOffset: 8
+          fields: []
+      - register:
+          name: transmit_width
+          description: "??"
+          addressOffset: 16
+          fields: []
+      - register:
+          name: receive_config
+          description: "??"
+          addressOffset: 128
+          fields: []
+      - register:
+          name: receive_interrupt
+          description: "??"
+          addressOffset: 132
+          fields: []
+      - register:
+          name: receive_width
+          description: "??"
+          addressOffset: 136
+          fields: []
+      - register:
+          name: receive_bit_count
+          description: "??"
+          addressOffset: 144
+          fields: []
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "receive_data[%s]"
+          description: "??"
+          addressOffset: 148
+          fields: []
+  - name: TIMER
+    description: Timer control
+    baseAddress: 536913152
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: PWM
+    description: Pulse-Width Modulation module
+    baseAddress: 536912896
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: interrupt_config
+          description: Interrupt state and clear register
+          addressOffset: 0
+          fields: []
+      - cluster:
+          dim: 2
+          dimIncrement: 64
+          name: "group[%s]"
+          description: Pulse-Width Modulation channel group
+          addressOffset: 64
+          children:
+            - register:
+                name: config
+                description: Peripheral group configuration
+                addressOffset: 0
+                fields:
+                  - name: clock_select
+                    description: Select group clock source
+                    lsb: 30
+                    msb: 31
+                    writeConstraint:
+                      useEnumeratedValues: true
+                    enumeratedValues:
+                      - name: ClockSource
+                        values:
+                          - name: xtal
+                            description: External crystal as clock source
+                            value: 0
+                          - name: bclk
+                            description: Bus clock as clock source
+                            value: 1
+                          - name: f32k
+                            description: 32-kHz clock source
+                            value: 2
+                  - name: stop_state
+                    description: Is this peripheral stopped?
+                    lsb: 29
+                    msb: 29
+                  - name: stop_mode
+                    description: Mode to stop this peripheral
+                    lsb: 28
+                    msb: 28
+                  - name: stop_function
+                    description: Enable or disable stop function
+                    lsb: 27
+                    msb: 27
+                  - name: external_polarity
+                    description: Polarity for external pin break function
+                    lsb: 26
+                    msb: 26
+                  - name: external_break
+                    description: Enable external pin signal break
+                    lsb: 25
+                    msb: 25
+                  - name: software_break
+                    description: Enable software signal break
+                    lsb: 24
+                    msb: 24
+                  - name: adc_trigger_source
+                    description: "Select channel in Analog-to-Digital Converter to interact with this peripheral\\n\\n\n**This field only works with PWM0.** PWM1 does not have this feature."
+                    lsb: 20
+                    msb: 23
+                  - name: stop_on_repeat
+                    description: Enable or disable stop on one repeat cycle completed
+                    lsb: 19
+                    msb: 19
+            - register:
+                name: channel
+                description: Channel configuration register
+                addressOffset: 4
+                fields:
+                  - dim: 4
+                    dimIncrement: 4
+                    name: "positive_signal[%s]"
+                    description: Enable or disable positive signal for channel
+                    lsb: 0
+                    msb: 0
+                  - dim: 4
+                    dimIncrement: 4
+                    name: "positive_idle[%s]"
+                    description: Idle state of positive signal
+                    lsb: 1
+                    msb: 1
+                  - dim: 4
+                    dimIncrement: 4
+                    name: "negative_signal[%s]"
+                    description: Enable or disable negative signal for channel
+                    lsb: 2
+                    msb: 2
+                  - dim: 4
+                    dimIncrement: 4
+                    name: "negative_idle[%s]"
+                    description: Idle state of negative signal
+                    lsb: 3
+                    msb: 3
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "positive_polarity[%s]"
+                    description: Polarity of positive signal
+                    lsb: 16
+                    msb: 16
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "negative_polarity[%s]"
+                    description: Polarity of negative signal
+                    lsb: 17
+                    msb: 17
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "positive_break[%s]"
+                    description: Break state on positive signal of this channel
+                    lsb: 24
+                    msb: 24
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "negative_break[%s]"
+                    description: Break state on negative signal of this channel
+                    lsb: 25
+                    msb: 25
+            - register:
+                name: period
+                description: Pulse clock period register
+                addressOffset: 8
+                fields:
+                  - name: interrupt_cycles
+                    description: "If internal counter reaches this cycle count, it interrupts"
+                    lsb: 0
+                    msb: 15
+                  - name: repeat_cycles
+                    description: How many clock cycles a Pulse-Width Modulation cycle includes
+                    lsb: 16
+                    msb: 31
+            - register:
+                name: dead_time
+                description: Dead time for each channel
+                addressOffset: 12
+                fields:
+                  - dim: 4
+                    dimIncrement: 8
+                    name: "channel[%s]"
+                    description: Dead time for each channel in cycles
+                    lsb: 0
+                    msb: 7
+            - register:
+                dim: 4
+                dimIncrement: 4
+                name: "threshold[%s]"
+                description: Channel internal counter threshold
+                addressOffset: 16
+                fields:
+                  - name: high
+                    description: Highest value for internal counter that sets positive signal to 1 and negative to 0
+                    lsb: 16
+                    msb: 31
+                  - name: low
+                    description: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+                    lsb: 0
+                    msb: 15
+            - register:
+                name: interrupt_state
+                description: Interrupt state register
+                addressOffset: 32
+                access: read-only
+                resetValue: 0
+                resetMask: 4294967295
+                writeConstraint:
+                  useEnumeratedValues: true
+                fields:
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "threshold_low[%s]"
+                    description: Intenal counter for channel have exceeded low threshold
+                    lsb: 0
+                    msb: 0
+                    enumeratedValues:
+                      - name: InterruptState
+                        values:
+                          - name: has_interrupt
+                            description: Has interrupt
+                            value: 1
+                          - name: no_interrupt
+                            description: No interrupt occurred
+                            value: 0
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "threshold_high[%s]"
+                    description: Intenal counter for channel have exceeded high threshold
+                    lsb: 1
+                    msb: 1
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptState"
+                  - name: interrupt_period
+                    description: Intenal counter for channel have exceeded interrupt cycle threshold
+                    lsb: 8
+                    msb: 8
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptState"
+                  - name: external_break
+                    description: External break signal occurred
+                    lsb: 9
+                    msb: 9
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptState"
+                  - name: repeat
+                    description: Peripheral group have completed one repeat cycle
+                    lsb: 10
+                    msb: 10
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptState"
+            - register:
+                name: interrupt_mask
+                description: Interrupt mask register
+                addressOffset: 36
+                resetValue: 127
+                resetMask: 4294967295
+                writeConstraint:
+                  useEnumeratedValues: true
+                fields:
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "threshold_low[%s]"
+                    description: Intenal counter for channel have exceeded low threshold
+                    lsb: 0
+                    msb: 0
+                    enumeratedValues:
+                      - name: InterruptMask
+                        values:
+                          - name: mask
+                            description: Mask interrupt
+                            value: 1
+                          - name: unmask
+                            description: Unmask interrupt
+                            value: 0
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "threshold_high[%s]"
+                    description: Intenal counter for channel have exceeded high threshold
+                    lsb: 1
+                    msb: 1
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptMask"
+                  - name: interrupt_period
+                    description: Intenal counter for channel have exceeded interrupt cycle threshold
+                    lsb: 8
+                    msb: 8
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptMask"
+                  - name: external_break
+                    description: External break signal occurred
+                    lsb: 9
+                    msb: 9
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptMask"
+                  - name: repeat
+                    description: Peripheral group have completed one repeat cycle
+                    lsb: 10
+                    msb: 10
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptMask"
+            - register:
+                name: interrupt_clear
+                description: Clear interrupt register
+                addressOffset: 40
+                access: write-only
+                resetValue: 0
+                resetMask: 4294967295
+                writeConstraint:
+                  useEnumeratedValues: true
+                fields:
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "threshold_low[%s]"
+                    description: Intenal counter for channel have exceeded low threshold
+                    lsb: 0
+                    msb: 0
+                    enumeratedValues:
+                      - name: InterruptClear
+                        values:
+                          - name: clear
+                            description: Write 1 to clear interrupt state
+                            value: 1
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "threshold_high[%s]"
+                    description: Intenal counter for channel have exceeded high threshold
+                    lsb: 1
+                    msb: 1
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptClear"
+                  - name: interrupt_period
+                    description: Intenal counter for channel have exceeded interrupt cycle threshold
+                    lsb: 8
+                    msb: 8
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptClear"
+                  - name: external_break
+                    description: External break signal occurred
+                    lsb: 9
+                    msb: 9
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptClear"
+                  - name: repeat
+                    description: Peripheral group have completed one repeat cycle
+                    lsb: 10
+                    msb: 10
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptClear"
+            - register:
+                name: interrupt_enable
+                description: Interrupt enable register
+                addressOffset: 44
+                resetValue: 127
+                resetMask: 4294967295
+                writeConstraint:
+                  useEnumeratedValues: true
+                fields:
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "threshold_low[%s]"
+                    description: Intenal counter for channel have exceeded low threshold
+                    lsb: 0
+                    msb: 0
+                    enumeratedValues:
+                      - name: InterruptEnable
+                        values:
+                          - name: enable
+                            description: Enable interrupt
+                            value: 1
+                          - name: disable
+                            description: Disable interrupt
+                            value: 0
+                  - dim: 4
+                    dimIncrement: 2
+                    name: "threshold_high[%s]"
+                    description: Intenal counter for channel have exceeded high threshold
+                    lsb: 1
+                    msb: 1
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptEnable"
+                  - name: interrupt_period
+                    description: Intenal counter for channel have exceeded interrupt cycle threshold
+                    lsb: 8
+                    msb: 8
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptEnable"
+                  - name: external_break
+                    description: External break signal occurred
+                    lsb: 9
+                    msb: 9
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptEnable"
+                  - name: repeat
+                    description: Peripheral group have completed one repeat cycle
+                    lsb: 10
+                    msb: 10
+                    enumeratedValues:
+                      - derived_from: "threshold_low[%s].InterruptEnable"
+  - dim: 2
+    dimIncrement: 1536
+    name: "I2C[%s]"
+    description: Inter-Integrated Circuit bus
+    baseAddress: 536912640
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: config
+          description: Function configuration register
+          addressOffset: 0
+          resetValue: 10
+          resetMask: 4294967295
+          fields:
+            - name: deglitch_cycle
+              description: De-glitch function cycle count
+              lsb: 28
+              msb: 31
+            - name: packet_length
+              description: Byte count for each packet
+              lsb: 16
+              msb: 23
+            - name: slave_address
+              description: I2C transaction slave address
+              lsb: 8
+              msb: 14
+            - name: sub_address_length
+              description: Byte count for I2C sub-address
+              lsb: 5
+              msb: 6
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: one
+                      description: Sub-addresses include 1 byte
+                      value: 0
+                    - name: two
+                      description: Sub-addresses include 2 bytes
+                      value: 1
+                    - name: three
+                      description: Sub-addresses include 3 bytes
+                      value: 2
+                    - name: four
+                      description: Sub-addresses include 4 bytes
+                      value: 3
+            - name: sub_address_enable
+              description: Enable sub-address fields
+              lsb: 4
+              msb: 4
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable sub-address fields
+                      value: 1
+                    - name: disable
+                      description: Disable sub-address fields
+                      value: 0
+            - name: clock_synchronize
+              description: "Enable I2C clock synchronization\\n\\n\nEnable this bit to support multi-master and clock-stretching. It should not be turned-off normally."
+              lsb: 3
+              msb: 3
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable clock synchronization
+                      value: 1
+                    - name: disable
+                      description: Disable clock synchronization
+                      value: 0
+            - name: deglitch_enable
+              description: Enable de-glitch function on all input pins
+              lsb: 2
+              msb: 2
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable de-glitch function on inputs
+                      value: 1
+                    - name: disable
+                      description: Disable de-glitch function on inputs
+                      value: 0
+            - name: transfer_direction
+              description: Packet transfer direction
+              lsb: 1
+              msb: 1
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: write
+                      description: Write from master side
+                      value: 0
+                    - name: read
+                      description: Read from master side
+                      value: 1
+            - name: master_enable
+              description: "Enable signal of I2C master function\\n\\n\nAsserting this bit will trigger the transaction, and should be de-asserted after finish."
+              lsb: 0
+              msb: 0
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable I2C master function
+                      value: 1
+                    - name: disable
+                      description: Disable I2C master function
+                      value: 0
+      - register:
+          name: interrupt
+          description: "Interrupt enables, states and masks"
+          addressOffset: 4
+          resetValue: 1056980736
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: fifo_error_enable
+              description: Transmit or receive FIFO error interrupt enable
+              lsb: 29
+              msb: 29
+              enumeratedValues:
+                - name: InterruptEnable
+                  values:
+                    - name: enable
+                      description: Enable interrupt
+                      value: 1
+                    - name: disable
+                      description: Disable interrupt
+                      value: 0
+            - name: arbitrate_lost_enable
+              description: Arbitration lost interrupt enable
+              lsb: 28
+              msb: 28
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: not_acknowledged_enable
+              description: Not-acknowledged response interrupt enable
+              lsb: 27
+              msb: 27
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: receive_fifo_ready_enable
+              description: Receive FIFO ready interrupt enable
+              lsb: 26
+              msb: 26
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: transmit_fifo_ready_enable
+              description: Transmit FIFO ready interrupt enable
+              lsb: 25
+              msb: 25
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: transfer_end_enable
+              description: Transfer ended interrupt enable
+              lsb: 24
+              msb: 24
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: arbitrate_lost_clear
+              description: Write 1 to clear arbitration lost
+              lsb: 20
+              msb: 20
+              access: write-only
+              enumeratedValues:
+                - name: InterruptClear
+                  values:
+                    - name: clear
+                      description: Write 1 to clear interrupt state
+                      value: 1
+            - name: not_acknowledged_clear
+              description: Write 1 to clear not-acknowledged response
+              lsb: 19
+              msb: 19
+              access: write-only
+              enumeratedValues:
+                - derived_from: InterruptClear
+            - name: transfer_end_clear
+              description: Write 1 to clear transfer ended
+              lsb: 16
+              msb: 16
+              access: write-only
+              enumeratedValues:
+                - derived_from: InterruptClear
+            - name: fifo_error_mask
+              description: Transmit or receive FIFO error interrupt mask
+              lsb: 13
+              msb: 13
+              enumeratedValues:
+                - name: InterruptMask
+                  values:
+                    - name: mask
+                      description: Mask interrupt
+                      value: 1
+                    - name: unmask
+                      description: Unmask interrupt
+                      value: 0
+            - name: arbitrate_lost_mask
+              description: Arbitration lost interrupt mask
+              lsb: 12
+              msb: 12
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: not_acknowledged_mask
+              description: Not-acknowledged response interrupt mask
+              lsb: 11
+              msb: 11
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_fifo_ready_mask
+              description: Receive FIFO ready interrupt mask
+              lsb: 10
+              msb: 10
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: transmit_fifo_ready_mask
+              description: Transmit FIFO ready interrupt mask
+              lsb: 9
+              msb: 9
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: transfer_end_mask
+              description: Transfer ended interrupt mask
+              lsb: 8
+              msb: 8
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: fifo_error_state
+              description: "Transmit or receive FIFO error interrupt state\\n\\n\nAuto cleared when FIFO overflow or underflow error flag is cleared."
+              lsb: 5
+              msb: 5
+              access: read-only
+              enumeratedValues:
+                - name: InterruptState
+                  values:
+                    - name: has_interrupt
+                      description: Has interrupt
+                      value: 1
+                    - name: no_interrupt
+                      description: No interrupt occurred
+                      value: 0
+            - name: arbitrate_lost_state
+              description: Arbitration lost interrupt state
+              lsb: 4
+              msb: 4
+              access: read-only
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: not_acknowledged_state
+              description: Not-acknowledged response interrupt state
+              lsb: 3
+              msb: 3
+              access: read-only
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_fifo_ready_state
+              description: "Receive FIFO ready interrupt state\\n\\n\nAuto cleared when data is popped from receive FIFO."
+              lsb: 2
+              msb: 2
+              access: read-only
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: transmit_fifo_ready_state
+              description: "Transmit FIFO ready interrupt state\\n\\n\nAuto cleared when data is pushed into transmit FIFO."
+              lsb: 1
+              msb: 1
+              access: read-only
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: transfer_end_state
+              description: Transfer ended interrupt state
+              lsb: 0
+              msb: 0
+              access: read-only
+              enumeratedValues:
+                - derived_from: InterruptState
+      - register:
+          name: sub_address
+          description: Register address of slave device
+          addressOffset: 8
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - dim: 4
+              dimIncrement: 8
+              name: "byte[%s]"
+              description: I2C sub-address byte %s
+              lsb: 0
+              msb: 7
+              access: read-write
+      - register:
+          name: bus_busy
+          description: Bus busy state indicator
+          addressOffset: 12
+          resetValue: 0
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: force_clear
+              description: "Force clear I2C bus busy state\\n\\n\nNot for normal use; only use when I2C bus hangs"
+              lsb: 1
+              msb: 1
+              access: write-only
+              enumeratedValues:
+                - values:
+                    - name: clear
+                      description: Write 1 to force clear busy flag
+                      value: 1
+            - name: busy
+              description: Indicator to I2C bus busy signal
+              lsb: 0
+              msb: 0
+              access: read-only
+              enumeratedValues:
+                - values:
+                    - name: busy
+                      description: Bus is busy
+                      value: 1
+                    - name: idle
+                      description: Bus is not busy
+                      value: 0
+      - register:
+          name: period_start
+          description: Duration of start phase
+          addressOffset: 16
+          resetValue: 252645135
+          resetMask: 4294967295
+          fields:
+            - dim: 4
+              dimIncrement: 8
+              name: "phase[%s]"
+              description: Length of start condition phase %s
+              lsb: 0
+              msb: 7
+              access: read-write
+      - register:
+          name: period_stop
+          description: Duration of stop phase
+          addressOffset: 20
+          resetValue: 252645135
+          resetMask: 4294967295
+          fields:
+            - dim: 4
+              dimIncrement: 8
+              name: "phase[%s]"
+              description: Length of stop condition phase %s
+              lsb: 0
+              msb: 7
+              access: read-write
+      - register:
+          name: period_data
+          description: Duration of data phase
+          addressOffset: 24
+          resetValue: 252645135
+          resetMask: 4294967295
+          fields:
+            - dim: 4
+              dimIncrement: 8
+              name: "phase[%s]"
+              description: Length of data condition phase %s
+              lsb: 0
+              msb: 7
+              access: read-write
+      - register:
+          name: fifo_config_0
+          description: FIFO configuration register 0
+          addressOffset: 128
+          resetValue: 0
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: receive_underflow
+              description: "Receive FIFO underflow flag\\n\\n\nCan be cleared using `receive_clear`."
+              lsb: 7
+              msb: 7
+              access: read-only
+              enumeratedValues:
+                - name: HasUnderflow
+                  values:
+                    - name: not_underflow
+                      description: No FIFO buffer underflow
+                      value: 0
+                    - name: underflow
+                      description: Has FIFO buffer underflow
+                      value: 1
+            - name: receive_overflow
+              description: "Receive FIFO overflow flag\\n\\n\nCan be cleared using `receive_clear`."
+              lsb: 6
+              msb: 6
+              access: read-only
+              enumeratedValues:
+                - name: HasOverflow
+                  values:
+                    - name: not_overflow
+                      description: No FIFO buffer overflow
+                      value: 0
+                    - name: overflow
+                      description: Has FIFO buffer overflow
+                      value: 1
+            - name: transmit_underflow
+              description: "Transmit FIFO underflow flag\\n\\n\nCan be cleared using `transmit_clear`."
+              lsb: 5
+              msb: 5
+              access: read-only
+              enumeratedValues:
+                - derived_from: HasUnderflow
+            - name: transmit_overflow
+              description: "Transmit FIFO overflow flag\\n\\n\nCan be cleared using `transmit_clear`."
+              lsb: 4
+              msb: 4
+              access: read-only
+              enumeratedValues:
+                - derived_from: HasOverflow
+            - name: receive_clear
+              description: Clears receive FIFO overflow and underflow flags
+              lsb: 3
+              msb: 3
+              access: write-only
+              enumeratedValues:
+                - name: FlagClear
+                  values:
+                    - name: clear
+                      description: Write 1 to clear fifo flags
+                      value: 1
+            - name: transmit_clear
+              description: Clears transmit FIFO overflow and underflow flags
+              lsb: 2
+              msb: 2
+              access: write-only
+              enumeratedValues:
+                - derived_from: FlagClear
+            - name: receive_dma
+              description: Enable signal of receive DMA interface
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - name: DmaEnable
+                  values:
+                    - name: enable
+                      description: Enable DMA interface
+                      value: 1
+                    - name: disable
+                      description: Disable DMA interface
+                      value: 0
+            - name: transmit_dma
+              description: Enable signal of transmit DMA interface
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: DmaEnable
+      - register:
+          name: fifo_config_1
+          description: FIFO configuration register 1
+          addressOffset: 132
+          resetValue: 2
+          resetMask: 4294967295
+          fields:
+            - name: receive_threshold
+              description: "Receive FIFO threshold\\n\\n\nDMA request will not be asserted if `receive_available` is less than this value"
+              lsb: 24
+              msb: 24
+            - name: transmit_threshold
+              description: "Transmit FIFO threshold\\n\\n\nDMA request will not be asserted if `transmit_available` is less than this value"
+              lsb: 16
+              msb: 16
+            - name: receive_count
+              description: Count of available data in receive FIFO
+              lsb: 8
+              msb: 9
+              access: read-only
+            - name: transmit_count
+              description: Count of available data in transmit FIFO
+              lsb: 0
+              msb: 1
+              access: read-only
+      - register:
+          name: data_write
+          description: FIFO write data register
+          addressOffset: 136
+          access: write-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: value
+              description: Write data to FIFO
+              lsb: 0
+              msb: 7
+      - register:
+          name: data_read
+          description: FIFO read data register
+          addressOffset: 140
+          access: read-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: value
+              description: Read data from FIFO
+              lsb: 0
+              msb: 7
+  - dim: 1
+    dimIncrement: 256
+    name: "SPI[%s]"
+    description: Serial Peripheral Interface
+    baseAddress: 536912384
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: config
+          description: Function configuration register
+          addressOffset: 0
+          fields: []
+      - register:
+          name: interrupt_state
+          description: "Interrupt enables, masks and states"
+          addressOffset: 4
+          fields: []
+      - register:
+          name: bus_busy
+          description: Bus busy state indicator
+          addressOffset: 8
+          fields: []
+      - register:
+          name: period_control
+          description: Duration of control signals
+          addressOffset: 16
+          fields: []
+      - register:
+          name: period_interval
+          description: Interval bitween frames
+          addressOffset: 20
+          fields: []
+      - register:
+          name: ignore_index
+          description: Receive ignore index configuration
+          addressOffset: 24
+          fields: []
+      - register:
+          name: timeout
+          description: Slave mode transmit timeout values
+          addressOffset: 28
+          fields: []
+      - register:
+          name: fifo_config_0
+          description: FIFO configuration register 0
+          addressOffset: 128
+          fields: []
+      - register:
+          name: fifo_config_1
+          description: FIFO configuration register 1
+          addressOffset: 132
+          fields: []
+      - register:
+          name: data_write
+          description: FIFO write data register
+          addressOffset: 136
+          fields: []
+      - register:
+          name: data_read
+          description: FIFO read data register
+          addressOffset: 140
+          fields: []
+  - dim: 2
+    dimIncrement: 256
+    name: "UART[%s]"
+    description: Universal Asynchronous Receiver Transmitter
+    baseAddress: 536911872
+    access: read-write
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          name: transmit_config
+          description: Transmit configuration register
+          addressOffset: 0
+          resetValue: 36608
+          resetMask: 4294967295
+          fields:
+            - name: transfer_length
+              description: "Length of words per UART transmit transfer\\n\\n\nThis field is ignored when `freerun` mode is enabled."
+              lsb: 16
+              msb: 31
+            - name: break_bits
+              description: Number of break bits for LIN protocol
+              lsb: 13
+              msb: 15
+            - name: stop_bits
+              description: Number of stop bits
+              lsb: 11
+              msb: 12
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: zero_p_five
+                      description: 0.5 stop bits
+                      value: 0
+                    - name: one
+                      description: 1 stop bit
+                      value: 1
+                    - name: one_p_five
+                      description: 1.5 stop bits
+                      value: 2
+                    - name: two
+                      description: 2 stop bits
+                      value: 3
+            - name: word_length
+              description: Bit count for each transmit data word
+              lsb: 8
+              msb: 10
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: five
+                      description: Each word includes 5 bits
+                      value: 4
+                    - name: six
+                      description: Each word includes 6 bits
+                      value: 5
+                    - name: seven
+                      description: Each word includes 7 bits
+                      value: 6
+                    - name: eight
+                      description: Each word includes 8 bits
+                      value: 7
+            - name: ir_inverse
+              description: Inverse transmit signal output in IR mode
+              lsb: 7
+              msb: 7
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: inverse
+                      description: Inverse transmit input in IR mode
+                      value: 1
+                    - name: no_inverse
+                      description: "Don't inverse transmit input in IR mode"
+                      value: 0
+            - name: ir_transmit
+              description: Enable IR transmit mode
+              lsb: 6
+              msb: 6
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable IR transmit mode
+                      value: 1
+                    - name: disable
+                      description: Disable IR transmit mode
+                      value: 0
+            - name: parity_mode
+              description: Select transmit parity mode if enabled
+              lsb: 5
+              msb: 5
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: odd
+                      description: "Odd parity if `parity_enable` is set"
+                      value: 1
+                    - name: even
+                      description: "Even parity if `parity_enable` is set"
+                      value: 0
+            - name: parity_enable
+              description: Enable transmit parity check
+              lsb: 4
+              msb: 4
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable transmit parity check
+                      value: 1
+                    - name: disable
+                      description: Disable transmit parity check
+                      value: 0
+            - name: lin_transmit
+              description: Local Interconnect Network protocol enable
+              lsb: 3
+              msb: 3
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable Local Interconnect Network protocol
+                      value: 1
+                    - name: disable
+                      description: Disable Local Interconnect Network protocol
+                      value: 0
+            - name: freerun
+              description: Enable freerun mode
+              lsb: 2
+              msb: 2
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable freerun mode
+                      value: 1
+                    - name: disable
+                      description: Disable freerun mode
+                      value: 0
+            - name: cts
+              description: Enable Clear-to-Send flow control signal
+              lsb: 1
+              msb: 1
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable Clear-to-Send flow control signal
+                      value: 1
+                    - name: disable
+                      description: Disable Clear-to-Send flow control signal
+                      value: 0
+            - name: function
+              description: Enable transmit function
+              lsb: 0
+              msb: 0
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable UART receive function signal
+                      value: 1
+                    - name: disable
+                      description: Disable UART receive function signal
+                      value: 0
+      - register:
+          name: receive_config
+          description: Receive configuration register
+          addressOffset: 4
+          resetValue: 1792
+          resetMask: 4294967295
+          fields:
+            - name: transfer_length
+              description: Length of words per UART receive transfer
+              lsb: 16
+              msb: 31
+            - name: deglitch_cycle
+              description: De-glitch function cycle count
+              lsb: 12
+              msb: 15
+            - name: deglitch_enable
+              description: Enable receive de-glitch function
+              lsb: 11
+              msb: 11
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable de-glitch function upon receive
+                      value: 1
+                    - name: disable
+                      description: Disable de-glitch function upon receive
+                      value: 0
+            - name: word_length
+              description: Bit count for each receive data word
+              lsb: 8
+              msb: 10
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: five
+                      description: Each word includes 5 bits
+                      value: 4
+                    - name: six
+                      description: Each word includes 6 bits
+                      value: 5
+                    - name: seven
+                      description: Each word includes 7 bits
+                      value: 6
+                    - name: eight
+                      description: Each word includes 8 bits
+                      value: 7
+            - name: ir_inverse
+              description: Inverse receive signal output in IR mode
+              lsb: 7
+              msb: 7
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: inverse
+                      description: Inverse receive input in IR mode
+                      value: 1
+                    - name: no_inverse
+                      description: "Don't inverse receive input in IR mode"
+                      value: 0
+            - name: ir_receive
+              description: Enable IR receive mode
+              lsb: 6
+              msb: 6
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable IR receive mode
+                      value: 1
+                    - name: disable
+                      description: Disable IR receive mode
+                      value: 0
+            - name: parity_mode
+              description: Select receive parity mode if enabled
+              lsb: 5
+              msb: 5
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: odd
+                      description: "Odd parity if `parity_enable` is set"
+                      value: 1
+                    - name: even
+                      description: "Even parity if `parity_enable` is set"
+                      value: 0
+            - name: parity_enable
+              description: Enable receive parity check
+              lsb: 4
+              msb: 4
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable receive parity check
+                      value: 1
+                    - name: disable
+                      description: Disable receive parity check
+                      value: 0
+            - name: lin_receive
+              description: Local Interconnect Network protocol enable
+              lsb: 3
+              msb: 3
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable Local Interconnect Network protocol
+                      value: 1
+                    - name: disable
+                      description: Disable Local Interconnect Network protocol
+                      value: 0
+            - name: auto_baudrate
+              description: Enable receive auto baudrate detection
+              lsb: 1
+              msb: 1
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable auto baudrate upon receive
+                      value: 1
+                    - name: disable
+                      description: Disable auto baudrate upon receive
+                      value: 0
+            - name: function
+              description: Enable receive function
+              lsb: 0
+              msb: 0
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: Enable UART receive function signal
+                      value: 1
+                    - name: disable
+                      description: Disable UART receive function signal
+                      value: 0
+      - register:
+          name: bit_period
+          description: Bit period control register
+          addressOffset: 8
+          resetValue: 16711935
+          resetMask: 4294967295
+          fields:
+            - name: receive
+              description: "Period of each receive bit\\n\\n\nAdd 1 to this value and divide by clock to get receive baudrate."
+              lsb: 16
+              msb: 31
+            - name: transmit
+              description: "Period of each transmit bit\\n\\n\nAdd 1 to this value and divide by clock to get transmit baudrate."
+              lsb: 0
+              msb: 15
+      - register:
+          name: data_config
+          description: Data configuration register
+          addressOffset: 12
+          resetValue: 0
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: bit_order
+              description: Enable bit inverse in each data word
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - values:
+                    - name: inverse
+                      description: Each byte is sent out MSB-first
+                      value: 1
+                    - name: no_inverse
+                      description: Each byte is sent out LSB-first
+                      value: 0
+      - register:
+          name: transmit_position
+          description: IR-mode transmit position control
+          addressOffset: 16
+          resetValue: 10420336
+          resetMask: 4294967295
+          fields:
+            - name: stop
+              description: Stop position of transmit IR pulse
+              lsb: 16
+              msb: 31
+            - name: start
+              description: Start position of transmit IR pulse
+              lsb: 0
+              msb: 15
+      - register:
+          name: receive_position
+          description: IR-mode receive position control
+          addressOffset: 20
+          resetValue: 111
+          resetMask: 4294967295
+          fields:
+            - name: start
+              description: Start position of received pulse recovered from IR signal
+              lsb: 0
+              msb: 15
+      - register:
+          name: receive_timeout
+          description: Receive Time-Out interrupt control
+          addressOffset: 24
+          resetValue: 15
+          resetMask: 4294967295
+          fields:
+            - name: value
+              description: Timeout interrupt triggering value by bits received
+              lsb: 0
+              msb: 7
+      - register:
+          name: signal_override
+          description: Manual override of flow control signal
+          addressOffset: 28
+          resetValue: 0
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: rts_value
+              description: Value to override Request-to-Send signal if override is enabled
+              lsb: 3
+              msb: 3
+              enumeratedValues:
+                - name: SignalAssert
+                  values:
+                    - name: high
+                      description: Assert this signal
+                      value: 1
+                    - name: low
+                      description: Deassert this signal
+                      value: 0
+            - name: rts_signal
+              description: Enable manual override of Request-to-Send flow control signal
+              lsb: 2
+              msb: 2
+              enumeratedValues:
+                - name: OverrideEnable
+                  values:
+                    - name: enable
+                      description: Enable manual override of this signal
+                      value: 1
+                    - name: disable
+                      description: Disable manual override of this signal
+                      value: 0
+            - name: transmit_value
+              description: Value to override transmit signal if override is enabled
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: rts_value.SignalAssert
+            - name: transmit_signal
+              description: Enable manual override of transmit signal
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: rts_signal.OverrideEnable
+      - register:
+          name: interrupt_state
+          description: Interrupt state register
+          addressOffset: 32
+          access: read-only
+          resetValue: 4
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: auto_baudrate_five_five
+              description: Receive auto baudrate detection finished using 0x55 occurred
+              lsb: 11
+              msb: 11
+              enumeratedValues:
+                - name: InterruptState
+                  values:
+                    - name: has_interrupt
+                      description: Has interrupt
+                      value: 1
+                    - name: no_interrupt
+                      description: No interrupt occurred
+                      value: 0
+            - name: auto_baudrate_start_bit
+              description: Receive auto baudrate detection finished using start bit occurred
+              lsb: 10
+              msb: 10
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_byte_count
+              description: Receive byte count reached occurred
+              lsb: 9
+              msb: 9
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_sync_error
+              description: Receive LIN mode synchronization field error occurred
+              lsb: 8
+              msb: 8
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_fifo_error
+              description: Receive FIFO overflow or underflow occurred
+              lsb: 7
+              msb: 7
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: transmit_fifo_error
+              description: Transmit FIFO overflow or underflow occurred
+              lsb: 6
+              msb: 6
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_parity
+              description: Receive parity check failure occurred
+              lsb: 5
+              msb: 5
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_timeout
+              description: Receive timed-out interrupt occurred
+              lsb: 4
+              msb: 4
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_fifo_ready
+              description: Receive FIFO ready signal raised
+              lsb: 3
+              msb: 3
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: transmit_fifo_ready
+              description: Transmit FIFO ready signal raised
+              lsb: 2
+              msb: 2
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: receive_transfer
+              description: Receive transfer finish signal raised
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: InterruptState
+            - name: transmit_transfer
+              description: Transmit transfer finish signal raised
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: InterruptState
+      - register:
+          name: interrupt_mask
+          description: Interrupt mask register
+          addressOffset: 36
+          resetValue: 4095
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: auto_baudrate_five_five
+              description: Receive auto baudrate detection finished using 0x55 occurred
+              lsb: 11
+              msb: 11
+              enumeratedValues:
+                - name: InterruptMask
+                  values:
+                    - name: mask
+                      description: Mask interrupt
+                      value: 1
+                    - name: unmask
+                      description: Unmask interrupt
+                      value: 0
+            - name: auto_baudrate_start_bit
+              description: Receive auto baudrate detection finished using start bit interrupt mask
+              lsb: 10
+              msb: 10
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_byte_count
+              description: Receive byte count reached interrupt mask
+              lsb: 9
+              msb: 9
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_sync_error
+              description: Receive LIN mode synchronization field error interrupt mask
+              lsb: 8
+              msb: 8
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_fifo_error
+              description: Receive FIFO overflow or underflow interrupt mask
+              lsb: 7
+              msb: 7
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: transmit_fifo_error
+              description: Transmit FIFO overflow or underflow interrupt mask
+              lsb: 6
+              msb: 6
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_parity
+              description: Receive parity check failure interrupt mask
+              lsb: 5
+              msb: 5
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_timeout
+              description: Receive timed-out interrupt mask
+              lsb: 4
+              msb: 4
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_fifo_ready
+              description: Receive FIFO ready signal interrupt mask
+              lsb: 3
+              msb: 3
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: transmit_fifo_ready
+              description: Transmit FIFO ready signal interrupt mask
+              lsb: 2
+              msb: 2
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: receive_transfer
+              description: Receive transfer finish signal interrupt mask
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: InterruptMask
+            - name: transmit_transfer
+              description: Transmit transfer finish signal interrupt mask
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: InterruptMask
+      - register:
+          name: interrupt_clear
+          description: Clear interrupt register
+          addressOffset: 40
+          access: write-only
+          resetValue: 0
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: auto_baudrate_five_five
+              description: Write 1 to clear receive auto baudrate detection finished using 0x55
+              lsb: 11
+              msb: 11
+              enumeratedValues:
+                - name: InterruptClear
+                  values:
+                    - name: clear
+                      description: Write 1 to clear interrupt state
+                      value: 1
+            - name: auto_baudrate_start_bit
+              description: Write 1 to clear receive auto baudrate detection finished using start bit
+              lsb: 10
+              msb: 10
+              enumeratedValues:
+                - derived_from: InterruptClear
+            - name: receive_byte_count
+              description: Write 1 to clear receive byte count reached
+              lsb: 9
+              msb: 9
+              enumeratedValues:
+                - derived_from: InterruptClear
+            - name: receive_sync_error
+              description: Write 1 to clear receive LIN mode synchronization field error
+              lsb: 8
+              msb: 8
+              enumeratedValues:
+                - derived_from: InterruptClear
+            - name: receive_parity
+              description: Write 1 to clear receive parity check failure
+              lsb: 5
+              msb: 5
+              enumeratedValues:
+                - derived_from: InterruptClear
+            - name: receive_timeout
+              description: Write 1 to clear receive timed-out
+              lsb: 4
+              msb: 4
+              enumeratedValues:
+                - derived_from: InterruptClear
+            - name: receive_transfer
+              description: Write 1 to clear receive transfer finish signal
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: InterruptClear
+            - name: transmit_transfer
+              description: Write 1 to clear transmit transfer finish signal
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: InterruptClear
+      - register:
+          name: interrupt_enable
+          description: Interrupt enable register
+          addressOffset: 44
+          resetValue: 255
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: auto_baudrate_five_five
+              description: Receive auto baudrate detection finished using 0x55 interrupt enable
+              lsb: 11
+              msb: 11
+              enumeratedValues:
+                - name: InterruptEnable
+                  values:
+                    - name: enable
+                      description: Enable interrupt
+                      value: 1
+                    - name: disable
+                      description: Disable interrupt
+                      value: 0
+            - name: auto_baudrate_start_bit
+              description: Receive auto baudrate detection finished using start bit interrupt enable
+              lsb: 10
+              msb: 10
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: receive_byte_count
+              description: Receive byte count reached interrupt enable
+              lsb: 9
+              msb: 9
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: receive_sync_error
+              description: Receive LIN mode synchronization field error interrupt enable
+              lsb: 8
+              msb: 8
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: receive_fifo_error
+              description: Receive FIFO overflow or underflow interrupt enable
+              lsb: 7
+              msb: 7
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: transmit_fifo_error
+              description: Transmit FIFO overflow or underflow interrupt enable
+              lsb: 6
+              msb: 6
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: receive_parity
+              description: Receive parity check failure interrupt enable
+              lsb: 5
+              msb: 5
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: receive_timeout
+              description: Receive timed-out interrupt enable
+              lsb: 4
+              msb: 4
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: receive_fifo_ready
+              description: Receive FIFO ready signal interrupt enable
+              lsb: 3
+              msb: 3
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: transmit_fifo_ready
+              description: Transmit FIFO ready signal interrupt enable
+              lsb: 2
+              msb: 2
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: receive_transfer
+              description: Receive transfer signal interrupt enable
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - derived_from: InterruptEnable
+            - name: transmit_transfer
+              description: Transmit transfer signal interrupt enable
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: InterruptEnable
+      - register:
+          name: bus_state
+          description: Bus state register
+          addressOffset: 48
+          access: read-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: receive_busy
+              description: Indicates that UART receive bus is busy
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - name: BusBusy
+                  values:
+                    - name: busy
+                      description: Bus is busy
+                      value: 1
+                    - name: idle
+                      description: Bus is not busy
+                      value: 0
+            - name: transmit_busy
+              description: Indicates that UART transmit bus is busy
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: BusBusy
+      - register:
+          name: auto_baudrate
+          description: Auto baudrate detection register
+          addressOffset: 52
+          access: read-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: by_five_five
+              description: Bit period of auto baudrate detection using codeword 0x55
+              lsb: 16
+              msb: 31
+            - name: by_start_bit
+              description: Bit period of auto baudrate detection using start bit
+              lsb: 0
+              msb: 15
+      - register:
+          name: pulse_tolerance
+          description: Pulse width tolerance for auto baudrate
+          addressOffset: 72
+          resetValue: 3
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: by_five_five
+              description: Pulse width tolerance of auto baudrate detection using codeword 0x55
+              lsb: 0
+              msb: 7
+      - register:
+          name: rs485_transmit
+          description: RS-485 mode transmit configuration
+          addressOffset: 84
+          resetValue: 2
+          resetMask: 4294967295
+          fields:
+            - name: polarity
+              description: RS-485 pin polarity of Driver Enable (DE) pin
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - name: Polarity
+                  values:
+                    - name: active_high
+                      description: Driver Enable (DE) pin is active high
+                      value: 1
+                    - name: active_low
+                      description: Driver Enable (DE) pin is active low
+                      value: 0
+            - name: function
+              description: RS-485 transceiver mode enable
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - values:
+                    - name: enable
+                      description: "Enable RS-485 transceiver mode\\n\\n\nThe peripheral is connected to RS-485 transceiver, and RTS signal output becomes Driver Enable (DE) signal."
+                      value: 1
+                    - name: disable
+                      description: "Disable RS-485 transceiver mode\\n\\n\nThe peripheral operates as normal UART."
+                      value: 0
+      - register:
+          name: fifo_config_0
+          description: FIFO configuration register 0
+          addressOffset: 128
+          resetValue: 0
+          resetMask: 4294967295
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - name: receive_underflow
+              description: "Receive FIFO underflow flag\\n\\n\nCan be cleared using `receive_clear`."
+              lsb: 7
+              msb: 7
+              access: read-only
+              enumeratedValues:
+                - name: HasUnderflow
+                  values:
+                    - name: not_underflow
+                      description: No FIFO buffer underflow
+                      value: 0
+                    - name: underflow
+                      description: Has FIFO buffer underflow
+                      value: 1
+            - name: receive_overflow
+              description: "Receive FIFO overflow flag\\n\\n\nCan be cleared using `receive_clear`."
+              lsb: 6
+              msb: 6
+              access: read-only
+              enumeratedValues:
+                - name: HasOverflow
+                  values:
+                    - name: not_overflow
+                      description: No FIFO buffer overflow
+                      value: 0
+                    - name: overflow
+                      description: Has FIFO buffer overflow
+                      value: 1
+            - name: transmit_underflow
+              description: "Transmit FIFO underflow flag\\n\\n\nCan be cleared using `transmit_clear`."
+              lsb: 5
+              msb: 5
+              access: read-only
+              enumeratedValues:
+                - derived_from: HasUnderflow
+            - name: transmit_overflow
+              description: "Transmit FIFO overflow flag\\n\\n\nCan be cleared using `transmit_clear`."
+              lsb: 4
+              msb: 4
+              access: read-only
+              enumeratedValues:
+                - derived_from: HasOverflow
+            - name: receive_clear
+              description: Clears receive FIFO overflow and underflow flags
+              lsb: 3
+              msb: 3
+              access: write-only
+              enumeratedValues:
+                - name: FlagClear
+                  values:
+                    - name: clear
+                      description: Write 1 to clear fifo flags
+                      value: 1
+            - name: transmit_clear
+              description: Clears transmit FIFO overflow and underflow flags
+              lsb: 2
+              msb: 2
+              access: write-only
+              enumeratedValues:
+                - derived_from: FlagClear
+            - name: receive_dma
+              description: Enable signal of receive DMA interface
+              lsb: 1
+              msb: 1
+              enumeratedValues:
+                - name: DmaEnable
+                  values:
+                    - name: enable
+                      description: Enable DMA interface
+                      value: 1
+                    - name: disable
+                      description: Disable DMA interface
+                      value: 0
+            - name: transmit_dma
+              description: Enable signal of transmit DMA interface
+              lsb: 0
+              msb: 0
+              enumeratedValues:
+                - derived_from: DmaEnable
+      - register:
+          name: fifo_config_1
+          description: FIFO configuration register 1
+          addressOffset: 132
+          resetValue: 32
+          resetMask: 4294967295
+          fields:
+            - name: receive_threshold
+              description: "Receive FIFO threshold\\n\\n\nDMA request will not be asserted if `receive_available` is less than this value"
+              lsb: 24
+              msb: 28
+            - name: transmit_threshold
+              description: "Transmit FIFO threshold\\n\\n\nDMA request will not be asserted if `transmit_available` is less than this value"
+              lsb: 16
+              msb: 20
+            - name: receive_count
+              description: Count of available data in receive FIFO
+              lsb: 8
+              msb: 13
+              access: read-only
+            - name: transmit_count
+              description: Count of available data in transmit FIFO
+              lsb: 0
+              msb: 5
+              access: read-only
+      - register:
+          name: data_write
+          description: FIFO write data register
+          addressOffset: 136
+          access: write-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: value
+              description: Write data to FIFO
+              lsb: 0
+              msb: 7
+      - register:
+          name: data_read
+          description: FIFO read data register
+          addressOffset: 140
+          access: read-only
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: value
+              description: Read data from FIFO
+              lsb: 0
+              msb: 7
+  - name: MISC
+    description: Chip Miscellaneous control
+    baseAddress: 536907776
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: CCI
+    description: Camera Control Interface
+    baseAddress: 536903680
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: EFUSE
+    description: eFuse memory control
+    baseAddress: 537223168
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: SEC
+    description: "Digest, Encryption and Signing accelerator"
+    baseAddress: 536887296
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: DEBUG
+    description: Secure debug configuration
+    baseAddress: 536883200
+    addressBlock:
+      - offset: 0
+        size: 256
+        usage: registers
+    registers:
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "identify[%s]"
+          description: Unique module identifier
+          addressOffset: 0
+          access: read-only
+          fields:
+            - name: word
+              description: Read identifier part in word
+              lsb: 0
+              msb: 31
+      - register:
+          dim: 4
+          dimIncrement: 4
+          name: "password[%s]"
+          description: Password of debug module
+          addressOffset: 8
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: word
+              description: Read or write password in word
+              lsb: 0
+              msb: 31
+      - register:
+          name: control
+          description: Module control register
+          addressOffset: 24
+          resetValue: 0
+          resetMask: 4294967295
+          fields:
+            - name: password_busy
+              description: "??"
+              lsb: 0
+              msb: 0
+              access: read-only
+            - name: password_trigger
+              description: "??"
+              lsb: 1
+              msb: 1
+            - name: password_count
+              description: "??"
+              lsb: 4
+              msb: 23
+            - name: debug_mode
+              description: "??"
+              lsb: 24
+              msb: 27
+              access: read-only
+            - name: debug_enable
+              description: Read if debug module is enabled
+              lsb: 28
+              msb: 31
+              access: read-only
+  - name: AGC
+    description: Automatic Gain Control
+    baseAddress: 536882176
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: GPIP
+    description: "Generic DAC, ADC and ACOMP interface control"
+    baseAddress: 536879104
+    addressBlock:
+      - offset: 0
+        size: 1024
+        usage: registers
+    registers:
+      - register:
+          name: todo
+          description: "??"
+          addressOffset: 0
+          fields: []
+  - name: GLB
+    description: Global configuration register
+    baseAddress: 536870912
+    addressBlock:
+      - offset: 0
+        size: 4096
+        usage: registers
+    registers:
+      - register:
+          name: chip_inform
+          description: Chip information register
+          addressOffset: 0
+          fields: []
+      - register:
+          name: core_config_16
+          description: Core configuration register 16
+          addressOffset: 80
+          fields: []
+      - register:
+          name: core_config_17
+          description: Core configuration register 17
+          addressOffset: 84
+          fields: []
+      - register:
+          name: core_config_18
+          description: Core configuration register 18
+          addressOffset: 88
+          fields: []
+      - register:
+          name: core_config_19
+          description: Core configuration register 19
+          addressOffset: 92
+          fields: []
+      - register:
+          name: core_config_20
+          description: Core configuration register 20
+          addressOffset: 96
+          fields: []
+      - register:
+          name: core_config_21
+          description: Core configuration register 21
+          addressOffset: 100
+          fields: []
+      - register:
+          name: core_config_22
+          description: Core configuration register 22
+          addressOffset: 104
+          fields: []
+      - register:
+          name: core_config_23
+          description: Core configuration register 23
+          addressOffset: 108
+          fields: []
+      - register:
+          name: core_config_24
+          description: Core configuration register 24
+          addressOffset: 112
+          fields: []
+      - register:
+          name: core_config_25
+          description: Core configuration register 25
+          addressOffset: 116
+          fields: []
+      - register:
+          name: sys_config_0
+          description: System configuration register 0
+          addressOffset: 144
+          fields: []
+      - register:
+          name: sys_config_1
+          description: System configuration register 1
+          addressOffset: 148
+          fields: []
+      - register:
+          name: bus_config_0
+          description: Bus configuration register 0
+          addressOffset: 160
+          fields: []
+      - register:
+          name: emi_config
+          description: Electromagnetic interference configuration
+          addressOffset: 224
+          fields: []
+      - register:
+          name: rtc_config
+          description: Real-time clock configuration
+          addressOffset: 240
+          fields: []
+      - register:
+          name: gpadc_config
+          description: General Purpose Analog-to-digital convert configuration
+          addressOffset: 272
+          fields: []
+      - register:
+          name: gpdac_config_0
+          description: General Purpose Digital-to-analog convert configuration 0
+          addressOffset: 288
+          fields: []
+      - register:
+          name: gpdac_config_1
+          description: General Purpose Digital-to-analog convert configuration 1
+          addressOffset: 292
+          fields: []
+      - register:
+          name: gpdac_config_2
+          description: General Purpose Digital-to-analog convert configuration 2
+          addressOffset: 296
+          fields: []
+      - register:
+          name: gpdac_config_3
+          description: General Purpose Digital-to-analog convert configuration 3
+          addressOffset: 300
+          fields: []
+      - register:
+          name: dma_config_0
+          description: Direct Memory Access configuration 0
+          addressOffset: 304
+          fields: []
+      - register:
+          name: dma_config_1
+          description: Direct Memory Access configuration 1
+          addressOffset: 308
+          fields: []
+      - register:
+          name: dma_config_2
+          description: Direct Memory Access configuration 2
+          addressOffset: 312
+          fields: []
+      - register:
+          name: ir_config_0
+          description: Infrared configuration register 0
+          addressOffset: 320
+          fields: []
+      - register:
+          name: ir_config_1
+          description: Infrared configuration register 1
+          addressOffset: 324
+          fields: []
+      - register:
+          name: uart_config
+          description: Universal Asynchronous Receiver/Transmitter configuration
+          addressOffset: 336
+          fields:
+            - name: clock_divide
+              description: Peripheral clock divide factor
+              lsb: 0
+              msb: 2
+            - name: clock_enable
+              description: Peripheral level clock gate enable
+              lsb: 4
+              msb: 4
+            - name: hibernate_clock_source
+              description: Reads clock source from hibernate registers
+              lsb: 7
+              msb: 7
+              access: read-only
+            - name: hibernate_clock_source_2
+              description: Reads clock source from hibernate registers
+              lsb: 22
+              msb: 22
+              access: read-only
+            - name: uart2_mode
+              description: Select interface mode for UART2 peripheral
+              lsb: 25
+              msb: 31
+              writeConstraint:
+                useEnumeratedValues: true
+              enumeratedValues:
+                - name: Uart2Mode
+                  values:
+                    - name: uart
+                      description: Universal Asynchronous Receiver/Transmitter interface
+                      value: 0
+                    - name: iso11898
+                      description: ISO 11898 communication protocol interface
+                      value: 1
+      - register:
+          name: uart_signal_0
+          description: Universal Asynchronous Receiver/Transmitter signal configuration 0
+          addressOffset: 340
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - dim: 8
+              dimIncrement: 4
+              name: "function_0[%s]"
+              description: Select peripheral function for UART signal %s
+              lsb: 0
+              msb: 3
+              enumeratedValues:
+                - name: Function
+                  values:
+                    - name: uart0_rts
+                      description: UART0 Request-to-Send flow control
+                      value: 0
+                    - name: uart0_cts
+                      description: UART0 Clear-to-Send flow control
+                      value: 1
+                    - name: uart0_txd
+                      description: UART0 transmit data
+                      value: 2
+                    - name: uart0_rxd
+                      description: UART0 receive data
+                      value: 3
+                    - name: uart1_rts
+                      description: UART1 Request-to-Send flow control
+                      value: 4
+                    - name: uart1_cts
+                      description: UART1 Clear-to-Send flow control
+                      value: 5
+                    - name: uart1_txd
+                      description: UART1 transmit data
+                      value: 6
+                    - name: uart1_rxd
+                      description: UART1 receive data
+                      value: 7
+                    - name: uart2_rts
+                      description: UART2 Request-to-Send flow control
+                      value: 8
+                    - name: uart2_cts
+                      description: UART2 Clear-to-Send flow control
+                      value: 9
+                    - name: uart2_txd
+                      description: UART2 transmit data
+                      value: 10
+                    - name: uart2_rxd
+                      description: UART2 receive data
+                      value: 11
+      - register:
+          name: uart_signal_1
+          description: Universal Asynchronous Receiver/Transmitter signal configuration 1
+          addressOffset: 344
+          writeConstraint:
+            useEnumeratedValues: true
+          fields:
+            - dim: 4
+              dimIncrement: 4
+              name: "function_1[%s]"
+              description: Select peripheral function for UART signal %s (offset by 8)
+              lsb: 0
+              msb: 3
+              enumeratedValues:
+                - derived_from: "uart_signal_0.function_0[%s].Function"
+      - register:
+          name: flash_config
+          description: Serial flash configuration
+          addressOffset: 368
+          fields: []
+      - register:
+          name: i2c_config
+          description: Inter-Integrated Circuit bus configuration
+          addressOffset: 384
+          fields: []
+      - register:
+          name: i2s_config
+          description: Inter-IC Sound configuration
+          addressOffset: 400
+          fields: []
+      - register:
+          name: spi_config
+          description: Serial Peripheral Interface configuration
+          addressOffset: 432
+          fields: []
+      - register:
+          name: quad_config
+          description: Quadrature decoder configuration
+          addressOffset: 448
+          fields: []
+      - register:
+          name: digit_clock_0
+          description: Digital clock configuration 0
+          addressOffset: 592
+          fields: []
+      - register:
+          name: digit_clock_1
+          description: Digital clock configuration 1
+          addressOffset: 596
+          fields: []
+      - register:
+          name: digit_clock_2
+          description: Digital clock configuration 2
+          addressOffset: 600
+          fields: []
+      - register:
+          name: radio_config
+          description: Radio configuration register
+          addressOffset: 608
+          fields: []
+      - register:
+          name: debug_config_0
+          description: Debug configuration register 0
+          addressOffset: 736
+          fields: []
+      - register:
+          name: debug_config_1
+          description: Debug configuration register 1
+          addressOffset: 740
+          fields: []
+      - register:
+          name: debug_config_2
+          description: Debug configuration register 2
+          addressOffset: 744
+          fields: []
+      - register:
+          name: debug_config_3
+          description: Debug configuration register 3
+          addressOffset: 748
+          fields: []
+      - register:
+          name: debug_config_4
+          description: Debug configuration register 4
+          addressOffset: 752
+          fields: []
+      - register:
+          name: test_mode
+          description: Memory Built-in Self Test mode
+          addressOffset: 768
+          fields: []
+      - register:
+          name: test_done
+          description: Memory Built-in Self Test done state
+          addressOffset: 776
+          fields: []
+      - register:
+          name: test_fail
+          description: Memory Built-in Self Test fail state
+          addressOffset: 784
+          fields: []
+      - register:
+          name: audio_config_0
+          description: Audio configuration register 0
+          addressOffset: 832
+          fields: []
+      - register:
+          name: audio_config_1
+          description: Audio configuration register 1
+          addressOffset: 836
+          fields: []
+      - register:
+          name: emac_config
+          description: Ethernet Media Access Control register
+          addressOffset: 912
+          fields: []
+      - register:
+          name: cam_config
+          description: "??"
+          addressOffset: 1056
+          fields: []
+      - register:
+          dim: 46
+          dimIncrement: 4
+          name: "gpio_config[%s]"
+          description: Generic Purpose Input/Output config
+          addressOffset: 2244
+          fields:
+            - name: pin_mode
+              description: Pin input/output mode switch
+              lsb: 30
+              msb: 31
+              enumeratedValues:
+                - name: PinMode
+                  values:
+                    - name: input
+                      description: Digital input mode
+                      value: 0
+                    - name: output
+                      description: Digital output mode
+                      value: 1
+                    - name: alternate
+                      description: Alternate function mode
+                      value: 2
+                    - name: analog
+                      description: Analog mode
+                      value: 3
+            - name: input_value
+              description: Input value
+              lsb: 28
+              msb: 28
+            - name: output_clear
+              description: Clear output value to 0
+              lsb: 26
+              msb: 26
+            - name: output_set
+              description: Set output value to 1
+              lsb: 25
+              msb: 25
+            - name: output_value
+              description: Output value
+              lsb: 24
+              msb: 24
+            - name: interrupt_mask
+              description: Pin interrupt mask
+              lsb: 22
+              msb: 22
+            - name: interrupt_state
+              description: Pin interrupt state
+              lsb: 21
+              msb: 21
+            - name: interrupt_clear
+              description: Clear pin interrupt flag
+              lsb: 20
+              msb: 20
+            - name: interrupt_mode
+              description: Select pin interrupt mode
+              lsb: 16
+              msb: 19
+            - name: alternate
+              description: Pin alternate function switch
+              lsb: 8
+              msb: 12
+              enumeratedValues:
+                - name: Alternate
+                  values:
+                    - name: sdh
+                      description: Secure Digital host
+                      value: 0
+                    - name: spi0
+                      description: Serial Peripheral Interface 0
+                      value: 1
+                    - name: flash
+                      description: Flash control
+                      value: 2
+                    - name: i2s
+                      description: Inter-IC Sound
+                      value: 3
+                    - name: pdm
+                      description: Pulse Density Modulation
+                      value: 4
+                    - name: i2c0
+                      description: Inter-Integrated Circuit bus 0
+                      value: 5
+                    - name: i2c1
+                      description: Inter-Integrated Circuit bus 1
+                      value: 6
+                    - name: uart
+                      description: Universal Asynchronous Receiver/Transmitter
+                      value: 7
+                    - name: emac
+                      description: Ethernet Media Access Control
+                      value: 8
+                    - name: cam
+                      description: "??"
+                      value: 9
+                    - name: analog
+                      description: "??"
+                      value: 10
+                    - name: gpio
+                      description: Generic Purpose Input/Output
+                      value: 11
+                    - name: pwm0
+                      description: Pulse-Width Modulation module 0
+                      value: 16
+                    - name: pwm1
+                      description: Pulse-Width Modulation module 1
+                      value: 17
+                    - name: spi1
+                      description: Serial Peripheral Interface 1
+                      value: 18
+                    - name: i2c2
+                      description: Inter-Integrated Circuit bus 2
+                      value: 19
+                    - name: i2c3
+                      description: Inter-Integrated Circuit bus 3
+                      value: 20
+                    - name: mm_uart
+                      description: Multimedia subsystem Universal Asynchronous Receiver/Transmitter
+                      value: 21
+                    - name: dbi_b
+                      description: "??"
+                      value: 22
+                    - name: dbi_c
+                      description: "??"
+                      value: 23
+                    - name: dpi
+                      description: "??"
+                      value: 24
+                    - name: jtag_lp
+                      description: Low power core JTAG interface
+                      value: 25
+                    - name: jtag_m0
+                      description: M0 core JTAG interface
+                      value: 26
+                    - name: jtag_d0
+                      description: D0 core JTAG interface
+                      value: 27
+                    - name: clock_out
+                      description: Clock output
+                      value: 31
+            - name: output_function
+              description: Enable output signal
+              lsb: 6
+              msb: 6
+            - name: pull_down
+              description: Enable internal pull-down
+              lsb: 5
+              msb: 5
+            - name: pull_up
+              description: Enable internal pull-up
+              lsb: 4
+              msb: 4
+            - name: drive
+              description: Drive strength
+              lsb: 2
+              msb: 3
+            - name: schmitt
+              description: Enable schmitt trigger
+              lsb: 1
+              msb: 1
+            - name: input_function
+              description: Enable input signal
+              lsb: 0
+              msb: 0
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "gpio_input[%s]"
+          description: Read value from Generic Purpose Input/Output pins
+          addressOffset: 2756
+          fields: []
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "gpio_output[%s]"
+          description: Write value to Generic Purpose Input/Output pins
+          addressOffset: 2788
+          fields: []
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "gpio_set[%s]"
+          description: Set pin output value to high
+          addressOffset: 2796
+          fields: []
+      - register:
+          dim: 2
+          dimIncrement: 4
+          name: "gpio_clear[%s]"
+          description: Set pin output value to low
+          addressOffset: 2804
+          fields: []

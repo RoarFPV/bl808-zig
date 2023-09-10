@@ -1,0 +1,1511 @@
+0x20000000 A PERIPHERAL GLB
+0x20000000 B  REGISTER chip_inform: Chip information register
+0x20000050 B  REGISTER core_config_16: Core configuration register 16
+0x20000054 B  REGISTER core_config_17: Core configuration register 17
+0x20000058 B  REGISTER core_config_18: Core configuration register 18
+0x2000005C B  REGISTER core_config_19: Core configuration register 19
+0x20000060 B  REGISTER core_config_20: Core configuration register 20
+0x20000064 B  REGISTER core_config_21: Core configuration register 21
+0x20000068 B  REGISTER core_config_22: Core configuration register 22
+0x2000006C B  REGISTER core_config_23: Core configuration register 23
+0x20000070 B  REGISTER core_config_24: Core configuration register 24
+0x20000074 B  REGISTER core_config_25: Core configuration register 25
+0x20000090 B  REGISTER sys_config_0: System configuration register 0
+0x20000094 B  REGISTER sys_config_1: System configuration register 1
+0x200000A0 B  REGISTER bus_config_0: Bus configuration register 0
+0x200000E0 B  REGISTER emi_config: Electromagnetic interference configuration
+0x200000F0 B  REGISTER rtc_config: Real-time clock configuration
+0x20000110 B  REGISTER gpadc_config: General Purpose Analog-to-digital convert configuration
+0x20000120 B  REGISTER gpdac_config_0: General Purpose Digital-to-analog convert configuration 0
+0x20000124 B  REGISTER gpdac_config_1: General Purpose Digital-to-analog convert configuration 1
+0x20000128 B  REGISTER gpdac_config_2: General Purpose Digital-to-analog convert configuration 2
+0x2000012C B  REGISTER gpdac_config_3: General Purpose Digital-to-analog convert configuration 3
+0x20000130 B  REGISTER dma_config_0: Direct Memory Access configuration 0
+0x20000134 B  REGISTER dma_config_1: Direct Memory Access configuration 1
+0x20000138 B  REGISTER dma_config_2: Direct Memory Access configuration 2
+0x20000140 B  REGISTER ir_config_0: Infrared configuration register 0
+0x20000144 B  REGISTER ir_config_1: Infrared configuration register 1
+0x20000150 B  REGISTER uart_config: Universal Asynchronous Receiver/Transmitter configuration
+0x20000150 C   FIELD 00w03 clock_divide: Peripheral clock divide factor
+0x20000150 C   FIELD 04w01 clock_enable: Peripheral level clock gate enable
+0x20000150 C   FIELD 07w01 hibernate_clock_source (ro): Reads clock source from hibernate registers
+0x20000150 C   FIELD 22w01 hibernate_clock_source_2 (ro): Reads clock source from hibernate registers
+0x20000150 C   FIELD 25w07 uart2_mode: Select interface mode for UART2 peripheral
+0x20000154 B  REGISTER uart_signal_0: Universal Asynchronous Receiver/Transmitter signal configuration 0
+0x20000154 C   FIELD 00w04 function_00: Select peripheral function for UART signal 0
+0x20000154 C   FIELD 04w04 function_01: Select peripheral function for UART signal 1
+0x20000154 C   FIELD 08w04 function_02: Select peripheral function for UART signal 2
+0x20000154 C   FIELD 12w04 function_03: Select peripheral function for UART signal 3
+0x20000154 C   FIELD 16w04 function_04: Select peripheral function for UART signal 4
+0x20000154 C   FIELD 20w04 function_05: Select peripheral function for UART signal 5
+0x20000154 C   FIELD 24w04 function_06: Select peripheral function for UART signal 6
+0x20000154 C   FIELD 28w04 function_07: Select peripheral function for UART signal 7
+0x20000158 B  REGISTER uart_signal_1: Universal Asynchronous Receiver/Transmitter signal configuration 1
+0x20000158 C   FIELD 00w04 function_10: Select peripheral function for UART signal 0 (offset by 8)
+0x20000158 C   FIELD 04w04 function_11: Select peripheral function for UART signal 1 (offset by 8)
+0x20000158 C   FIELD 08w04 function_12: Select peripheral function for UART signal 2 (offset by 8)
+0x20000158 C   FIELD 12w04 function_13: Select peripheral function for UART signal 3 (offset by 8)
+0x20000170 B  REGISTER flash_config: Serial flash configuration
+0x20000180 B  REGISTER i2c_config: Inter-Integrated Circuit bus configuration
+0x20000190 B  REGISTER i2s_config: Inter-IC Sound configuration
+0x200001B0 B  REGISTER spi_config: Serial Peripheral Interface configuration
+0x200001C0 B  REGISTER quad_config: Quadrature decoder configuration
+0x20000250 B  REGISTER digit_clock_0: Digital clock configuration 0
+0x20000254 B  REGISTER digit_clock_1: Digital clock configuration 1
+0x20000258 B  REGISTER digit_clock_2: Digital clock configuration 2
+0x20000260 B  REGISTER radio_config: Radio configuration register
+0x200002E0 B  REGISTER debug_config_0: Debug configuration register 0
+0x200002E4 B  REGISTER debug_config_1: Debug configuration register 1
+0x200002E8 B  REGISTER debug_config_2: Debug configuration register 2
+0x200002EC B  REGISTER debug_config_3: Debug configuration register 3
+0x200002F0 B  REGISTER debug_config_4: Debug configuration register 4
+0x20000300 B  REGISTER test_mode: Memory Built-in Self Test mode
+0x20000308 B  REGISTER test_done: Memory Built-in Self Test done state
+0x20000310 B  REGISTER test_fail: Memory Built-in Self Test fail state
+0x20000340 B  REGISTER audio_config_0: Audio configuration register 0
+0x20000344 B  REGISTER audio_config_1: Audio configuration register 1
+0x20000390 B  REGISTER emac_config: Ethernet Media Access Control register
+0x20000420 B  REGISTER cam_config: ??
+0x200008C4 B  REGISTER gpio_config0: Generic Purpose Input/Output config
+0x200008C4 C   FIELD 00w01 input_function: Enable input signal
+0x200008C4 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008C4 C   FIELD 02w02 drive: Drive strength
+0x200008C4 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008C4 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008C4 C   FIELD 06w01 output_function: Enable output signal
+0x200008C4 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008C4 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008C4 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008C4 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008C4 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008C4 C   FIELD 24w01 output_value: Output value
+0x200008C4 C   FIELD 25w01 output_set: Set output value to 1
+0x200008C4 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008C4 C   FIELD 28w01 input_value: Input value
+0x200008C4 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008C8 B  REGISTER gpio_config1: Generic Purpose Input/Output config
+0x200008C8 C   FIELD 00w01 input_function: Enable input signal
+0x200008C8 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008C8 C   FIELD 02w02 drive: Drive strength
+0x200008C8 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008C8 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008C8 C   FIELD 06w01 output_function: Enable output signal
+0x200008C8 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008C8 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008C8 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008C8 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008C8 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008C8 C   FIELD 24w01 output_value: Output value
+0x200008C8 C   FIELD 25w01 output_set: Set output value to 1
+0x200008C8 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008C8 C   FIELD 28w01 input_value: Input value
+0x200008C8 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008CC B  REGISTER gpio_config2: Generic Purpose Input/Output config
+0x200008CC C   FIELD 00w01 input_function: Enable input signal
+0x200008CC C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008CC C   FIELD 02w02 drive: Drive strength
+0x200008CC C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008CC C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008CC C   FIELD 06w01 output_function: Enable output signal
+0x200008CC C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008CC C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008CC C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008CC C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008CC C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008CC C   FIELD 24w01 output_value: Output value
+0x200008CC C   FIELD 25w01 output_set: Set output value to 1
+0x200008CC C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008CC C   FIELD 28w01 input_value: Input value
+0x200008CC C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008D0 B  REGISTER gpio_config3: Generic Purpose Input/Output config
+0x200008D0 C   FIELD 00w01 input_function: Enable input signal
+0x200008D0 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008D0 C   FIELD 02w02 drive: Drive strength
+0x200008D0 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008D0 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008D0 C   FIELD 06w01 output_function: Enable output signal
+0x200008D0 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008D0 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008D0 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008D0 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008D0 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008D0 C   FIELD 24w01 output_value: Output value
+0x200008D0 C   FIELD 25w01 output_set: Set output value to 1
+0x200008D0 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008D0 C   FIELD 28w01 input_value: Input value
+0x200008D0 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008D4 B  REGISTER gpio_config4: Generic Purpose Input/Output config
+0x200008D4 C   FIELD 00w01 input_function: Enable input signal
+0x200008D4 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008D4 C   FIELD 02w02 drive: Drive strength
+0x200008D4 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008D4 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008D4 C   FIELD 06w01 output_function: Enable output signal
+0x200008D4 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008D4 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008D4 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008D4 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008D4 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008D4 C   FIELD 24w01 output_value: Output value
+0x200008D4 C   FIELD 25w01 output_set: Set output value to 1
+0x200008D4 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008D4 C   FIELD 28w01 input_value: Input value
+0x200008D4 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008D8 B  REGISTER gpio_config5: Generic Purpose Input/Output config
+0x200008D8 C   FIELD 00w01 input_function: Enable input signal
+0x200008D8 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008D8 C   FIELD 02w02 drive: Drive strength
+0x200008D8 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008D8 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008D8 C   FIELD 06w01 output_function: Enable output signal
+0x200008D8 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008D8 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008D8 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008D8 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008D8 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008D8 C   FIELD 24w01 output_value: Output value
+0x200008D8 C   FIELD 25w01 output_set: Set output value to 1
+0x200008D8 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008D8 C   FIELD 28w01 input_value: Input value
+0x200008D8 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008DC B  REGISTER gpio_config6: Generic Purpose Input/Output config
+0x200008DC C   FIELD 00w01 input_function: Enable input signal
+0x200008DC C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008DC C   FIELD 02w02 drive: Drive strength
+0x200008DC C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008DC C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008DC C   FIELD 06w01 output_function: Enable output signal
+0x200008DC C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008DC C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008DC C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008DC C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008DC C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008DC C   FIELD 24w01 output_value: Output value
+0x200008DC C   FIELD 25w01 output_set: Set output value to 1
+0x200008DC C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008DC C   FIELD 28w01 input_value: Input value
+0x200008DC C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008E0 B  REGISTER gpio_config7: Generic Purpose Input/Output config
+0x200008E0 C   FIELD 00w01 input_function: Enable input signal
+0x200008E0 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008E0 C   FIELD 02w02 drive: Drive strength
+0x200008E0 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008E0 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008E0 C   FIELD 06w01 output_function: Enable output signal
+0x200008E0 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008E0 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008E0 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008E0 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008E0 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008E0 C   FIELD 24w01 output_value: Output value
+0x200008E0 C   FIELD 25w01 output_set: Set output value to 1
+0x200008E0 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008E0 C   FIELD 28w01 input_value: Input value
+0x200008E0 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008E4 B  REGISTER gpio_config8: Generic Purpose Input/Output config
+0x200008E4 C   FIELD 00w01 input_function: Enable input signal
+0x200008E4 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008E4 C   FIELD 02w02 drive: Drive strength
+0x200008E4 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008E4 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008E4 C   FIELD 06w01 output_function: Enable output signal
+0x200008E4 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008E4 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008E4 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008E4 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008E4 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008E4 C   FIELD 24w01 output_value: Output value
+0x200008E4 C   FIELD 25w01 output_set: Set output value to 1
+0x200008E4 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008E4 C   FIELD 28w01 input_value: Input value
+0x200008E4 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008E8 B  REGISTER gpio_config9: Generic Purpose Input/Output config
+0x200008E8 C   FIELD 00w01 input_function: Enable input signal
+0x200008E8 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008E8 C   FIELD 02w02 drive: Drive strength
+0x200008E8 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008E8 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008E8 C   FIELD 06w01 output_function: Enable output signal
+0x200008E8 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008E8 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008E8 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008E8 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008E8 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008E8 C   FIELD 24w01 output_value: Output value
+0x200008E8 C   FIELD 25w01 output_set: Set output value to 1
+0x200008E8 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008E8 C   FIELD 28w01 input_value: Input value
+0x200008E8 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008EC B  REGISTER gpio_config10: Generic Purpose Input/Output config
+0x200008EC C   FIELD 00w01 input_function: Enable input signal
+0x200008EC C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008EC C   FIELD 02w02 drive: Drive strength
+0x200008EC C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008EC C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008EC C   FIELD 06w01 output_function: Enable output signal
+0x200008EC C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008EC C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008EC C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008EC C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008EC C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008EC C   FIELD 24w01 output_value: Output value
+0x200008EC C   FIELD 25w01 output_set: Set output value to 1
+0x200008EC C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008EC C   FIELD 28w01 input_value: Input value
+0x200008EC C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008F0 B  REGISTER gpio_config11: Generic Purpose Input/Output config
+0x200008F0 C   FIELD 00w01 input_function: Enable input signal
+0x200008F0 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008F0 C   FIELD 02w02 drive: Drive strength
+0x200008F0 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008F0 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008F0 C   FIELD 06w01 output_function: Enable output signal
+0x200008F0 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008F0 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008F0 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008F0 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008F0 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008F0 C   FIELD 24w01 output_value: Output value
+0x200008F0 C   FIELD 25w01 output_set: Set output value to 1
+0x200008F0 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008F0 C   FIELD 28w01 input_value: Input value
+0x200008F0 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008F4 B  REGISTER gpio_config12: Generic Purpose Input/Output config
+0x200008F4 C   FIELD 00w01 input_function: Enable input signal
+0x200008F4 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008F4 C   FIELD 02w02 drive: Drive strength
+0x200008F4 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008F4 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008F4 C   FIELD 06w01 output_function: Enable output signal
+0x200008F4 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008F4 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008F4 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008F4 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008F4 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008F4 C   FIELD 24w01 output_value: Output value
+0x200008F4 C   FIELD 25w01 output_set: Set output value to 1
+0x200008F4 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008F4 C   FIELD 28w01 input_value: Input value
+0x200008F4 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008F8 B  REGISTER gpio_config13: Generic Purpose Input/Output config
+0x200008F8 C   FIELD 00w01 input_function: Enable input signal
+0x200008F8 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008F8 C   FIELD 02w02 drive: Drive strength
+0x200008F8 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008F8 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008F8 C   FIELD 06w01 output_function: Enable output signal
+0x200008F8 C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008F8 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008F8 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008F8 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008F8 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008F8 C   FIELD 24w01 output_value: Output value
+0x200008F8 C   FIELD 25w01 output_set: Set output value to 1
+0x200008F8 C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008F8 C   FIELD 28w01 input_value: Input value
+0x200008F8 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x200008FC B  REGISTER gpio_config14: Generic Purpose Input/Output config
+0x200008FC C   FIELD 00w01 input_function: Enable input signal
+0x200008FC C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x200008FC C   FIELD 02w02 drive: Drive strength
+0x200008FC C   FIELD 04w01 pull_up: Enable internal pull-up
+0x200008FC C   FIELD 05w01 pull_down: Enable internal pull-down
+0x200008FC C   FIELD 06w01 output_function: Enable output signal
+0x200008FC C   FIELD 08w05 alternate: Pin alternate function switch
+0x200008FC C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x200008FC C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x200008FC C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x200008FC C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x200008FC C   FIELD 24w01 output_value: Output value
+0x200008FC C   FIELD 25w01 output_set: Set output value to 1
+0x200008FC C   FIELD 26w01 output_clear: Clear output value to 0
+0x200008FC C   FIELD 28w01 input_value: Input value
+0x200008FC C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000900 B  REGISTER gpio_config15: Generic Purpose Input/Output config
+0x20000900 C   FIELD 00w01 input_function: Enable input signal
+0x20000900 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000900 C   FIELD 02w02 drive: Drive strength
+0x20000900 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000900 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000900 C   FIELD 06w01 output_function: Enable output signal
+0x20000900 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000900 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000900 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000900 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000900 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000900 C   FIELD 24w01 output_value: Output value
+0x20000900 C   FIELD 25w01 output_set: Set output value to 1
+0x20000900 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000900 C   FIELD 28w01 input_value: Input value
+0x20000900 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000904 B  REGISTER gpio_config16: Generic Purpose Input/Output config
+0x20000904 C   FIELD 00w01 input_function: Enable input signal
+0x20000904 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000904 C   FIELD 02w02 drive: Drive strength
+0x20000904 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000904 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000904 C   FIELD 06w01 output_function: Enable output signal
+0x20000904 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000904 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000904 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000904 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000904 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000904 C   FIELD 24w01 output_value: Output value
+0x20000904 C   FIELD 25w01 output_set: Set output value to 1
+0x20000904 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000904 C   FIELD 28w01 input_value: Input value
+0x20000904 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000908 B  REGISTER gpio_config17: Generic Purpose Input/Output config
+0x20000908 C   FIELD 00w01 input_function: Enable input signal
+0x20000908 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000908 C   FIELD 02w02 drive: Drive strength
+0x20000908 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000908 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000908 C   FIELD 06w01 output_function: Enable output signal
+0x20000908 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000908 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000908 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000908 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000908 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000908 C   FIELD 24w01 output_value: Output value
+0x20000908 C   FIELD 25w01 output_set: Set output value to 1
+0x20000908 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000908 C   FIELD 28w01 input_value: Input value
+0x20000908 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x2000090C B  REGISTER gpio_config18: Generic Purpose Input/Output config
+0x2000090C C   FIELD 00w01 input_function: Enable input signal
+0x2000090C C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x2000090C C   FIELD 02w02 drive: Drive strength
+0x2000090C C   FIELD 04w01 pull_up: Enable internal pull-up
+0x2000090C C   FIELD 05w01 pull_down: Enable internal pull-down
+0x2000090C C   FIELD 06w01 output_function: Enable output signal
+0x2000090C C   FIELD 08w05 alternate: Pin alternate function switch
+0x2000090C C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x2000090C C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x2000090C C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x2000090C C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x2000090C C   FIELD 24w01 output_value: Output value
+0x2000090C C   FIELD 25w01 output_set: Set output value to 1
+0x2000090C C   FIELD 26w01 output_clear: Clear output value to 0
+0x2000090C C   FIELD 28w01 input_value: Input value
+0x2000090C C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000910 B  REGISTER gpio_config19: Generic Purpose Input/Output config
+0x20000910 C   FIELD 00w01 input_function: Enable input signal
+0x20000910 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000910 C   FIELD 02w02 drive: Drive strength
+0x20000910 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000910 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000910 C   FIELD 06w01 output_function: Enable output signal
+0x20000910 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000910 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000910 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000910 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000910 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000910 C   FIELD 24w01 output_value: Output value
+0x20000910 C   FIELD 25w01 output_set: Set output value to 1
+0x20000910 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000910 C   FIELD 28w01 input_value: Input value
+0x20000910 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000914 B  REGISTER gpio_config20: Generic Purpose Input/Output config
+0x20000914 C   FIELD 00w01 input_function: Enable input signal
+0x20000914 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000914 C   FIELD 02w02 drive: Drive strength
+0x20000914 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000914 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000914 C   FIELD 06w01 output_function: Enable output signal
+0x20000914 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000914 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000914 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000914 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000914 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000914 C   FIELD 24w01 output_value: Output value
+0x20000914 C   FIELD 25w01 output_set: Set output value to 1
+0x20000914 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000914 C   FIELD 28w01 input_value: Input value
+0x20000914 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000918 B  REGISTER gpio_config21: Generic Purpose Input/Output config
+0x20000918 C   FIELD 00w01 input_function: Enable input signal
+0x20000918 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000918 C   FIELD 02w02 drive: Drive strength
+0x20000918 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000918 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000918 C   FIELD 06w01 output_function: Enable output signal
+0x20000918 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000918 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000918 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000918 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000918 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000918 C   FIELD 24w01 output_value: Output value
+0x20000918 C   FIELD 25w01 output_set: Set output value to 1
+0x20000918 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000918 C   FIELD 28w01 input_value: Input value
+0x20000918 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x2000091C B  REGISTER gpio_config22: Generic Purpose Input/Output config
+0x2000091C C   FIELD 00w01 input_function: Enable input signal
+0x2000091C C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x2000091C C   FIELD 02w02 drive: Drive strength
+0x2000091C C   FIELD 04w01 pull_up: Enable internal pull-up
+0x2000091C C   FIELD 05w01 pull_down: Enable internal pull-down
+0x2000091C C   FIELD 06w01 output_function: Enable output signal
+0x2000091C C   FIELD 08w05 alternate: Pin alternate function switch
+0x2000091C C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x2000091C C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x2000091C C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x2000091C C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x2000091C C   FIELD 24w01 output_value: Output value
+0x2000091C C   FIELD 25w01 output_set: Set output value to 1
+0x2000091C C   FIELD 26w01 output_clear: Clear output value to 0
+0x2000091C C   FIELD 28w01 input_value: Input value
+0x2000091C C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000920 B  REGISTER gpio_config23: Generic Purpose Input/Output config
+0x20000920 C   FIELD 00w01 input_function: Enable input signal
+0x20000920 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000920 C   FIELD 02w02 drive: Drive strength
+0x20000920 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000920 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000920 C   FIELD 06w01 output_function: Enable output signal
+0x20000920 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000920 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000920 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000920 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000920 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000920 C   FIELD 24w01 output_value: Output value
+0x20000920 C   FIELD 25w01 output_set: Set output value to 1
+0x20000920 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000920 C   FIELD 28w01 input_value: Input value
+0x20000920 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000924 B  REGISTER gpio_config24: Generic Purpose Input/Output config
+0x20000924 C   FIELD 00w01 input_function: Enable input signal
+0x20000924 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000924 C   FIELD 02w02 drive: Drive strength
+0x20000924 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000924 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000924 C   FIELD 06w01 output_function: Enable output signal
+0x20000924 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000924 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000924 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000924 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000924 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000924 C   FIELD 24w01 output_value: Output value
+0x20000924 C   FIELD 25w01 output_set: Set output value to 1
+0x20000924 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000924 C   FIELD 28w01 input_value: Input value
+0x20000924 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000928 B  REGISTER gpio_config25: Generic Purpose Input/Output config
+0x20000928 C   FIELD 00w01 input_function: Enable input signal
+0x20000928 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000928 C   FIELD 02w02 drive: Drive strength
+0x20000928 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000928 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000928 C   FIELD 06w01 output_function: Enable output signal
+0x20000928 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000928 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000928 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000928 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000928 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000928 C   FIELD 24w01 output_value: Output value
+0x20000928 C   FIELD 25w01 output_set: Set output value to 1
+0x20000928 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000928 C   FIELD 28w01 input_value: Input value
+0x20000928 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x2000092C B  REGISTER gpio_config26: Generic Purpose Input/Output config
+0x2000092C C   FIELD 00w01 input_function: Enable input signal
+0x2000092C C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x2000092C C   FIELD 02w02 drive: Drive strength
+0x2000092C C   FIELD 04w01 pull_up: Enable internal pull-up
+0x2000092C C   FIELD 05w01 pull_down: Enable internal pull-down
+0x2000092C C   FIELD 06w01 output_function: Enable output signal
+0x2000092C C   FIELD 08w05 alternate: Pin alternate function switch
+0x2000092C C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x2000092C C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x2000092C C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x2000092C C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x2000092C C   FIELD 24w01 output_value: Output value
+0x2000092C C   FIELD 25w01 output_set: Set output value to 1
+0x2000092C C   FIELD 26w01 output_clear: Clear output value to 0
+0x2000092C C   FIELD 28w01 input_value: Input value
+0x2000092C C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000930 B  REGISTER gpio_config27: Generic Purpose Input/Output config
+0x20000930 C   FIELD 00w01 input_function: Enable input signal
+0x20000930 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000930 C   FIELD 02w02 drive: Drive strength
+0x20000930 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000930 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000930 C   FIELD 06w01 output_function: Enable output signal
+0x20000930 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000930 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000930 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000930 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000930 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000930 C   FIELD 24w01 output_value: Output value
+0x20000930 C   FIELD 25w01 output_set: Set output value to 1
+0x20000930 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000930 C   FIELD 28w01 input_value: Input value
+0x20000930 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000934 B  REGISTER gpio_config28: Generic Purpose Input/Output config
+0x20000934 C   FIELD 00w01 input_function: Enable input signal
+0x20000934 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000934 C   FIELD 02w02 drive: Drive strength
+0x20000934 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000934 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000934 C   FIELD 06w01 output_function: Enable output signal
+0x20000934 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000934 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000934 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000934 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000934 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000934 C   FIELD 24w01 output_value: Output value
+0x20000934 C   FIELD 25w01 output_set: Set output value to 1
+0x20000934 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000934 C   FIELD 28w01 input_value: Input value
+0x20000934 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000938 B  REGISTER gpio_config29: Generic Purpose Input/Output config
+0x20000938 C   FIELD 00w01 input_function: Enable input signal
+0x20000938 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000938 C   FIELD 02w02 drive: Drive strength
+0x20000938 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000938 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000938 C   FIELD 06w01 output_function: Enable output signal
+0x20000938 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000938 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000938 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000938 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000938 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000938 C   FIELD 24w01 output_value: Output value
+0x20000938 C   FIELD 25w01 output_set: Set output value to 1
+0x20000938 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000938 C   FIELD 28w01 input_value: Input value
+0x20000938 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x2000093C B  REGISTER gpio_config30: Generic Purpose Input/Output config
+0x2000093C C   FIELD 00w01 input_function: Enable input signal
+0x2000093C C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x2000093C C   FIELD 02w02 drive: Drive strength
+0x2000093C C   FIELD 04w01 pull_up: Enable internal pull-up
+0x2000093C C   FIELD 05w01 pull_down: Enable internal pull-down
+0x2000093C C   FIELD 06w01 output_function: Enable output signal
+0x2000093C C   FIELD 08w05 alternate: Pin alternate function switch
+0x2000093C C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x2000093C C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x2000093C C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x2000093C C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x2000093C C   FIELD 24w01 output_value: Output value
+0x2000093C C   FIELD 25w01 output_set: Set output value to 1
+0x2000093C C   FIELD 26w01 output_clear: Clear output value to 0
+0x2000093C C   FIELD 28w01 input_value: Input value
+0x2000093C C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000940 B  REGISTER gpio_config31: Generic Purpose Input/Output config
+0x20000940 C   FIELD 00w01 input_function: Enable input signal
+0x20000940 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000940 C   FIELD 02w02 drive: Drive strength
+0x20000940 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000940 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000940 C   FIELD 06w01 output_function: Enable output signal
+0x20000940 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000940 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000940 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000940 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000940 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000940 C   FIELD 24w01 output_value: Output value
+0x20000940 C   FIELD 25w01 output_set: Set output value to 1
+0x20000940 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000940 C   FIELD 28w01 input_value: Input value
+0x20000940 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000944 B  REGISTER gpio_config32: Generic Purpose Input/Output config
+0x20000944 C   FIELD 00w01 input_function: Enable input signal
+0x20000944 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000944 C   FIELD 02w02 drive: Drive strength
+0x20000944 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000944 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000944 C   FIELD 06w01 output_function: Enable output signal
+0x20000944 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000944 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000944 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000944 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000944 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000944 C   FIELD 24w01 output_value: Output value
+0x20000944 C   FIELD 25w01 output_set: Set output value to 1
+0x20000944 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000944 C   FIELD 28w01 input_value: Input value
+0x20000944 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000948 B  REGISTER gpio_config33: Generic Purpose Input/Output config
+0x20000948 C   FIELD 00w01 input_function: Enable input signal
+0x20000948 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000948 C   FIELD 02w02 drive: Drive strength
+0x20000948 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000948 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000948 C   FIELD 06w01 output_function: Enable output signal
+0x20000948 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000948 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000948 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000948 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000948 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000948 C   FIELD 24w01 output_value: Output value
+0x20000948 C   FIELD 25w01 output_set: Set output value to 1
+0x20000948 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000948 C   FIELD 28w01 input_value: Input value
+0x20000948 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x2000094C B  REGISTER gpio_config34: Generic Purpose Input/Output config
+0x2000094C C   FIELD 00w01 input_function: Enable input signal
+0x2000094C C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x2000094C C   FIELD 02w02 drive: Drive strength
+0x2000094C C   FIELD 04w01 pull_up: Enable internal pull-up
+0x2000094C C   FIELD 05w01 pull_down: Enable internal pull-down
+0x2000094C C   FIELD 06w01 output_function: Enable output signal
+0x2000094C C   FIELD 08w05 alternate: Pin alternate function switch
+0x2000094C C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x2000094C C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x2000094C C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x2000094C C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x2000094C C   FIELD 24w01 output_value: Output value
+0x2000094C C   FIELD 25w01 output_set: Set output value to 1
+0x2000094C C   FIELD 26w01 output_clear: Clear output value to 0
+0x2000094C C   FIELD 28w01 input_value: Input value
+0x2000094C C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000950 B  REGISTER gpio_config35: Generic Purpose Input/Output config
+0x20000950 C   FIELD 00w01 input_function: Enable input signal
+0x20000950 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000950 C   FIELD 02w02 drive: Drive strength
+0x20000950 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000950 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000950 C   FIELD 06w01 output_function: Enable output signal
+0x20000950 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000950 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000950 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000950 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000950 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000950 C   FIELD 24w01 output_value: Output value
+0x20000950 C   FIELD 25w01 output_set: Set output value to 1
+0x20000950 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000950 C   FIELD 28w01 input_value: Input value
+0x20000950 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000954 B  REGISTER gpio_config36: Generic Purpose Input/Output config
+0x20000954 C   FIELD 00w01 input_function: Enable input signal
+0x20000954 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000954 C   FIELD 02w02 drive: Drive strength
+0x20000954 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000954 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000954 C   FIELD 06w01 output_function: Enable output signal
+0x20000954 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000954 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000954 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000954 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000954 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000954 C   FIELD 24w01 output_value: Output value
+0x20000954 C   FIELD 25w01 output_set: Set output value to 1
+0x20000954 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000954 C   FIELD 28w01 input_value: Input value
+0x20000954 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000958 B  REGISTER gpio_config37: Generic Purpose Input/Output config
+0x20000958 C   FIELD 00w01 input_function: Enable input signal
+0x20000958 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000958 C   FIELD 02w02 drive: Drive strength
+0x20000958 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000958 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000958 C   FIELD 06w01 output_function: Enable output signal
+0x20000958 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000958 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000958 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000958 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000958 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000958 C   FIELD 24w01 output_value: Output value
+0x20000958 C   FIELD 25w01 output_set: Set output value to 1
+0x20000958 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000958 C   FIELD 28w01 input_value: Input value
+0x20000958 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x2000095C B  REGISTER gpio_config38: Generic Purpose Input/Output config
+0x2000095C C   FIELD 00w01 input_function: Enable input signal
+0x2000095C C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x2000095C C   FIELD 02w02 drive: Drive strength
+0x2000095C C   FIELD 04w01 pull_up: Enable internal pull-up
+0x2000095C C   FIELD 05w01 pull_down: Enable internal pull-down
+0x2000095C C   FIELD 06w01 output_function: Enable output signal
+0x2000095C C   FIELD 08w05 alternate: Pin alternate function switch
+0x2000095C C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x2000095C C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x2000095C C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x2000095C C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x2000095C C   FIELD 24w01 output_value: Output value
+0x2000095C C   FIELD 25w01 output_set: Set output value to 1
+0x2000095C C   FIELD 26w01 output_clear: Clear output value to 0
+0x2000095C C   FIELD 28w01 input_value: Input value
+0x2000095C C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000960 B  REGISTER gpio_config39: Generic Purpose Input/Output config
+0x20000960 C   FIELD 00w01 input_function: Enable input signal
+0x20000960 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000960 C   FIELD 02w02 drive: Drive strength
+0x20000960 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000960 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000960 C   FIELD 06w01 output_function: Enable output signal
+0x20000960 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000960 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000960 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000960 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000960 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000960 C   FIELD 24w01 output_value: Output value
+0x20000960 C   FIELD 25w01 output_set: Set output value to 1
+0x20000960 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000960 C   FIELD 28w01 input_value: Input value
+0x20000960 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000964 B  REGISTER gpio_config40: Generic Purpose Input/Output config
+0x20000964 C   FIELD 00w01 input_function: Enable input signal
+0x20000964 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000964 C   FIELD 02w02 drive: Drive strength
+0x20000964 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000964 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000964 C   FIELD 06w01 output_function: Enable output signal
+0x20000964 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000964 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000964 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000964 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000964 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000964 C   FIELD 24w01 output_value: Output value
+0x20000964 C   FIELD 25w01 output_set: Set output value to 1
+0x20000964 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000964 C   FIELD 28w01 input_value: Input value
+0x20000964 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000968 B  REGISTER gpio_config41: Generic Purpose Input/Output config
+0x20000968 C   FIELD 00w01 input_function: Enable input signal
+0x20000968 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000968 C   FIELD 02w02 drive: Drive strength
+0x20000968 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000968 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000968 C   FIELD 06w01 output_function: Enable output signal
+0x20000968 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000968 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000968 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000968 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000968 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000968 C   FIELD 24w01 output_value: Output value
+0x20000968 C   FIELD 25w01 output_set: Set output value to 1
+0x20000968 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000968 C   FIELD 28w01 input_value: Input value
+0x20000968 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x2000096C B  REGISTER gpio_config42: Generic Purpose Input/Output config
+0x2000096C C   FIELD 00w01 input_function: Enable input signal
+0x2000096C C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x2000096C C   FIELD 02w02 drive: Drive strength
+0x2000096C C   FIELD 04w01 pull_up: Enable internal pull-up
+0x2000096C C   FIELD 05w01 pull_down: Enable internal pull-down
+0x2000096C C   FIELD 06w01 output_function: Enable output signal
+0x2000096C C   FIELD 08w05 alternate: Pin alternate function switch
+0x2000096C C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x2000096C C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x2000096C C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x2000096C C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x2000096C C   FIELD 24w01 output_value: Output value
+0x2000096C C   FIELD 25w01 output_set: Set output value to 1
+0x2000096C C   FIELD 26w01 output_clear: Clear output value to 0
+0x2000096C C   FIELD 28w01 input_value: Input value
+0x2000096C C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000970 B  REGISTER gpio_config43: Generic Purpose Input/Output config
+0x20000970 C   FIELD 00w01 input_function: Enable input signal
+0x20000970 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000970 C   FIELD 02w02 drive: Drive strength
+0x20000970 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000970 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000970 C   FIELD 06w01 output_function: Enable output signal
+0x20000970 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000970 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000970 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000970 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000970 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000970 C   FIELD 24w01 output_value: Output value
+0x20000970 C   FIELD 25w01 output_set: Set output value to 1
+0x20000970 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000970 C   FIELD 28w01 input_value: Input value
+0x20000970 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000974 B  REGISTER gpio_config44: Generic Purpose Input/Output config
+0x20000974 C   FIELD 00w01 input_function: Enable input signal
+0x20000974 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000974 C   FIELD 02w02 drive: Drive strength
+0x20000974 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000974 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000974 C   FIELD 06w01 output_function: Enable output signal
+0x20000974 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000974 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000974 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000974 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000974 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000974 C   FIELD 24w01 output_value: Output value
+0x20000974 C   FIELD 25w01 output_set: Set output value to 1
+0x20000974 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000974 C   FIELD 28w01 input_value: Input value
+0x20000974 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000978 B  REGISTER gpio_config45: Generic Purpose Input/Output config
+0x20000978 C   FIELD 00w01 input_function: Enable input signal
+0x20000978 C   FIELD 01w01 schmitt: Enable schmitt trigger
+0x20000978 C   FIELD 02w02 drive: Drive strength
+0x20000978 C   FIELD 04w01 pull_up: Enable internal pull-up
+0x20000978 C   FIELD 05w01 pull_down: Enable internal pull-down
+0x20000978 C   FIELD 06w01 output_function: Enable output signal
+0x20000978 C   FIELD 08w05 alternate: Pin alternate function switch
+0x20000978 C   FIELD 16w04 interrupt_mode: Select pin interrupt mode
+0x20000978 C   FIELD 20w01 interrupt_clear: Clear pin interrupt flag
+0x20000978 C   FIELD 21w01 interrupt_state: Pin interrupt state
+0x20000978 C   FIELD 22w01 interrupt_mask: Pin interrupt mask
+0x20000978 C   FIELD 24w01 output_value: Output value
+0x20000978 C   FIELD 25w01 output_set: Set output value to 1
+0x20000978 C   FIELD 26w01 output_clear: Clear output value to 0
+0x20000978 C   FIELD 28w01 input_value: Input value
+0x20000978 C   FIELD 30w02 pin_mode: Pin input/output mode switch
+0x20000AC4 B  REGISTER gpio_input0: Read value from Generic Purpose Input/Output pins
+0x20000AC8 B  REGISTER gpio_input1: Read value from Generic Purpose Input/Output pins
+0x20000AE4 B  REGISTER gpio_output0: Write value to Generic Purpose Input/Output pins
+0x20000AE8 B  REGISTER gpio_output1: Write value to Generic Purpose Input/Output pins
+0x20000AEC B  REGISTER gpio_set0: Set pin output value to high
+0x20000AF0 B  REGISTER gpio_set1: Set pin output value to high
+0x20000AF4 B  REGISTER gpio_clear0: Set pin output value to low
+0x20000AF8 B  REGISTER gpio_clear1: Set pin output value to low
+0x20002000 A PERIPHERAL GPIP
+0x20002000 B  REGISTER todo: ??
+0x20002C00 A PERIPHERAL AGC
+0x20002C00 B  REGISTER todo: ??
+0x20003000 A PERIPHERAL DEBUG
+0x20003000 B  REGISTER identify0 (ro): Unique module identifier
+0x20003000 C   FIELD 00w32 word: Read identifier part in word
+0x20003004 B  REGISTER identify1 (ro): Unique module identifier
+0x20003004 C   FIELD 00w32 word: Read identifier part in word
+0x20003008 B  REGISTER password0: Password of debug module
+0x20003008 C   FIELD 00w32 word: Read or write password in word
+0x2000300C B  REGISTER password1: Password of debug module
+0x2000300C C   FIELD 00w32 word: Read or write password in word
+0x20003010 B  REGISTER password2: Password of debug module
+0x20003010 C   FIELD 00w32 word: Read or write password in word
+0x20003014 B  REGISTER password3: Password of debug module
+0x20003014 C   FIELD 00w32 word: Read or write password in word
+0x20003018 B  REGISTER control: Module control register
+0x20003018 C   FIELD 00w01 password_busy (ro): ??
+0x20003018 C   FIELD 01w01 password_trigger: ??
+0x20003018 C   FIELD 04w20 password_count: ??
+0x20003018 C   FIELD 24w04 debug_mode (ro): ??
+0x20003018 C   FIELD 28w04 debug_enable (ro): Read if debug module is enabled
+0x20004000 A PERIPHERAL SEC
+0x20004000 B  REGISTER todo: ??
+0x20008000 A PERIPHERAL CCI
+0x20008000 B  REGISTER todo: ??
+0x20009000 A PERIPHERAL MISC
+0x20009000 B  REGISTER todo: ??
+0x2000A000 A PERIPHERAL UART[%s]
+0x2000A000 B  REGISTER transmit_config: Transmit configuration register
+0x2000A000 C   FIELD 00w01 function: Enable transmit function
+0x2000A000 C   FIELD 01w01 cts: Enable Clear-to-Send flow control signal
+0x2000A000 C   FIELD 02w01 freerun: Enable freerun mode
+0x2000A000 C   FIELD 03w01 lin_transmit: Local Interconnect Network protocol enable
+0x2000A000 C   FIELD 04w01 parity_enable: Enable transmit parity check
+0x2000A000 C   FIELD 05w01 parity_mode: Select transmit parity mode if enabled
+0x2000A000 C   FIELD 06w01 ir_transmit: Enable IR transmit mode
+0x2000A000 C   FIELD 07w01 ir_inverse: Inverse transmit signal output in IR mode
+0x2000A000 C   FIELD 08w03 word_length: Bit count for each transmit data word
+0x2000A000 C   FIELD 11w02 stop_bits: Number of stop bits
+0x2000A000 C   FIELD 13w03 break_bits: Number of break bits for LIN protocol
+0x2000A000 C   FIELD 16w16 transfer_length: Length of words per UART transmit transfer\n\n This field is ignored when `freerun` mode is enabled.
+0x2000A004 B  REGISTER receive_config: Receive configuration register
+0x2000A004 C   FIELD 00w01 function: Enable receive function
+0x2000A004 C   FIELD 01w01 auto_baudrate: Enable receive auto baudrate detection
+0x2000A004 C   FIELD 03w01 lin_receive: Local Interconnect Network protocol enable
+0x2000A004 C   FIELD 04w01 parity_enable: Enable receive parity check
+0x2000A004 C   FIELD 05w01 parity_mode: Select receive parity mode if enabled
+0x2000A004 C   FIELD 06w01 ir_receive: Enable IR receive mode
+0x2000A004 C   FIELD 07w01 ir_inverse: Inverse receive signal output in IR mode
+0x2000A004 C   FIELD 08w03 word_length: Bit count for each receive data word
+0x2000A004 C   FIELD 11w01 deglitch_enable: Enable receive de-glitch function
+0x2000A004 C   FIELD 12w04 deglitch_cycle: De-glitch function cycle count
+0x2000A004 C   FIELD 16w16 transfer_length: Length of words per UART receive transfer
+0x2000A008 B  REGISTER bit_period: Bit period control register
+0x2000A008 C   FIELD 00w16 transmit: Period of each transmit bit\n\n Add 1 to this value and divide by clock to get transmit baudrate.
+0x2000A008 C   FIELD 16w16 receive: Period of each receive bit\n\n Add 1 to this value and divide by clock to get receive baudrate.
+0x2000A00C B  REGISTER data_config: Data configuration register
+0x2000A00C C   FIELD 00w01 bit_order: Enable bit inverse in each data word
+0x2000A010 B  REGISTER transmit_position: IR-mode transmit position control
+0x2000A010 C   FIELD 00w16 start: Start position of transmit IR pulse
+0x2000A010 C   FIELD 16w16 stop: Stop position of transmit IR pulse
+0x2000A014 B  REGISTER receive_position: IR-mode receive position control
+0x2000A014 C   FIELD 00w16 start: Start position of received pulse recovered from IR signal
+0x2000A018 B  REGISTER receive_timeout: Receive Time-Out interrupt control
+0x2000A018 C   FIELD 00w08 value: Timeout interrupt triggering value by bits received
+0x2000A01C B  REGISTER signal_override: Manual override of flow control signal
+0x2000A01C C   FIELD 00w01 transmit_signal: Enable manual override of transmit signal
+0x2000A01C C   FIELD 01w01 transmit_value: Value to override transmit signal if override is enabled
+0x2000A01C C   FIELD 02w01 rts_signal: Enable manual override of Request-to-Send flow control signal
+0x2000A01C C   FIELD 03w01 rts_value: Value to override Request-to-Send signal if override is enabled
+0x2000A020 B  REGISTER interrupt_state (ro): Interrupt state register
+0x2000A020 C   FIELD 00w01 transmit_transfer: Transmit transfer finish signal raised
+0x2000A020 C   FIELD 01w01 receive_transfer: Receive transfer finish signal raised
+0x2000A020 C   FIELD 02w01 transmit_fifo_ready: Transmit FIFO ready signal raised
+0x2000A020 C   FIELD 03w01 receive_fifo_ready: Receive FIFO ready signal raised
+0x2000A020 C   FIELD 04w01 receive_timeout: Receive timed-out interrupt occurred
+0x2000A020 C   FIELD 05w01 receive_parity: Receive parity check failure occurred
+0x2000A020 C   FIELD 06w01 transmit_fifo_error: Transmit FIFO overflow or underflow occurred
+0x2000A020 C   FIELD 07w01 receive_fifo_error: Receive FIFO overflow or underflow occurred
+0x2000A020 C   FIELD 08w01 receive_sync_error: Receive LIN mode synchronization field error occurred
+0x2000A020 C   FIELD 09w01 receive_byte_count: Receive byte count reached occurred
+0x2000A020 C   FIELD 10w01 auto_baudrate_start_bit: Receive auto baudrate detection finished using start bit occurred
+0x2000A020 C   FIELD 11w01 auto_baudrate_five_five: Receive auto baudrate detection finished using 0x55 occurred
+0x2000A024 B  REGISTER interrupt_mask: Interrupt mask register
+0x2000A024 C   FIELD 00w01 transmit_transfer: Transmit transfer finish signal interrupt mask
+0x2000A024 C   FIELD 01w01 receive_transfer: Receive transfer finish signal interrupt mask
+0x2000A024 C   FIELD 02w01 transmit_fifo_ready: Transmit FIFO ready signal interrupt mask
+0x2000A024 C   FIELD 03w01 receive_fifo_ready: Receive FIFO ready signal interrupt mask
+0x2000A024 C   FIELD 04w01 receive_timeout: Receive timed-out interrupt mask
+0x2000A024 C   FIELD 05w01 receive_parity: Receive parity check failure interrupt mask
+0x2000A024 C   FIELD 06w01 transmit_fifo_error: Transmit FIFO overflow or underflow interrupt mask
+0x2000A024 C   FIELD 07w01 receive_fifo_error: Receive FIFO overflow or underflow interrupt mask
+0x2000A024 C   FIELD 08w01 receive_sync_error: Receive LIN mode synchronization field error interrupt mask
+0x2000A024 C   FIELD 09w01 receive_byte_count: Receive byte count reached interrupt mask
+0x2000A024 C   FIELD 10w01 auto_baudrate_start_bit: Receive auto baudrate detection finished using start bit interrupt mask
+0x2000A024 C   FIELD 11w01 auto_baudrate_five_five: Receive auto baudrate detection finished using 0x55 occurred
+0x2000A028 B  REGISTER interrupt_clear (wo): Clear interrupt register
+0x2000A028 C   FIELD 00w01 transmit_transfer: Write 1 to clear transmit transfer finish signal
+0x2000A028 C   FIELD 01w01 receive_transfer: Write 1 to clear receive transfer finish signal
+0x2000A028 C   FIELD 04w01 receive_timeout: Write 1 to clear receive timed-out
+0x2000A028 C   FIELD 05w01 receive_parity: Write 1 to clear receive parity check failure
+0x2000A028 C   FIELD 08w01 receive_sync_error: Write 1 to clear receive LIN mode synchronization field error
+0x2000A028 C   FIELD 09w01 receive_byte_count: Write 1 to clear receive byte count reached
+0x2000A028 C   FIELD 10w01 auto_baudrate_start_bit: Write 1 to clear receive auto baudrate detection finished using start bit
+0x2000A028 C   FIELD 11w01 auto_baudrate_five_five: Write 1 to clear receive auto baudrate detection finished using 0x55
+0x2000A02C B  REGISTER interrupt_enable: Interrupt enable register
+0x2000A02C C   FIELD 00w01 transmit_transfer: Transmit transfer signal interrupt enable
+0x2000A02C C   FIELD 01w01 receive_transfer: Receive transfer signal interrupt enable
+0x2000A02C C   FIELD 02w01 transmit_fifo_ready: Transmit FIFO ready signal interrupt enable
+0x2000A02C C   FIELD 03w01 receive_fifo_ready: Receive FIFO ready signal interrupt enable
+0x2000A02C C   FIELD 04w01 receive_timeout: Receive timed-out interrupt enable
+0x2000A02C C   FIELD 05w01 receive_parity: Receive parity check failure interrupt enable
+0x2000A02C C   FIELD 06w01 transmit_fifo_error: Transmit FIFO overflow or underflow interrupt enable
+0x2000A02C C   FIELD 07w01 receive_fifo_error: Receive FIFO overflow or underflow interrupt enable
+0x2000A02C C   FIELD 08w01 receive_sync_error: Receive LIN mode synchronization field error interrupt enable
+0x2000A02C C   FIELD 09w01 receive_byte_count: Receive byte count reached interrupt enable
+0x2000A02C C   FIELD 10w01 auto_baudrate_start_bit: Receive auto baudrate detection finished using start bit interrupt enable
+0x2000A02C C   FIELD 11w01 auto_baudrate_five_five: Receive auto baudrate detection finished using 0x55 interrupt enable
+0x2000A030 B  REGISTER bus_state (ro): Bus state register
+0x2000A030 C   FIELD 00w01 transmit_busy: Indicates that UART transmit bus is busy
+0x2000A030 C   FIELD 01w01 receive_busy: Indicates that UART receive bus is busy
+0x2000A034 B  REGISTER auto_baudrate (ro): Auto baudrate detection register
+0x2000A034 C   FIELD 00w16 by_start_bit: Bit period of auto baudrate detection using start bit
+0x2000A034 C   FIELD 16w16 by_five_five: Bit period of auto baudrate detection using codeword 0x55
+0x2000A048 B  REGISTER pulse_tolerance: Pulse width tolerance for auto baudrate
+0x2000A048 C   FIELD 00w08 by_five_five: Pulse width tolerance of auto baudrate detection using codeword 0x55
+0x2000A054 B  REGISTER rs485_transmit: RS-485 mode transmit configuration
+0x2000A054 C   FIELD 00w01 function: RS-485 transceiver mode enable
+0x2000A054 C   FIELD 01w01 polarity: RS-485 pin polarity of Driver Enable (DE) pin
+0x2000A080 B  REGISTER fifo_config_0: FIFO configuration register 0
+0x2000A080 C   FIELD 00w01 transmit_dma: Enable signal of transmit DMA interface
+0x2000A080 C   FIELD 01w01 receive_dma: Enable signal of receive DMA interface
+0x2000A080 C   FIELD 02w01 transmit_clear (wo): Clears transmit FIFO overflow and underflow flags
+0x2000A080 C   FIELD 03w01 receive_clear (wo): Clears receive FIFO overflow and underflow flags
+0x2000A080 C   FIELD 04w01 transmit_overflow (ro): Transmit FIFO overflow flag\n\n Can be cleared using `transmit_clear`.
+0x2000A080 C   FIELD 05w01 transmit_underflow (ro): Transmit FIFO underflow flag\n\n Can be cleared using `transmit_clear`.
+0x2000A080 C   FIELD 06w01 receive_overflow (ro): Receive FIFO overflow flag\n\n Can be cleared using `receive_clear`.
+0x2000A080 C   FIELD 07w01 receive_underflow (ro): Receive FIFO underflow flag\n\n Can be cleared using `receive_clear`.
+0x2000A084 B  REGISTER fifo_config_1: FIFO configuration register 1
+0x2000A084 C   FIELD 00w06 transmit_count (ro): Count of available data in transmit FIFO
+0x2000A084 C   FIELD 08w06 receive_count (ro): Count of available data in receive FIFO
+0x2000A084 C   FIELD 16w05 transmit_threshold: Transmit FIFO threshold\n\n DMA request will not be asserted if `transmit_available` is less than this value
+0x2000A084 C   FIELD 24w05 receive_threshold: Receive FIFO threshold\n\n DMA request will not be asserted if `receive_available` is less than this value
+0x2000A088 B  REGISTER data_write (wo): FIFO write data register
+0x2000A088 C   FIELD 00w08 value: Write data to FIFO
+0x2000A08C B  REGISTER data_read (ro): FIFO read data register
+0x2000A08C C   FIELD 00w08 value: Read data from FIFO
+0x2000A200 A PERIPHERAL SPI[%s]
+0x2000A200 B  REGISTER config: Function configuration register
+0x2000A204 B  REGISTER interrupt_state: Interrupt enables, masks and states
+0x2000A208 B  REGISTER bus_busy: Bus busy state indicator
+0x2000A210 B  REGISTER period_control: Duration of control signals
+0x2000A214 B  REGISTER period_interval: Interval bitween frames
+0x2000A218 B  REGISTER ignore_index: Receive ignore index configuration
+0x2000A21C B  REGISTER timeout: Slave mode transmit timeout values
+0x2000A280 B  REGISTER fifo_config_0: FIFO configuration register 0
+0x2000A284 B  REGISTER fifo_config_1: FIFO configuration register 1
+0x2000A288 B  REGISTER data_write: FIFO write data register
+0x2000A28C B  REGISTER data_read: FIFO read data register
+0x2000A300 A PERIPHERAL I2C[%s]
+0x2000A300 B  REGISTER config: Function configuration register
+0x2000A300 C   FIELD 00w01 master_enable: Enable signal of I2C master function\n\n Asserting this bit will trigger the transaction, and should be de-asserted after finish.
+0x2000A300 C   FIELD 01w01 transfer_direction: Packet transfer direction
+0x2000A300 C   FIELD 02w01 deglitch_enable: Enable de-glitch function on all input pins
+0x2000A300 C   FIELD 03w01 clock_synchronize: Enable I2C clock synchronization\n\n Enable this bit to support multi-master and clock-stretching. It should not be turned-off normally.
+0x2000A300 C   FIELD 04w01 sub_address_enable: Enable sub-address fields
+0x2000A300 C   FIELD 05w02 sub_address_length: Byte count for I2C sub-address
+0x2000A300 C   FIELD 08w07 slave_address: I2C transaction slave address
+0x2000A300 C   FIELD 16w08 packet_length: Byte count for each packet
+0x2000A300 C   FIELD 28w04 deglitch_cycle: De-glitch function cycle count
+0x2000A304 B  REGISTER interrupt: Interrupt enables, states and masks
+0x2000A304 C   FIELD 00w01 transfer_end_state (ro): Transfer ended interrupt state
+0x2000A304 C   FIELD 01w01 transmit_fifo_ready_state (ro): Transmit FIFO ready interrupt state\n\n Auto cleared when data is pushed into transmit FIFO.
+0x2000A304 C   FIELD 02w01 receive_fifo_ready_state (ro): Receive FIFO ready interrupt state\n\n Auto cleared when data is popped from receive FIFO.
+0x2000A304 C   FIELD 03w01 not_acknowledged_state (ro): Not-acknowledged response interrupt state
+0x2000A304 C   FIELD 04w01 arbitrate_lost_state (ro): Arbitration lost interrupt state
+0x2000A304 C   FIELD 05w01 fifo_error_state (ro): Transmit or receive FIFO error interrupt state\n\n Auto cleared when FIFO overflow or underflow error flag is cleared.
+0x2000A304 C   FIELD 08w01 transfer_end_mask: Transfer ended interrupt mask
+0x2000A304 C   FIELD 09w01 transmit_fifo_ready_mask: Transmit FIFO ready interrupt mask
+0x2000A304 C   FIELD 10w01 receive_fifo_ready_mask: Receive FIFO ready interrupt mask
+0x2000A304 C   FIELD 11w01 not_acknowledged_mask: Not-acknowledged response interrupt mask
+0x2000A304 C   FIELD 12w01 arbitrate_lost_mask: Arbitration lost interrupt mask
+0x2000A304 C   FIELD 13w01 fifo_error_mask: Transmit or receive FIFO error interrupt mask
+0x2000A304 C   FIELD 16w01 transfer_end_clear (wo): Write 1 to clear transfer ended
+0x2000A304 C   FIELD 19w01 not_acknowledged_clear (wo): Write 1 to clear not-acknowledged response
+0x2000A304 C   FIELD 20w01 arbitrate_lost_clear (wo): Write 1 to clear arbitration lost
+0x2000A304 C   FIELD 24w01 transfer_end_enable: Transfer ended interrupt enable
+0x2000A304 C   FIELD 25w01 transmit_fifo_ready_enable: Transmit FIFO ready interrupt enable
+0x2000A304 C   FIELD 26w01 receive_fifo_ready_enable: Receive FIFO ready interrupt enable
+0x2000A304 C   FIELD 27w01 not_acknowledged_enable: Not-acknowledged response interrupt enable
+0x2000A304 C   FIELD 28w01 arbitrate_lost_enable: Arbitration lost interrupt enable
+0x2000A304 C   FIELD 29w01 fifo_error_enable: Transmit or receive FIFO error interrupt enable
+0x2000A308 B  REGISTER sub_address: Register address of slave device
+0x2000A308 C   FIELD 00w08 byte0 (rw): I2C sub-address byte 0
+0x2000A308 C   FIELD 08w08 byte1 (rw): I2C sub-address byte 1
+0x2000A308 C   FIELD 16w08 byte2 (rw): I2C sub-address byte 2
+0x2000A308 C   FIELD 24w08 byte3 (rw): I2C sub-address byte 3
+0x2000A30C B  REGISTER bus_busy: Bus busy state indicator
+0x2000A30C C   FIELD 00w01 busy (ro): Indicator to I2C bus busy signal
+0x2000A30C C   FIELD 01w01 force_clear (wo): Force clear I2C bus busy state\n\n Not for normal use; only use when I2C bus hangs
+0x2000A310 B  REGISTER period_start: Duration of start phase
+0x2000A310 C   FIELD 00w08 phase0 (rw): Length of start condition phase 0
+0x2000A310 C   FIELD 08w08 phase1 (rw): Length of start condition phase 1
+0x2000A310 C   FIELD 16w08 phase2 (rw): Length of start condition phase 2
+0x2000A310 C   FIELD 24w08 phase3 (rw): Length of start condition phase 3
+0x2000A314 B  REGISTER period_stop: Duration of stop phase
+0x2000A314 C   FIELD 00w08 phase0 (rw): Length of stop condition phase 0
+0x2000A314 C   FIELD 08w08 phase1 (rw): Length of stop condition phase 1
+0x2000A314 C   FIELD 16w08 phase2 (rw): Length of stop condition phase 2
+0x2000A314 C   FIELD 24w08 phase3 (rw): Length of stop condition phase 3
+0x2000A318 B  REGISTER period_data: Duration of data phase
+0x2000A318 C   FIELD 00w08 phase0 (rw): Length of data condition phase 0
+0x2000A318 C   FIELD 08w08 phase1 (rw): Length of data condition phase 1
+0x2000A318 C   FIELD 16w08 phase2 (rw): Length of data condition phase 2
+0x2000A318 C   FIELD 24w08 phase3 (rw): Length of data condition phase 3
+0x2000A380 B  REGISTER fifo_config_0: FIFO configuration register 0
+0x2000A380 C   FIELD 00w01 transmit_dma: Enable signal of transmit DMA interface
+0x2000A380 C   FIELD 01w01 receive_dma: Enable signal of receive DMA interface
+0x2000A380 C   FIELD 02w01 transmit_clear (wo): Clears transmit FIFO overflow and underflow flags
+0x2000A380 C   FIELD 03w01 receive_clear (wo): Clears receive FIFO overflow and underflow flags
+0x2000A380 C   FIELD 04w01 transmit_overflow (ro): Transmit FIFO overflow flag\n\n Can be cleared using `transmit_clear`.
+0x2000A380 C   FIELD 05w01 transmit_underflow (ro): Transmit FIFO underflow flag\n\n Can be cleared using `transmit_clear`.
+0x2000A380 C   FIELD 06w01 receive_overflow (ro): Receive FIFO overflow flag\n\n Can be cleared using `receive_clear`.
+0x2000A380 C   FIELD 07w01 receive_underflow (ro): Receive FIFO underflow flag\n\n Can be cleared using `receive_clear`.
+0x2000A384 B  REGISTER fifo_config_1: FIFO configuration register 1
+0x2000A384 C   FIELD 00w02 transmit_count (ro): Count of available data in transmit FIFO
+0x2000A384 C   FIELD 08w02 receive_count (ro): Count of available data in receive FIFO
+0x2000A384 C   FIELD 16w01 transmit_threshold: Transmit FIFO threshold\n\n DMA request will not be asserted if `transmit_available` is less than this value
+0x2000A384 C   FIELD 24w01 receive_threshold: Receive FIFO threshold\n\n DMA request will not be asserted if `receive_available` is less than this value
+0x2000A388 B  REGISTER data_write (wo): FIFO write data register
+0x2000A388 C   FIELD 00w08 value: Write data to FIFO
+0x2000A38C B  REGISTER data_read (ro): FIFO read data register
+0x2000A38C C   FIELD 00w08 value: Read data from FIFO
+0x2000A400 A PERIPHERAL PWM
+0x2000A400 B  REGISTER interrupt_config: Interrupt state and clear register
+0x2000A440 B  CLUSTER group0: Pulse-Width Modulation channel group
+0x2000A440 B  REGISTER config0: Peripheral group configuration
+0x2000A440 C   FIELD 19w01 stop_on_repeat: Enable or disable stop on one repeat cycle completed
+0x2000A440 C   FIELD 20w04 adc_trigger_source: Select channel in Analog-to-Digital Converter to interact with this peripheral\n\n **This field only works with PWM0.** PWM1 does not have this feature.
+0x2000A440 C   FIELD 24w01 software_break: Enable software signal break
+0x2000A440 C   FIELD 25w01 external_break: Enable external pin signal break
+0x2000A440 C   FIELD 26w01 external_polarity: Polarity for external pin break function
+0x2000A440 C   FIELD 27w01 stop_function: Enable or disable stop function
+0x2000A440 C   FIELD 28w01 stop_mode: Mode to stop this peripheral
+0x2000A440 C   FIELD 29w01 stop_state: Is this peripheral stopped?
+0x2000A440 C   FIELD 30w02 clock_select: Select group clock source
+0x2000A444 B  REGISTER channel0: Channel configuration register
+0x2000A444 C   FIELD 00w01 positive_signal0: Enable or disable positive signal for channel
+0x2000A444 C   FIELD 01w01 positive_idle0: Idle state of positive signal
+0x2000A444 C   FIELD 02w01 negative_signal0: Enable or disable negative signal for channel
+0x2000A444 C   FIELD 03w01 negative_idle0: Idle state of negative signal
+0x2000A444 C   FIELD 04w01 positive_signal1: Enable or disable positive signal for channel
+0x2000A444 C   FIELD 05w01 positive_idle1: Idle state of positive signal
+0x2000A444 C   FIELD 06w01 negative_signal1: Enable or disable negative signal for channel
+0x2000A444 C   FIELD 07w01 negative_idle1: Idle state of negative signal
+0x2000A444 C   FIELD 08w01 positive_signal2: Enable or disable positive signal for channel
+0x2000A444 C   FIELD 09w01 positive_idle2: Idle state of positive signal
+0x2000A444 C   FIELD 10w01 negative_signal2: Enable or disable negative signal for channel
+0x2000A444 C   FIELD 11w01 negative_idle2: Idle state of negative signal
+0x2000A444 C   FIELD 12w01 positive_signal3: Enable or disable positive signal for channel
+0x2000A444 C   FIELD 13w01 positive_idle3: Idle state of positive signal
+0x2000A444 C   FIELD 14w01 negative_signal3: Enable or disable negative signal for channel
+0x2000A444 C   FIELD 15w01 negative_idle3: Idle state of negative signal
+0x2000A444 C   FIELD 16w01 positive_polarity0: Polarity of positive signal
+0x2000A444 C   FIELD 17w01 negative_polarity0: Polarity of negative signal
+0x2000A444 C   FIELD 18w01 positive_polarity1: Polarity of positive signal
+0x2000A444 C   FIELD 19w01 negative_polarity1: Polarity of negative signal
+0x2000A444 C   FIELD 20w01 positive_polarity2: Polarity of positive signal
+0x2000A444 C   FIELD 21w01 negative_polarity2: Polarity of negative signal
+0x2000A444 C   FIELD 22w01 positive_polarity3: Polarity of positive signal
+0x2000A444 C   FIELD 23w01 negative_polarity3: Polarity of negative signal
+0x2000A444 C   FIELD 24w01 positive_break0: Break state on positive signal of this channel
+0x2000A444 C   FIELD 25w01 negative_break0: Break state on negative signal of this channel
+0x2000A444 C   FIELD 26w01 positive_break1: Break state on positive signal of this channel
+0x2000A444 C   FIELD 27w01 negative_break1: Break state on negative signal of this channel
+0x2000A444 C   FIELD 28w01 positive_break2: Break state on positive signal of this channel
+0x2000A444 C   FIELD 29w01 negative_break2: Break state on negative signal of this channel
+0x2000A444 C   FIELD 30w01 positive_break3: Break state on positive signal of this channel
+0x2000A444 C   FIELD 31w01 negative_break3: Break state on negative signal of this channel
+0x2000A448 B  REGISTER period0: Pulse clock period register
+0x2000A448 C   FIELD 00w16 interrupt_cycles: If internal counter reaches this cycle count, it interrupts
+0x2000A448 C   FIELD 16w16 repeat_cycles: How many clock cycles a Pulse-Width Modulation cycle includes
+0x2000A44C B  REGISTER dead_time0: Dead time for each channel
+0x2000A44C C   FIELD 00w08 channel0: Dead time for each channel in cycles
+0x2000A44C C   FIELD 08w08 channel1: Dead time for each channel in cycles
+0x2000A44C C   FIELD 16w08 channel2: Dead time for each channel in cycles
+0x2000A44C C   FIELD 24w08 channel3: Dead time for each channel in cycles
+0x2000A450 B  REGISTER threshold0: Channel internal counter threshold
+0x2000A450 C   FIELD 00w16 low: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A450 C   FIELD 16w16 high: Highest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A454 B  REGISTER threshold1: Channel internal counter threshold
+0x2000A454 C   FIELD 00w16 low: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A454 C   FIELD 16w16 high: Highest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A458 B  REGISTER threshold2: Channel internal counter threshold
+0x2000A458 C   FIELD 00w16 low: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A458 C   FIELD 16w16 high: Highest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A45C B  REGISTER threshold3: Channel internal counter threshold
+0x2000A45C C   FIELD 00w16 low: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A45C C   FIELD 16w16 high: Highest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A460 B  REGISTER interrupt_state0 (ro): Interrupt state register
+0x2000A460 C   FIELD 00w01 threshold_low0: Intenal counter for channel have exceeded low threshold
+0x2000A460 C   FIELD 01w01 threshold_high0: Intenal counter for channel have exceeded high threshold
+0x2000A460 C   FIELD 02w01 threshold_low1: Intenal counter for channel have exceeded low threshold
+0x2000A460 C   FIELD 03w01 threshold_high1: Intenal counter for channel have exceeded high threshold
+0x2000A460 C   FIELD 04w01 threshold_low2: Intenal counter for channel have exceeded low threshold
+0x2000A460 C   FIELD 05w01 threshold_high2: Intenal counter for channel have exceeded high threshold
+0x2000A460 C   FIELD 06w01 threshold_low3: Intenal counter for channel have exceeded low threshold
+0x2000A460 C   FIELD 07w01 threshold_high3: Intenal counter for channel have exceeded high threshold
+0x2000A460 C   FIELD 08w01 interrupt_period: Intenal counter for channel have exceeded interrupt cycle threshold
+0x2000A460 C   FIELD 09w01 external_break: External break signal occurred
+0x2000A460 C   FIELD 10w01 repeat: Peripheral group have completed one repeat cycle
+0x2000A464 B  REGISTER interrupt_mask0: Interrupt mask register
+0x2000A464 C   FIELD 00w01 threshold_low0: Intenal counter for channel have exceeded low threshold
+0x2000A464 C   FIELD 01w01 threshold_high0: Intenal counter for channel have exceeded high threshold
+0x2000A464 C   FIELD 02w01 threshold_low1: Intenal counter for channel have exceeded low threshold
+0x2000A464 C   FIELD 03w01 threshold_high1: Intenal counter for channel have exceeded high threshold
+0x2000A464 C   FIELD 04w01 threshold_low2: Intenal counter for channel have exceeded low threshold
+0x2000A464 C   FIELD 05w01 threshold_high2: Intenal counter for channel have exceeded high threshold
+0x2000A464 C   FIELD 06w01 threshold_low3: Intenal counter for channel have exceeded low threshold
+0x2000A464 C   FIELD 07w01 threshold_high3: Intenal counter for channel have exceeded high threshold
+0x2000A464 C   FIELD 08w01 interrupt_period: Intenal counter for channel have exceeded interrupt cycle threshold
+0x2000A464 C   FIELD 09w01 external_break: External break signal occurred
+0x2000A464 C   FIELD 10w01 repeat: Peripheral group have completed one repeat cycle
+0x2000A468 B  REGISTER interrupt_clear0 (wo): Clear interrupt register
+0x2000A468 C   FIELD 00w01 threshold_low0: Intenal counter for channel have exceeded low threshold
+0x2000A468 C   FIELD 01w01 threshold_high0: Intenal counter for channel have exceeded high threshold
+0x2000A468 C   FIELD 02w01 threshold_low1: Intenal counter for channel have exceeded low threshold
+0x2000A468 C   FIELD 03w01 threshold_high1: Intenal counter for channel have exceeded high threshold
+0x2000A468 C   FIELD 04w01 threshold_low2: Intenal counter for channel have exceeded low threshold
+0x2000A468 C   FIELD 05w01 threshold_high2: Intenal counter for channel have exceeded high threshold
+0x2000A468 C   FIELD 06w01 threshold_low3: Intenal counter for channel have exceeded low threshold
+0x2000A468 C   FIELD 07w01 threshold_high3: Intenal counter for channel have exceeded high threshold
+0x2000A468 C   FIELD 08w01 interrupt_period: Intenal counter for channel have exceeded interrupt cycle threshold
+0x2000A468 C   FIELD 09w01 external_break: External break signal occurred
+0x2000A468 C   FIELD 10w01 repeat: Peripheral group have completed one repeat cycle
+0x2000A46C B  REGISTER interrupt_enable0: Interrupt enable register
+0x2000A46C C   FIELD 00w01 threshold_low0: Intenal counter for channel have exceeded low threshold
+0x2000A46C C   FIELD 01w01 threshold_high0: Intenal counter for channel have exceeded high threshold
+0x2000A46C C   FIELD 02w01 threshold_low1: Intenal counter for channel have exceeded low threshold
+0x2000A46C C   FIELD 03w01 threshold_high1: Intenal counter for channel have exceeded high threshold
+0x2000A46C C   FIELD 04w01 threshold_low2: Intenal counter for channel have exceeded low threshold
+0x2000A46C C   FIELD 05w01 threshold_high2: Intenal counter for channel have exceeded high threshold
+0x2000A46C C   FIELD 06w01 threshold_low3: Intenal counter for channel have exceeded low threshold
+0x2000A46C C   FIELD 07w01 threshold_high3: Intenal counter for channel have exceeded high threshold
+0x2000A46C C   FIELD 08w01 interrupt_period: Intenal counter for channel have exceeded interrupt cycle threshold
+0x2000A46C C   FIELD 09w01 external_break: External break signal occurred
+0x2000A46C C   FIELD 10w01 repeat: Peripheral group have completed one repeat cycle
+0x2000A480 B  CLUSTER group1: Pulse-Width Modulation channel group
+0x2000A480 B  REGISTER config1: Peripheral group configuration
+0x2000A480 C   FIELD 19w01 stop_on_repeat: Enable or disable stop on one repeat cycle completed
+0x2000A480 C   FIELD 20w04 adc_trigger_source: Select channel in Analog-to-Digital Converter to interact with this peripheral\n\n **This field only works with PWM0.** PWM1 does not have this feature.
+0x2000A480 C   FIELD 24w01 software_break: Enable software signal break
+0x2000A480 C   FIELD 25w01 external_break: Enable external pin signal break
+0x2000A480 C   FIELD 26w01 external_polarity: Polarity for external pin break function
+0x2000A480 C   FIELD 27w01 stop_function: Enable or disable stop function
+0x2000A480 C   FIELD 28w01 stop_mode: Mode to stop this peripheral
+0x2000A480 C   FIELD 29w01 stop_state: Is this peripheral stopped?
+0x2000A480 C   FIELD 30w02 clock_select: Select group clock source
+0x2000A484 B  REGISTER channel1: Channel configuration register
+0x2000A484 C   FIELD 00w01 positive_signal0: Enable or disable positive signal for channel
+0x2000A484 C   FIELD 01w01 positive_idle0: Idle state of positive signal
+0x2000A484 C   FIELD 02w01 negative_signal0: Enable or disable negative signal for channel
+0x2000A484 C   FIELD 03w01 negative_idle0: Idle state of negative signal
+0x2000A484 C   FIELD 04w01 positive_signal1: Enable or disable positive signal for channel
+0x2000A484 C   FIELD 05w01 positive_idle1: Idle state of positive signal
+0x2000A484 C   FIELD 06w01 negative_signal1: Enable or disable negative signal for channel
+0x2000A484 C   FIELD 07w01 negative_idle1: Idle state of negative signal
+0x2000A484 C   FIELD 08w01 positive_signal2: Enable or disable positive signal for channel
+0x2000A484 C   FIELD 09w01 positive_idle2: Idle state of positive signal
+0x2000A484 C   FIELD 10w01 negative_signal2: Enable or disable negative signal for channel
+0x2000A484 C   FIELD 11w01 negative_idle2: Idle state of negative signal
+0x2000A484 C   FIELD 12w01 positive_signal3: Enable or disable positive signal for channel
+0x2000A484 C   FIELD 13w01 positive_idle3: Idle state of positive signal
+0x2000A484 C   FIELD 14w01 negative_signal3: Enable or disable negative signal for channel
+0x2000A484 C   FIELD 15w01 negative_idle3: Idle state of negative signal
+0x2000A484 C   FIELD 16w01 positive_polarity0: Polarity of positive signal
+0x2000A484 C   FIELD 17w01 negative_polarity0: Polarity of negative signal
+0x2000A484 C   FIELD 18w01 positive_polarity1: Polarity of positive signal
+0x2000A484 C   FIELD 19w01 negative_polarity1: Polarity of negative signal
+0x2000A484 C   FIELD 20w01 positive_polarity2: Polarity of positive signal
+0x2000A484 C   FIELD 21w01 negative_polarity2: Polarity of negative signal
+0x2000A484 C   FIELD 22w01 positive_polarity3: Polarity of positive signal
+0x2000A484 C   FIELD 23w01 negative_polarity3: Polarity of negative signal
+0x2000A484 C   FIELD 24w01 positive_break0: Break state on positive signal of this channel
+0x2000A484 C   FIELD 25w01 negative_break0: Break state on negative signal of this channel
+0x2000A484 C   FIELD 26w01 positive_break1: Break state on positive signal of this channel
+0x2000A484 C   FIELD 27w01 negative_break1: Break state on negative signal of this channel
+0x2000A484 C   FIELD 28w01 positive_break2: Break state on positive signal of this channel
+0x2000A484 C   FIELD 29w01 negative_break2: Break state on negative signal of this channel
+0x2000A484 C   FIELD 30w01 positive_break3: Break state on positive signal of this channel
+0x2000A484 C   FIELD 31w01 negative_break3: Break state on negative signal of this channel
+0x2000A488 B  REGISTER period1: Pulse clock period register
+0x2000A488 C   FIELD 00w16 interrupt_cycles: If internal counter reaches this cycle count, it interrupts
+0x2000A488 C   FIELD 16w16 repeat_cycles: How many clock cycles a Pulse-Width Modulation cycle includes
+0x2000A48C B  REGISTER dead_time1: Dead time for each channel
+0x2000A48C C   FIELD 00w08 channel0: Dead time for each channel in cycles
+0x2000A48C C   FIELD 08w08 channel1: Dead time for each channel in cycles
+0x2000A48C C   FIELD 16w08 channel2: Dead time for each channel in cycles
+0x2000A48C C   FIELD 24w08 channel3: Dead time for each channel in cycles
+0x2000A490 B  REGISTER threshold0: Channel internal counter threshold
+0x2000A490 C   FIELD 00w16 low: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A490 C   FIELD 16w16 high: Highest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A494 B  REGISTER threshold1: Channel internal counter threshold
+0x2000A494 C   FIELD 00w16 low: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A494 C   FIELD 16w16 high: Highest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A498 B  REGISTER threshold2: Channel internal counter threshold
+0x2000A498 C   FIELD 00w16 low: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A498 C   FIELD 16w16 high: Highest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A49C B  REGISTER threshold3: Channel internal counter threshold
+0x2000A49C C   FIELD 00w16 low: Lowest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A49C C   FIELD 16w16 high: Highest value for internal counter that sets positive signal to 1 and negative to 0
+0x2000A4A0 B  REGISTER interrupt_state1 (ro): Interrupt state register
+0x2000A4A0 C   FIELD 00w01 threshold_low0: Intenal counter for channel have exceeded low threshold
+0x2000A4A0 C   FIELD 01w01 threshold_high0: Intenal counter for channel have exceeded high threshold
+0x2000A4A0 C   FIELD 02w01 threshold_low1: Intenal counter for channel have exceeded low threshold
+0x2000A4A0 C   FIELD 03w01 threshold_high1: Intenal counter for channel have exceeded high threshold
+0x2000A4A0 C   FIELD 04w01 threshold_low2: Intenal counter for channel have exceeded low threshold
+0x2000A4A0 C   FIELD 05w01 threshold_high2: Intenal counter for channel have exceeded high threshold
+0x2000A4A0 C   FIELD 06w01 threshold_low3: Intenal counter for channel have exceeded low threshold
+0x2000A4A0 C   FIELD 07w01 threshold_high3: Intenal counter for channel have exceeded high threshold
+0x2000A4A0 C   FIELD 08w01 interrupt_period: Intenal counter for channel have exceeded interrupt cycle threshold
+0x2000A4A0 C   FIELD 09w01 external_break: External break signal occurred
+0x2000A4A0 C   FIELD 10w01 repeat: Peripheral group have completed one repeat cycle
+0x2000A4A4 B  REGISTER interrupt_mask1: Interrupt mask register
+0x2000A4A4 C   FIELD 00w01 threshold_low0: Intenal counter for channel have exceeded low threshold
+0x2000A4A4 C   FIELD 01w01 threshold_high0: Intenal counter for channel have exceeded high threshold
+0x2000A4A4 C   FIELD 02w01 threshold_low1: Intenal counter for channel have exceeded low threshold
+0x2000A4A4 C   FIELD 03w01 threshold_high1: Intenal counter for channel have exceeded high threshold
+0x2000A4A4 C   FIELD 04w01 threshold_low2: Intenal counter for channel have exceeded low threshold
+0x2000A4A4 C   FIELD 05w01 threshold_high2: Intenal counter for channel have exceeded high threshold
+0x2000A4A4 C   FIELD 06w01 threshold_low3: Intenal counter for channel have exceeded low threshold
+0x2000A4A4 C   FIELD 07w01 threshold_high3: Intenal counter for channel have exceeded high threshold
+0x2000A4A4 C   FIELD 08w01 interrupt_period: Intenal counter for channel have exceeded interrupt cycle threshold
+0x2000A4A4 C   FIELD 09w01 external_break: External break signal occurred
+0x2000A4A4 C   FIELD 10w01 repeat: Peripheral group have completed one repeat cycle
+0x2000A4A8 B  REGISTER interrupt_clear1 (wo): Clear interrupt register
+0x2000A4A8 C   FIELD 00w01 threshold_low0: Intenal counter for channel have exceeded low threshold
+0x2000A4A8 C   FIELD 01w01 threshold_high0: Intenal counter for channel have exceeded high threshold
+0x2000A4A8 C   FIELD 02w01 threshold_low1: Intenal counter for channel have exceeded low threshold
+0x2000A4A8 C   FIELD 03w01 threshold_high1: Intenal counter for channel have exceeded high threshold
+0x2000A4A8 C   FIELD 04w01 threshold_low2: Intenal counter for channel have exceeded low threshold
+0x2000A4A8 C   FIELD 05w01 threshold_high2: Intenal counter for channel have exceeded high threshold
+0x2000A4A8 C   FIELD 06w01 threshold_low3: Intenal counter for channel have exceeded low threshold
+0x2000A4A8 C   FIELD 07w01 threshold_high3: Intenal counter for channel have exceeded high threshold
+0x2000A4A8 C   FIELD 08w01 interrupt_period: Intenal counter for channel have exceeded interrupt cycle threshold
+0x2000A4A8 C   FIELD 09w01 external_break: External break signal occurred
+0x2000A4A8 C   FIELD 10w01 repeat: Peripheral group have completed one repeat cycle
+0x2000A4AC B  REGISTER interrupt_enable1: Interrupt enable register
+0x2000A4AC C   FIELD 00w01 threshold_low0: Intenal counter for channel have exceeded low threshold
+0x2000A4AC C   FIELD 01w01 threshold_high0: Intenal counter for channel have exceeded high threshold
+0x2000A4AC C   FIELD 02w01 threshold_low1: Intenal counter for channel have exceeded low threshold
+0x2000A4AC C   FIELD 03w01 threshold_high1: Intenal counter for channel have exceeded high threshold
+0x2000A4AC C   FIELD 04w01 threshold_low2: Intenal counter for channel have exceeded low threshold
+0x2000A4AC C   FIELD 05w01 threshold_high2: Intenal counter for channel have exceeded high threshold
+0x2000A4AC C   FIELD 06w01 threshold_low3: Intenal counter for channel have exceeded low threshold
+0x2000A4AC C   FIELD 07w01 threshold_high3: Intenal counter for channel have exceeded high threshold
+0x2000A4AC C   FIELD 08w01 interrupt_period: Intenal counter for channel have exceeded interrupt cycle threshold
+0x2000A4AC C   FIELD 09w01 external_break: External break signal occurred
+0x2000A4AC C   FIELD 10w01 repeat: Peripheral group have completed one repeat cycle
+0x2000A500 A PERIPHERAL TIMER
+0x2000A500 B  REGISTER todo: ??
+0x2000A600 A PERIPHERAL IR
+0x2000A600 B  REGISTER transmit_config: ??
+0x2000A604 B  REGISTER transmit_interrupt: ??
+0x2000A608 B  REGISTER transmit_data0: ??
+0x2000A60C B  REGISTER transmit_data1: ??
+0x2000A610 B  REGISTER transmit_width: ??
+0x2000A680 B  REGISTER receive_config: ??
+0x2000A684 B  REGISTER receive_interrupt: ??
+0x2000A688 B  REGISTER receive_width: ??
+0x2000A690 B  REGISTER receive_bit_count: ??
+0x2000A694 B  REGISTER receive_data0: ??
+0x2000A698 B  REGISTER receive_data1: ??
+0x2000A800 A PERIPHERAL IPC
+0x2000A800 B  REGISTER todo: ??
+0x2000AA00 A PERIPHERAL ISO11898
+0x2000AA00 B  REGISTER todo: ??
+0x2000AB00 A PERIPHERAL I2S
+0x2000AB00 B  REGISTER config: Function configuration register
+0x2000AB04 B  REGISTER interrupt_state: Interrupt enables, masks and states
+0x2000AB10 B  REGISTER base_clock: Base clock divider
+0x2000AB10 C   FIELD 00w12 divide_low (rw): Lower half of base clock dividing factor
+0x2000AB10 C   FIELD 16w12 divide_high (rw): Higher half of base clock dividing factor
+0x2000AB80 B  REGISTER fifo_config_0: FIFO configuration register 0
+0x2000AB80 C   FIELD 00w01 transmit_dma: Enable signal of transmit DMA interface
+0x2000AB80 C   FIELD 01w01 receive_dma: Enable signal of receive DMA interface
+0x2000AB80 C   FIELD 02w01 transmit_clear (wo): Clears transmit FIFO overflow and underflow flags
+0x2000AB80 C   FIELD 03w01 receive_clear (wo): Clears receive FIFO overflow and underflow flags
+0x2000AB80 C   FIELD 04w01 transmit_overflow (ro): Transmit FIFO overflow flag\n\n Can be cleared using `transmit_clear`.
+0x2000AB80 C   FIELD 05w01 transmit_underflow (ro): Transmit FIFO underflow flag\n\n Can be cleared using `transmit_clear`.
+0x2000AB80 C   FIELD 06w01 receive_overflow (ro): Receive FIFO overflow flag\n\n Can be cleared using `receive_clear`.
+0x2000AB80 C   FIELD 07w01 receive_underflow (ro): Receive FIFO underflow flag\n\n Can be cleared using `receive_clear`.
+0x2000AB80 C   FIELD 08w01 merge_left_right: 
+0x2000AB80 C   FIELD 09w01 swap_left_right: 
+0x2000AB80 C   FIELD 10w01 left_justified: 
+0x2000AB84 B  REGISTER fifo_config_1: FIFO configuration register 1
+0x2000AB84 C   FIELD 00w05 transmit_count (ro): Count of available data in transmit FIFO
+0x2000AB84 C   FIELD 08w05 receive_count (ro): Count of available data in receive FIFO
+0x2000AB84 C   FIELD 16w04 transmit_threshold: Transmit FIFO threshold\n\n DMA request will not be asserted if `transmit_available` is less than this value
+0x2000AB84 C   FIELD 24w04 receive_threshold: Receive FIFO threshold\n\n DMA request will not be asserted if `receive_available` is less than this value
+0x2000AB88 B  REGISTER data_write (wo): FIFO write data register
+0x2000AB88 C   FIELD 00w08 value: Write data to FIFO
+0x2000AB8C B  REGISTER data_read (ro): FIFO read data register
+0x2000AB8C C   FIELD 00w08 value: Read data from FIFO
+0x2000AC00 A PERIPHERAL PDM
+0x2000AC00 B  REGISTER todo: ??
+0x2000AD00 A PERIPHERAL LZ4D
+0x2000AD00 B  REGISTER config: Decompressor peripheral configuration
+0x2000AD00 C   FIELD 00w01 enable: Enable peripheral decompression
+0x2000AD00 C   FIELD 01w01 suspend: Suspend peripheral decompression
+0x2000AD00 C   FIELD 04w01 has_checksum: Does this block includes an LZ4 checksum?\n\n Users should read checksum flag from frame descriptor to fill in correct value for this register field.
+0x2000AD10 B  REGISTER source_start: Writes source address before decompression
+0x2000AD10 C   FIELD 00w26 start: Start address
+0x2000AD10 C   FIELD 26w06 base: Address base
+0x2000AD14 B  REGISTER source_end (ro): Reads the end address of source after decompression
+0x2000AD14 C   FIELD 00w26 end: End of address
+0x2000AD18 B  REGISTER destination_start: Writes destination address before decompression
+0x2000AD18 C   FIELD 00w26 start: Start address
+0x2000AD18 C   FIELD 26w06 base: Address base
+0x2000AD1C B  REGISTER destination_end (ro): Reads the end address of destination after decompression
+0x2000AD1C C   FIELD 00w26 end: End of address
+0x2000AD20 B  REGISTER interrupt_enable: Interrupt enable register
+0x2000AD20 C   FIELD 00w01 done: Decompliation finished
+0x2000AD20 C   FIELD 01w01 error: Error occurred while decompliation
+0x2000AD24 B  REGISTER interrupt_state (ro): Interrupt state register
+0x2000AD24 C   FIELD 00w01 done: Decompliation finished
+0x2000AD24 C   FIELD 01w01 error: Error occurred while decompliation
+0x2000B000 A PERIPHERAL FLASH
+0x2000B000 B  REGISTER todo: ??
+0x2000C000 A PERIPHERAL DMA%s
+0x2000C000 B  REGISTER todo: ??
+0x2000E000 A PERIPHERAL PDS
+0x2000EA00 B  REGISTER touch_config: ??
+0x2000EA04 B  REGISTER touch_channel: ??
+0x2000EA08 B  REGISTER touch_process: ??
+0x2000EA0C B  REGISTER touch_sleep: ??
+0x2000EA10 B  REGISTER touch_delay: ??
+0x2000EA14 B  REGISTER touch_force0: ??
+0x2000EA18 B  REGISTER touch_force1: ??
+0x2000EA1C B  REGISTER touch_force2: ??
+0x2000EA20 B  REGISTER touch_force3: ??
+0x2000EA24 B  REGISTER touch_force4: ??
+0x2000EA28 B  REGISTER touch_force5: ??
+0x2000EA2C B  REGISTER touch_voltage0: ??
+0x2000EA30 B  REGISTER touch_voltage1: ??
+0x2000EA34 B  REGISTER touch_voltage2: ??
+0x2000EA38 B  REGISTER touch_raw0: ??
+0x2000EA3C B  REGISTER touch_raw1: ??
+0x2000EA40 B  REGISTER touch_raw2: ??
+0x2000EA44 B  REGISTER touch_raw3: ??
+0x2000EA48 B  REGISTER touch_raw4: ??
+0x2000EA4C B  REGISTER touch_raw5: ??
+0x2000EA50 B  REGISTER touch_raw6: ??
+0x2000EA54 B  REGISTER touch_raw7: ??
+0x2000EA58 B  REGISTER touch_raw8: ??
+0x2000EA5C B  REGISTER touch_raw9: ??
+0x2000EA60 B  REGISTER touch_raw10: ??
+0x2000EA64 B  REGISTER touch_raw11: ??
+0x2000EACC B  REGISTER touch_interrupt_0: ??
+0x2000EAD0 B  REGISTER touch_interrupt_1: ??
+0x2000F000 A PERIPHERAL HBN
+0x2000F000 B  REGISTER control: Miscellaneous control register
+0x2000F004 B  REGISTER time_lo: Low bits of hibernate time
+0x2000F008 B  REGISTER time_hi: High bits of hibernate time
+0x2000F00C B  REGISTER rtc_time_lo: Low bits of Real-Time Clock time
+0x2000F010 B  REGISTER rtc_time_hi: High bits of Real-Time Clock time
+0x2000F014 B  REGISTER interrupt_mode: Hibernate interrupt contol
+0x2000F018 B  REGISTER interrupt_state: Hibernate interrupt state
+0x2000F01C B  REGISTER interrupt_clear: Clear hibernate interrupt
+0x2000F030 B  REGISTER global: Global hibernate configuration
+0x2000F034 B  REGISTER sram: Static Random-Access Memory hibernate control
+0x2000F200 B  REGISTER rc32k: 32-kHz internal RC oscillator control
+0x2000F204 B  REGISTER xtal32k: External crystal oscillator control
+0x2000F208 B  REGISTER rtc_control_0: Real-Time Clock control and reset register 0
+0x2000F20C B  REGISTER rtc_control_1: Real-Time Clock control and reset register 1
+0x2000F800 A PERIPHERAL AON
+0x2000F800 B  REGISTER todo: ??
+0x20052000 A PERIPHERAL PSRAM
+0x20052000 B  REGISTER todo: ??
+0x20055000 A PERIPHERAL AUDIO
+0x20055000 B  REGISTER todo: ??
+0x20056000 A PERIPHERAL EFUSE
+0x20056000 B  REGISTER todo: ??
+0x20060000 A PERIPHERAL SDH
+0x20060000 B  REGISTER todo: ??
+0x20070000 A PERIPHERAL EMAC
+0x20070000 B  REGISTER mode: Interface enables and configurations
+0x20070004 B  REGISTER interrupt_source (rw): Interrupt source register
+0x20070004 C   FIELD 00w01 buffer_transmitted: Buffer transmitted interrupt state
+0x20070004 C   FIELD 01w01 transmit_error: Transmit error interrupt state
+0x20070004 C   FIELD 02w01 frame_received: Frame received interrupt state
+0x20070004 C   FIELD 03w01 receive_error: Receive error interrupt state
+0x20070004 C   FIELD 04w01 busy: Lack of buffer interrupt state
+0x20070004 C   FIELD 05w01 control_transmit: Control frame transmitted interrupt state
+0x20070004 C   FIELD 06w01 control_receive: Control frame received interrupt state
+0x20070008 B  REGISTER interrupt_mask (rw): Interrupt mask register
+0x20070008 C   FIELD 00w01 buffer_transmitted: Buffer transmitted interrupt mask
+0x20070008 C   FIELD 01w01 transmit_error: Transmit error interrupt mask
+0x20070008 C   FIELD 02w01 frame_received: Frame received interrupt mask
+0x20070008 C   FIELD 03w01 receive_error: Receive error interrupt mask
+0x20070008 C   FIELD 04w01 busy: Lack of buffer interrupt mask
+0x20070008 C   FIELD 05w01 control_transmit: Control frame transmitted interrupt mask
+0x20070008 C   FIELD 06w01 control_receive: Control frame received interrupt mask
+0x2007000C B  REGISTER backed_gap: Back-to-back inter-packet gap register
+0x20070010 B  REGISTER non_backed_gap_1: Non back-to-back inter-packet gap register 1
+0x20070014 B  REGISTER non_backed_gap_2: Non back-to-back inter-packet gap register 2
+0x20070018 B  REGISTER frame_length: Minimum and maximum ethernet frame length
+0x2007001C B  REGISTER collision: Collision time window and maximum retries
+0x20070020 B  REGISTER transmit_buffer: Transmit buffer descriptor
+0x20070024 B  REGISTER flow_control: Control frame function register
+0x20070028 B  REGISTER mii_mode: MII clock divider and premable enable
+0x2007002C B  REGISTER mii_command: MII control data, read and scan state
+0x20070030 B  REGISTER mii_address: Physical layer bus address
+0x20070034 B  REGISTER control_write: Write data to MII physcial layer
+0x20070038 B  REGISTER control_read: Read data from MII physcial layer
+0x2007003C B  REGISTER mii_state: MII bus and link layer state
+0x20070040 B  REGISTER mac_address0: Media Access Control address
+0x20070044 B  REGISTER mac_address1: Media Access Control address
+0x20070048 B  REGISTER hash0: Hash register
+0x2007004C B  REGISTER hash1: Hash register
+0x20070050 B  REGISTER transmit_control: Transmit control register
+0x20072000 A PERIPHERAL USB
+0x20072000 B  CLUSTER capability: Host Controller Capability Registers
+0x20072010 B  CLUSTER operation: Host Controller Operational Registers
+0x24920000 A PERIPHERAL PTA
+0x24920400 B  REGISTER revision: Peripheral silicon revision
+0x24920404 B  REGISTER config_0: Arbitration configuration register 0
+0x24920404 C   FIELD 00w01 function: Enable packet traffic arbitration
+0x24920404 C   FIELD 01w01 wifi: ??
+0x24920404 C   FIELD 04w01 priority: ??
+0x24920408 B  REGISTER bluetooth_transmit: ??
+0x24920410 B  REGISTER bluetooth_receive: ??
+0x24920418 B  REGISTER wifi_transmit: ??
+0x24920420 B  REGISTER wifi_receive: ??
+0x24920428 B  REGISTER config_1: ??
+0x24B00000 A PERIPHERAL WIFI
+0x24B00400 B  REGISTER coex_control_0: ??
+0x24B00404 B  REGISTER coex_pti: ??
+0x24B00408 B  REGISTER coex_state: ??
+0x24B0040C B  REGISTER coex_interrupt: ??
+0x24B00410 B  REGISTER coex_control_1: ??
+0x30007000 A PERIPHERAL MMGLB
+0x30007000 B  REGISTER todo: ??
+0x30020000 A PERIPHERAL CODEC
+0x30020000 B  REGISTER todo: ??
+0x30021000 A PERIPHERAL MJPEG
+0x30021000 B  REGISTER todo: ??
+0x30022000 A PERIPHERAL H264
+0x30022000 B  REGISTER todo: ??
+0x30024000 A PERIPHERAL NPU
+0x30024000 B  REGISTER todo: ??

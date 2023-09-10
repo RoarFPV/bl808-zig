@@ -1,0 +1,134 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Pico Probe SWD",
+      "cwd": "${workspaceRoot}",
+      "executable": "${workspaceFolder}/zig-out/bin/firmware.elf",
+      "request": "launch",
+      "type": "cortex-debug",
+      "servertype": "openocd",
+      // This may need to be arm-none-eabi-gdb depending on your system
+      //"gdbPath": "gdb-multiarch",
+      "device": "EOS-S3",
+      "configFiles": [
+        "interface/cmsis-dap.cfg",
+        "target/eos_s3.cfg"
+      ],
+      //"openOCDLaunchCommands": ["adapter speed 5000"],
+      "searchDir": [
+        "C:/code/pico-sdk-win/openocd/scripts"
+      ],
+      "svdFile": "${workspaceFolder}/deps/svd/eos-s3.svd",
+      "runToEntryPoint": "main",
+      "liveWatch": {
+        "enabled": true,
+        "samplesPerSecond": 4
+      },
+      "serverArgs": [
+        "-d"
+      ],
+      // Work around for stopping at main on restart
+      "preLaunchTask": "Build Firmware",
+      "postRestartCommands": [
+        "break main",
+        "continue"
+      ]
+    },
+    {
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceRoot}/zig-out/bin/firmware.elf",
+      "name": "Debug with ST-Link",
+      "request": "launch",
+      "type": "cortex-debug",
+      "runToEntryPoint": "main",
+      "showDevDebugOutput": "both",
+      "servertype": "stlink",
+      "preLaunchTask": "Build Firmware"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Renode",
+      "program": "renode",
+      "args": [
+        "tools/renode/eos-s3.resc"
+      ],
+      "cwd": "${workspaceFolder}",
+      "initCommands": []
+    },
+    {
+      "name": "Cortex Debug Renode (Windows)",
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceRoot}/zig-out/bin/firmware.elf",
+      "device": "eos-s3",
+      "request": "launch",
+      "type": "cortex-debug",
+      "runToEntryPoint": "main",
+      "servertype": "external",
+      "gdbTarget": "localhost:3333",
+      "armToolchainPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin",
+      // "toolchainPrefix": "arm-none-eabi-",
+      //"gdbPath": "gdb",
+      "svdFile": "deps/svd/eos-s3.svd",
+      "showDevDebugOutput": "parsed",
+      //"overrideLaunchCommands": ["monitor start", "continue"],
+      "overrideRestartCommands": [
+        "monitor pause",
+        "monitor runMacro $reset"
+      ],
+      "postStartSessionCommands": [
+        "break main"
+      ]
+      //"preLaunchTask": "Build Firmware",
+    },
+    {
+      "type": "cppvsdbg",
+      "request": "launch",
+      "name": "Regz bl808",
+      "program": "${workspaceRoot}/deps/regz/zig-out/bin/regz.exe",
+      "cwd": "${workspaceRoot}/deps/regz",
+            "args": [
+        "${workspaceRoot}/deps/svd/bl808.svd",
+        "-o",
+        "${workspaceRoot}/src/microzig/chips/bl808.zig",
+        //">${workspaceRoot}/src/microzig/chips/bl808.log"
+      ],
+    
+      "console": "integratedTerminal",
+      "preLaunchTask": "Build regz",
+    },
+
+    // {
+    //   "type": "lldb",
+    //   "request": "launch",
+    //   "name": "Regz bl808",
+    //   "program": "${workspaceRoot}/deps/regz/zig-out/bin/regz.exe",
+    //   "cwd": "${workspaceRoot}/deps/regz",
+    //   "args": [
+    //     "${workspaceRoot}/deps/svd/bl808.svd",
+    //     "-o",
+    //     "${workspaceRoot}/src/microzig/chips/bl808.zig",
+    //     // ">${workspaceRoot}/src/microzig/chips/bl808.log"
+    //   ],
+    //   //"relativePathBase": "${workspaceRoot}/deps/regz/src",
+    //   "stdio": [ null, null, "${workspaceRoot}/src/microzig/chips/bl808.log" ],
+    //   "sourceLanguages": ["zig"],
+    //   "preLaunchTask": "Build regz",
+    // },
+  ],
+  "compounds": [
+    {
+      "name": "Renode + firmware",
+      "configurations": [
+        "Cortex Debug Renode (Windows)",
+        "Renode"
+      ],
+      "preLaunchTask": "Build Firmware",
+      "stopAll": true,
+    }
+  ]
+}
