@@ -53,6 +53,39 @@ pub const riscv = struct {
 };
 
 pub const bl808 = struct {
+
+    //     __EM_SIZE = DEFINED(btble_controller_init) ? 32K : 0K;
+
+    // MEMORY
+    // {
+    //     fw_header_memory  (rx)  : ORIGIN = 0x58000000 - 0x1000, LENGTH = 4K
+    //     xip_memory  (rx)  : ORIGIN = 0x58000000, LENGTH = 32M
+    //     ram_psram  (wxa)  : ORIGIN = 0x50000000, LENGTH = 64M
+    //     itcm_memory (rx)  : ORIGIN = 0x62020000, LENGTH = 20K
+    //     dtcm_memory (rx)  : ORIGIN = 0x62025000, LENGTH = 4K
+    //     nocache_ram_memory (!rx) : ORIGIN = 0x22026000, LENGTH = 16K
+    //     ram_memory  (!rx) : ORIGIN = 0x6202A000, LENGTH = 24K
+    //     ram_wifi  (wxa)   : ORIGIN = 0x22030000, LENGTH = 160K - __EM_SIZE
+    //     xram_memory  (!rx) : ORIGIN = 0x40000000, LENGTH = 16K
+    // }
+
+    pub const fw_header_memory = .{ .custom = .{ .name = "fw_header_memory", .executable = true, .readable = true, .writeable = false } };
+    pub const xip_memory = .{ .custom = .{ .name = "xip_memory", .executable = true, .readable = true, .writeable = false } };
+
+    pub const Memory = .{
+        .{ .kind = fw_header_memory, .offset = 0x58000000 - 0x1000, .length = 4 * 1024 },
+
+        .{ .kind = .flash, .offset = 0x58000000, .length = 32 * 1024 * 1024 },
+        .{ .kind = xip_memory, .offset = 0x58000000, .length = 32 * 1024 * 1024 },
+        .{ .kind = .ram, .offset = 0x50000000, .length = 64 * 1024 * 1024 },
+        .{ .kind = .ram, .offset = 0x62020000, .length = 20 * 1024 }, // itcm_memory
+        .{ .kind = .ram, .offset = 0x62025000, .length = 4 * 1024 }, // dtcm_memory
+        .{ .kind = .ram, .offset = 0x22026000, .length = 16 * 1024 }, // nocache_ram_memory
+        .{ .kind = .ram, .offset = 0x6202A000, .length = 24 * 1024 }, // ram_memory
+        .{ .kind = .ram, .offset = 0x22030000, .length = 160 * 1024 }, // ram_wifi
+        .{ .kind = .ram, .offset = 0x40000000, .length = 16 * 1024 }, // xram_memory
+    };
+
     pub const cpus = struct {
         pub const thead = struct {
             // - T-Head C906
@@ -109,10 +142,7 @@ pub const bl808 = struct {
             .source = .{ .path = chip_path },
             .hal = .{ .path = hal_path },
             .cpu = cpus.thead.c906,
-            .memory_regions = &.{
-                .{ .kind = .flash, .offset = 0x00000000, .length = 0x00027000 },
-                .{ .kind = .ram, .offset = 0x20027000, .length = 0x0003c800 },
-            },
+            .memory_regions = &Memory,
             .json_register_schema = .{
                 .path = json_register_schema_path,
             },
@@ -126,10 +156,7 @@ pub const bl808 = struct {
             .source = chip_path,
             .hal = hal_path,
             .cpu = cpus.thead.e907,
-            .memory_regions = &.{
-                .{ .kind = .flash, .offset = 0x00000000, .length = 0x00027000 },
-                .{ .kind = .ram, .offset = 0x20027000, .length = 0x0003c800 },
-            },
+            .memory_regions = &Memory,
             .json_register_schema = json_register_schema_path,
         };
 
@@ -141,10 +168,7 @@ pub const bl808 = struct {
             .source = chip_path,
             .hal = hal_path,
             .cpu = cpus.thead.e902,
-            .memory_regions = &.{
-                .{ .kind = .flash, .offset = 0x00000000, .length = 0x00027000 },
-                .{ .kind = .ram, .offset = 0x20027000, .length = 0x0003c800 },
-            },
+            .memory_regions = &Memory,
             .json_register_schema = json_register_schema_path,
         };
     };

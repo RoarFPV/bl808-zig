@@ -19,9 +19,9 @@ pub fn build(b: *Builder) !void {
     var exe = microzig.addEmbeddedExecutable(b, .{
         .name = "firmware.elf",
         .source_file = .{ .path = "src/main.zig" },
-        .backing = .{ .board = board.board },
+        .backing = board.backing,
         .optimize = optimize,
-        .linkerscript_source_file = .{ .path = board.linkerscript },
+        //.linkerscript_source_file = board.linkerscript,
     });
     exe.installArtifact(b);
 }

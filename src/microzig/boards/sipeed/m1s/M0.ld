@@ -12,7 +12,7 @@
 OUTPUT_ARCH( "riscv" )
 
 /* configure the entry point */
-ENTRY(__start)
+ENTRY(Reset_Handler)
 
 StackSize    = 0x0400; /*  1KB */
 HeapMinSize  = 0x1000; /*  4KB */
