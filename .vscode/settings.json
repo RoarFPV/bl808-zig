@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "stdint.h": "c",
+        "bflb_sf_ctrl.h": "c",
+        "bflb_sflash.h": "c",
+        "bflb_core.h": "c",
+        "stdlib.h": "c",
+        "cstddef": "cpp",
+        "bl808_memorymap.h": "c"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.tabSize": 2
+    },
+    "python.formatting.provider": "none"
+}

@@ -1,0 +1,52 @@
+# zig 
+ - riscv32.zig
+    - premain
+        - `_start`
+        - cpu boot
+        - `initialize_system_memories()`
+        - `microzig_main()`
+    - `main()`
+        -
+
+# openbouffalo
+- ..standard c boot...
+- `main()`
+    - `board_init()`
+        - `board_common_init(...)`
+            - `bl808_cpu_init()`
+                - M0 - `bl808_bsp_m0.c`
+                    - `flag = bflb_irg_save()`
+                    - `GLB_Halt_CPU (D0)` 
+                    - `GLB_Halt_CPU (LP)` 
+                    - `bflb_flash_init()`
+                    - `system_clock_init()`
+                        - [ ] `GLB_Power_On_XTAL_And_PLL_CLK   (GLB_XTAL_40M, GLB_PLL_WIFIPLL |
+GLB_PLL_CPUPLL | GLB_PLL_UHSPLL | GLB_PLL_MIPIPLL)`
+                        - `GLB_Set_MCU_System_CLK    (GLB_MCU_SYS_CLK_WIFIPLL_320M)`
+                        - `GLB_Set_DSP_System_CLK    (GLB_DSP_SYS_CLK_CPUPLL_400M);`
+                        - `GLB_Config_CPU_PLL        (GLB_XTAL_40M, cpuPllCfg_480M)`
+                        - `CPU_Set_MTimer_CLK        (ENABLE, CPU_Get_MTimer_Source_Clock() / 1000 / 1000 - 1)`
+                    - `peripheral_clock_init()`
+                    - `bflb_irq_initialize()`
+                    - `console_init()`
+                        - `bflb_gpio_uart_init(gpio, GPIO_PIN_14, GPIO_UART_FUNC_UART0_TX);`
+                        - `bflb_gpio_uart_init(gpio, GPIO_PIN_15, GPIO_UART_FUNC_UART0_RX);`
+                        - `bflb_uart_init(console, &cfg)`
+                        - `bflb_uart_set_console(console);`
+                    - `kmem_init((void *)&__HeapBase, heap_len)`
+                    - `log_start()`
+                    - Set CPU D0 boot XIP address and flash address
+                        - `Tzc_Sec_Set_CPU_Group(GLB_CORE_ID_D0, 1)`
+                        - `GLB_Set_CPU_Reset_Address(GLB_CORE_ID_D0, 0x58000000)`
+                        - `bflb_sf_ctrl_set_flash_image_offset(CONFIG_D0_FLASH_ADDR + 0x1000, 1, SF_CTRL_FLASH_BANK0)`
+                    -  LP boot from 0x5802000
+                        - `Tzc_Sec_Set_CPU_Group(GLB_CORE_ID_LP, 2);`
+                        - `GLB_Set_CPU_Reset_Address(GLB_CORE_ID_LP, 0x58020000);`
+                        - `bflb_sf_ctrl_set_flash_image_offset(CONFIG_LP_FLASH_ADDR + 0x1000, 2, SF_CTRL_FLASH_BANK1);`
+                    - `bflb_irq_restore(flag);`
+                    - `GLB_Release_CPU(GLB_CORE_ID_D0)`
+                    - `GLB_Release_CPU(GLB_CORE_ID_LP)`
+                    - `BL_WR_WORD(IPC_SYNC_ADDR1, IPC_SYNC_FLAG);`
+                    - `BL_WR_WORD(IPC_SYNC_ADDR2, IPC_SYNC_FLAG);`
+                    - `L1C_DCache_Clean_By_Addr(IPC_SYNC_ADDR1, 8);`
+            - `board_common_setup_pinmux()`

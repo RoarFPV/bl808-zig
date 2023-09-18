@@ -10,8 +10,6 @@ const microzig = @import("deps/microzig/build.zig");
 // project requires multiple HALs, it accepts microzig as a param
 pub fn build(b: *Builder) !void {
     const optimize = b.standardOptimizeOption(.{});
-    const chips = @import("src/microzig/chips.zig");
-    _ = chips;
     const boards = @import("src/microzig/boards.zig");
 
     const board = boards.sipeed.m1s;
@@ -21,8 +19,9 @@ pub fn build(b: *Builder) !void {
         .source_file = .{ .path = "src/main.zig" },
         .backing = board.backing,
         .optimize = optimize,
-        //.linkerscript_source_file = board.linkerscript,
+        .linkerscript_source_file = board.linkerscript,
     });
+
     exe.installArtifact(b);
 }
 

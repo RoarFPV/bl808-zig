@@ -4,3 +4,12 @@
 [submodule "deps/microzig"]
 	path = deps/microzig
 	url = git@github.com:RoarFPV/microzig.git
+[submodule "deps/bouffalo_drivers"]
+	path = deps/bouffalo_drivers
+	url = git@github.com:bouffalolab/bouffalo_drivers.git
+[submodule "deps/openbouffalo/OBLFR"]
+	path = deps/openbouffalo/OBLFR
+	url = ./deps/openbouffalo/OBLFR
+[submodule "deps/openbouffalo/bl_mcu_sdk"]
+	path = deps/openbouffalo/bl_mcu_sdk
+	url = ./deps/openbouffalo/bl_mcu_sdk

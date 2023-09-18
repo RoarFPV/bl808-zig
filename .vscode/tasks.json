@@ -63,5 +63,27 @@
 			  "$zig"
 			],
 		  },
+		  {
+			"label": "Build bl-reg-parser",
+			"type": "shell",
+			"command": "zig",
+			"args": [
+			  "build",
+			  "\"-Doptimize=Debug\"",
+			  "--summary","all",
+			  "-freference-trace",
+			  "--verbose"
+			],
+			"options": {
+			 "cwd": "${workspaceFolder}/deps/bl-reg-parser"
+			},
+			"group": {
+			  "kind": "build",
+			//   "isDefault": true
+			},
+			"problemMatcher": [
+			  "$zig"
+			],
+		  },
 	]
 }

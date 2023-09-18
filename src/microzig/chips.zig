@@ -7,6 +7,8 @@ fn root_dir() []const u8 {
 }
 
 const chip_path = LazyPath{ .path = std.fmt.comptimePrint("{s}/chips/bl808.zig", .{root_dir()}) };
+const cpu_path = LazyPath{ .path = std.fmt.comptimePrint("{s}/cpus/riscv32.zig", .{root_dir()}) };
+
 const hal_path = LazyPath{ .path = std.fmt.comptimePrint("{s}/hal.zig", .{root_dir()}) };
 const json_register_schema_path = LazyPath{ .path = std.fmt.comptimePrint("{s}/chips/bl808.json", .{root_dir()}) };
 
@@ -15,14 +17,14 @@ pub const riscv = struct {
     const target = std.Target.riscv;
 
     pub const rv32imafcp = Cpu.Model{
-        .name = "generic_rv32",
+        .name = "sifive_e24",
         .llvm_name = "rv32imafcp",
         .features = target.featureSet(&[_]target.Feature{
             .@"32bit",
-            .m,
             .a,
-            .f,
             .c,
+            .f,
+            .m,
             //.p,
         }),
     };
@@ -77,7 +79,7 @@ pub const bl808 = struct {
 
         .{ .kind = .flash, .offset = 0x58000000, .length = 32 * 1024 * 1024 },
         .{ .kind = xip_memory, .offset = 0x58000000, .length = 32 * 1024 * 1024 },
-        .{ .kind = .ram, .offset = 0x50000000, .length = 64 * 1024 * 1024 },
+        .{ .kind = .ram, .offset = 0x62030000, .length = 64 * 1024 * 1024 },
         .{ .kind = .ram, .offset = 0x62020000, .length = 20 * 1024 }, // itcm_memory
         .{ .kind = .ram, .offset = 0x62025000, .length = 4 * 1024 }, // dtcm_memory
         .{ .kind = .ram, .offset = 0x22026000, .length = 16 * 1024 }, // nocache_ram_memory
@@ -94,7 +96,7 @@ pub const bl808 = struct {
             // - https://github.com/T-head-Semi/openc906 ????
             pub const c906 = microzig.Cpu{
                 .name = "c906",
-                .source = microzig.cpus.riscv32_imac.source,
+                .source = cpu_path,
                 .target = std.zig.CrossTarget{
                     .cpu_arch = .riscv64,
                     .cpu_model = .{ .explicit = &riscv.rv64imafcv },
@@ -107,7 +109,7 @@ pub const bl808 = struct {
             // - RV32IMAFCP
             pub const e907 = microzig.Cpu{
                 .name = "e907",
-                .source = microzig.cpus.riscv32_imac.source,
+                .source = cpu_path,
                 .target = std.zig.CrossTarget{
                     .cpu_arch = .riscv32,
                     .cpu_model = .{ .explicit = &riscv.rv32imafcp },
@@ -120,7 +122,7 @@ pub const bl808 = struct {
             // - RV32EMC
             pub const e902 = microzig.Cpu{
                 .name = "e902",
-                .source = microzig.cpus.riscv32_imac.source,
+                .source = cpu_path,
                 .target = std.zig.CrossTarget{
                     .cpu_arch = .riscv32,
                     .cpu_model = .{ .explicit = &riscv.rv32emc },

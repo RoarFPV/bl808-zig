@@ -1,6 +1,7 @@
 //======= GEN_SOURCE
 const micro = @import("microzig");
 const mmio = micro.mmio;
+pub const BootHeader = @import("fw_header.zig").bootheader_t;
 
 fn Peripheral(comptime addr: u32, comptime PType: type) *volatile PType {
     return @as(*volatile PType, @ptrFromInt(addr));
@@ -9,6 +10,8 @@ fn Peripheral(comptime addr: u32, comptime PType: type) *volatile PType {
 pub const devices = struct {
     ///  Bouffalo BL808 chip
     pub const M0 = struct {
+        pub var bl_fw_header linksection("fw_header") = BootHeader{};
+
         pub const properties = struct {
             pub const @"cpu.endian" = "little";
             pub const @"cpu.mpuPresent" = "true";
@@ -105,12 +108,16 @@ pub const devices = struct {
             pub const H264 = Peripheral(0x30022000, types.peripherals.H264);
             ///  Bouffalo Convolutional Neural Network
             pub const NPU = Peripheral(0x30024000, types.peripherals.NPU);
+
+            pub const CORE_ID = Peripheral(0xF0000000, u32);
         };
     };
 };
 
 pub const types = struct {
     pub const peripherals = struct {
+        //pub usingnamespace @import("soc.zig");
+
         ///  Codec miscellaneous control
         pub const CODEC = extern struct {
             ///  ??
@@ -299,8 +306,389 @@ pub const types = struct {
 
         ///  Always-On function control
         pub const AON = extern struct {
+            const gpadc_reg_scn_type = packed struct(u32) {
+                gpadc_scan_pos_0: u5 = 0xf, //* [ 4: 0],        r/w,
+                gpadc_scan_pos_1: u5 = 0xf, //* [ 9: 5],        r/w,
+                gpadc_scan_pos_2: u5 = 0xf, //* [14:10],        r/w,
+                gpadc_scan_pos_3: u5 = 0xf, //* [19:15],        r/w,
+                gpadc_scan_pos_4: u5 = 0xf, //* [24:20],        r/w,
+                gpadc_scan_pos_5: u5 = 0xf, //* [29:25],        r/w,
+                reserved_30_31: u2 = 0x0, //* [31:30],       rsvd,
+            };
+
             ///  ??
-            todo: u32,
+            aon: mmio.Mmio(packed struct(u32) {
+                aon_resv: u8, // [ 7: 0],        r/w,        0xf */
+                reserved1: u4, // [11: 8],       rsvd,        0x0 */
+                pu_aon_dc_tbuf: u1, // [   12],        r/w,        0x0 */
+                reserved2: u7, // [19:13],       rsvd,        0x0 */
+                ldo11_rt_pulldown: u1, // [   20],        r/w,        0x0 */
+                ldo11_rt_pulldown_sel: u1, // [   21],        r/w,        0x0 */
+                sw_pu_ldo11_rt: u1, // [   22],        r/w,        0x1 */
+                reserved3: u9, // [31:23],       rsvd,        0x0 */
+            }),
+
+            aon_common: mmio.Mmio(packed struct(u32) {
+                tmux_aon: u3, //                [ 2: 0],        r/w,        0x0 */
+                pmip_dc_tp_out_en_aon: u1, //   [    3],        r/w,        0x0 */
+                ten_bg_sys_aon: u1, //          [    4],        r/w,        0x0 */
+                ten_dcdc11_0_aon: u1, //        [    5],        r/w,        0x0 */
+                ten_dcdc11_1_aon: u1, //        [    6],        r/w,        0x0 */
+                ten_dcdc18_0_aon: u1, //        [    7],        r/w,        0x0 */
+                ten_dcdc18_1_aon: u1, //        [    8],        r/w,        0x0 */
+                ten_ldo12uhs: u1, //            [    9],        r/w,        0x0 */
+                ten_ldo18flash: u1, //          [   10],        r/w,        0x0 */
+                ten_ldo15cis: u1, //            [   11],        r/w,        0x0 */
+                ten_ldo18io_aon: u1, //         [   12],        r/w,        0x0 */
+                ten_ldo28cis: u1, //            [   13],        r/w,        0x0 */
+                ten_rc32m: u1, //               [   14],        r/w,        0x0 */
+                reserved_15: u1, //             [   15],       rsvd,        0x0 */
+                ten_ldo15rf_aon: u1, //         [   16],        r/w,        0x0 */
+                ten_xtal_aon: u1, //            [   17],        r/w,        0x0 */
+                dten_xtal_aon: u1, //           [   18],        r/w,        0x0 */
+                ten_mbg_aon: u1, //             [   19],        r/w,        0x0 */
+                ten_cip_misc_aon: u1, //        [   20],        r/w,        0x0 */
+                ten_aon: u1, //                 [   21],        r/w,        0x0 */
+                reserved_22_31: u10, //          [31:22],       rsvd,        0x0 */
+            }),
+
+            aon_misc: mmio.Mmio(packed struct(u32) {
+                sw_soc_en_aon: u1, // [    0],        r/w,        0x1 */
+                sw_wb_en_aon: u1, // [    1],        r/w,        0x1 */
+                reserved_2_31: u30, // [31: 2],       rsvd,        0x0 */
+            }),
+
+            reserved1: u32,
+
+            bg_sys_top: mmio.Mmio(packed struct(u32) {
+                pu_bg_sys_aon: u1, // [    0],        r/w,        0x1 */
+                istart_ctrl_aon: u1, // [    1],        r/w,        0x1 */
+                reserved_2_31: u30, // [31: 2],       rsvd,        0x0 */
+            }),
+
+            dcdc_top_0: mmio.Mmio(packed struct(u32) {
+                dcdc11_sstart_time_aon: u2, // [ 1: 0],        r/w,        0x0
+                reserved_2_3: u2, // [ 3: 2],       rsvd,        0x0
+                dcdc11_stby_lp_cur_aon: u3, // [ 6: 4],        r/w,        0x2
+                reserved_7: u1, // [    7],       rsvd,        0x0
+                dcdc11_vc_clamp_vth_aon: u3, // [10: 8],        r/w,        0x4
+                dcdc11_vout_sel_aon: u5, // [15:11],        r/w,        0x8
+                dcdc11_vout_trim_aon: u4, // [19:16],        r/w,        0x7
+                dcdc11_vpfm_aon: u4, // [23:20],        r/w,        0x4
+                dcdc11_zvs_td_opt_aon: u3, // [26:24],        r/w,        0x4
+                reserved_27: u1, // [   27],       rsvd,        0x0
+                dcdc11_vstby_aon: u2, // [29:28],        r/w,        0x1
+                reserved_30_31: u2, // [31:30],       rsvd,        0x0 // [31: 2],       rsvd,        0x0 */
+            }),
+
+            dcdc_top_1: mmio.Mmio(packed struct(u32) {
+                dcdc11_nonoverlap_td_aon: u5, // [ 4: 0],        r/w,        0x0
+                dcdc11_ocp_out_aon: u1, // [    5],          r,        0x0
+                dcdc11_ocp_rst_aon: u1, // [    6],        r/w,        0x0
+                reserved_7: u1, // [    7],       rsvd,        0x0
+                dcdc11_ocp_vth_aon: u3, // [10: 8],        r/w,        0x4
+                dcdc11_osc_2m_mode_aon: u1, // [   11],        r/w,        0x0
+                dcdc11_osc_freq_trim_aon: u4, // [15:12],        r/w,        0x8
+                dcdc11_pulldown_aon: u1, // [   16],        r/w,        0x0
+                reserved_17_19: u3, // [19:17],       rsvd,        0x0
+                dcdc11_rc_sel_aon: u4, // [23:20],        r/w,        0x8
+                dcdc11_rdy_aon: u1, // [   24],          r,        0x0
+                reserved_25: u1, // [   25],       rsvd,        0x0
+                dcdc11_slope_curr_sel_aon: u5, // [30:26],        r/w,        0x6
+                reserved_31: u1, // [   31],       rsvd,        0x0
+            }),
+
+            ldo11soc_and_dctest: mmio.Mmio(packed struct(u32) {
+                reserved_0_3: u4 = 0x0, // [ 3: 0],       rsvd,        0x0
+                dcdc11_cfb_sel_aon: u4 = 0x8, // [ 7: 4],        r/w,
+                dcdc11_chf_sel_aon: u4 = 0x1, // [11: 8],        r/w,
+                dcdc11_comp_gm_sel_aon: u3 = 0x4, // [14:12],        r/w,
+                reserved_15: u1 = 0x0, // [   15],       rsvd,
+                dcdc11_cs_delay_aon: u3 = 0x4, // [18:16],        r/w,
+                reserved_19: u1 = 0x0, // [   19],       rsvd,
+                dcdc11_drv_sr_aon: u2 = 0x3, // [21:20],        r/w,
+                dcdc11_en_antiring_aon: u1 = 0x1, // [   22],        r/w,
+                dcdc11_en_osc_inhibit_t2_aon: u1 = 0x1, // [   23],        r/w,
+                dcdc11_en_slow_osc_aon: u1 = 0x0, // [   24],        r/w,
+                dcdc11_en_stby_lp_aon: u1 = 0x1, // [   25],        r/w,
+                dcdc11_en_stop_osc_aon: u1 = 0x1, // [   26],        r/w,
+                dcdc11_force_en_cs_zvs_aon: u1 = 0x0, // [   27],        r/w,
+                dcdc11_isense_trim_aon: u3 = 0x4, // [30:28],        r/w,
+                reserved_31: u1 = 0x0, // [   31],       rsvd,
+            }),
+
+            dcdc18_top_0: mmio.Mmio(packed struct(u32) {
+                dcdc18_sstart_time_aon: u2 = 0x0, // [ 1: 0],        r/w,        0x0
+                reserved_2_3: u2 = 0x0, // [ 3: 2],       rsvd,        0x0
+                dcdc18_stby_lp_cur_aon: u3 = 0x2, // [ 6: 4],        r/w,        0x2
+                reserved_7: u1 = 0x0, // [    7],       rsvd,        0x0
+                dcdc18_vc_clamp_vth_aon: u3 = 0x4, // [10: 8],        r/w,        0x4
+                dcdc18_vout_sel_aon: u5 = 0x1b, // [15:11],        r/w,        0x1b
+                dcdc18_vout_trim_aon: u4 = 0x7, // [19:16],        r/w,        0x7
+                dcdc18_vpfm_aon: u4 = 0x4, // [23:20],        r/w,        0x4
+                dcdc18_zvs_td_opt_aon: u3 = 0x4, // [26:24],        r/w,        0x4
+                reserved_27: u1 = 0x0, // [   27],       rsvd,        0x0
+                dcdc18_vstby_aon: u2 = 0x1, // [29:28],        r/w,        0x1
+                reserved_30_31: u2 = 0x0, // [31:30],       rsvd,        0x0
+            }),
+
+            dcdc18_top_1: mmio.Mmio(packed struct(u32) {
+                dcdc18_nonoverlap_td_aon: u5 = 0x0, //* [ 4: 0],        r/w,        0x0
+                dcdc18_ocp_out_aon: u1 = 0x0, //* [    5],          r,        0x0
+                dcdc18_ocp_rst_aon: u1 = 0x0, //* [    6],        r/w,        0x0
+                reserved_7: u1 = 0x0, //* [    7],       rsvd,        0x0
+                dcdc18_ocp_vth_aon: u3 = 0x4, //* [10: 8],        r/w,        0x4
+                dcdc18_osc_2m_mode_aon: u1 = 0x0, //* [   11],        r/w,        0x0
+                dcdc18_osc_freq_trim_aon: u4 = 0x8, //* [15:12],        r/w,        0x8
+                dcdc18_pulldown_aon: u1 = 0x0, //* [   16],        r/w,        0x0
+                reserved_17_19: u3 = 0x0, //* [19:17],       rsvd,        0x0
+                dcdc18_rc_sel_aon: u4 = 0x8, //* [23:20],        r/w,        0x8
+                dcdc18_rdy_aon: u1 = 0x0, //* [   24],          r,        0x0
+                reserved_25: u1 = 0x0, //* [   25],       rsvd,        0x0
+                dcdc18_slope_curr_sel_aon: u5 = 0xa, //* [30:26],        r/w,        0xa
+                reserved_31: u1 = 0x0, //* [   31],       rsvd,        0x0
+            }),
+
+            dcdc18_top_2: mmio.Mmio(packed struct(u32) {
+                reserved_0_3: u4 = 0x0, //* [ 3: 0],       rsvd,
+                dcdc18_cfb_sel_aon: u4 = 0x8, //* [ 7: 4],        r/w,
+                dcdc18_chf_sel_aon: u4 = 0x1, //* [11: 8],        r/w,
+                dcdc18_comp_gm_sel_aon: u3 = 0x4, //* [14:12],        r/w,
+                reserved_15: u1 = 0x0, //* [   15],       rsvd,
+                dcdc18_cs_delay_aon: u3 = 0x4, //* [18:16],        r/w,
+                reserved_19: u1 = 0x0, //* [   19],       rsvd,
+                dcdc18_drv_sr_aon: u2 = 0x3, //* [21:20],        r/w,
+                dcdc18_en_antiring_aon: u1 = 0x1, //* [   22],        r/w,
+                dcdc18_en_osc_inhibit_t2_aon: u1 = 0x0, //* [   23],        r/w,
+                dcdc18_en_slow_osc_aon: u1 = 0x0, //* [   24],        r/w,
+                dcdc18_en_stby_lp_aon: u1 = 0x1, //* [   25],        r/w,
+                dcdc18_en_stop_osc_aon: u1 = 0x1, //* [   26],        r/w,
+                dcdc18_force_en_cs_zvs_aon: u1 = 0x0, //* [   27],        r/w,
+                dcdc18_isense_trim_aon: u3 = 0x4, //* [30:28],        r/w,
+                reserved_31: u1 = 0x0, //* [   31],       rsvd,
+            }),
+
+            psw_irrcv: mmio.Mmio(packed struct(u32) {
+                pu_psw_irrcv_aon: u1 = 0x0, //* [    0],        r/w,        0x0
+                reserved_1_18: u18 = 0x0, //* [18: 1],       rsvd,        0x0
+                usb20_rref_ext_en_aon: u1 = 0x0, //* [   19],        r/w,        0x0
+                en_por33_aon: u1 = 0x0, //* [   20],        r/w,        0x0
+                usb20_rref_hiz_aon: u1 = 0x0, //* [   21],        r/w,        0x0
+                reserved_22_23: u2 = 0x0, //* [23:22],       rsvd,        0x0
+                usb20_rcal_code_aon: u6 = 0x1a, //* [29:24],        r/w,        0x1a
+                reserved_30_31: u2 = 0x0, //* [31:30],       rsvd,        0x0
+            }),
+
+            reserved2: [20]u32,
+
+            rf_top_aon: mmio.Mmio(packed struct(u32) {
+                pu_mbg_aon: u1 = 0x1, //* [    0],        r/w,
+                pu_ldo15rf_aon: u1 = 0x1, //* [    1],        r/w,
+                pu_sfreg_aon: u1 = 0x1, //* [    2],        r/w,
+                reserved_3: u1 = 0x0, //* [    3],       rsvd,
+                pu_xtal_buf_aon: u1 = 0x1, //* [    4],        r/w,
+                pu_xtal_aon: u1 = 0x1, //* [    5],        r/w,
+                reserved_6_7: u2 = 0x0, //* [ 7: 6],       rsvd,
+                ldo15rf_sstart_sel_aon: u1 = 0x1, //* [    8],        r/w,
+                ldo15rf_sstart_delay_aon: u2 = 0x0, //* [10: 9],        r/w,
+                reserved_11: u1 = 0x0, //* [   11],       rsvd,
+                ldo15rf_pulldown_aon: u1 = 0x0, //* [   12],        r/w,
+                ldo15rf_pulldown_sel_aon: u1 = 0x0, //* [   13],        r/w,
+                reserved_14_15: u2 = 0x0, //* [15:14],       rsvd,
+                ldo15rf_vout_sel_aon: u3 = 0x2, //* [18:16],        r/w,
+                reserved_19_23: u5 = 0x0, //* [23:19],       rsvd,
+                ldo15rf_cc_aon: u2 = 0x0, //* [25:24],        r/w,
+                reserved_26_27: u2 = 0x0, //* [27:26],       rsvd,
+                ldo15rf_bypass_aon: u1 = 0x0, //* [   28],        r/w,
+                reserved_29_31: u3 = 0x0, //* [31:29],       rsvd,
+            }),
+
+            xtal_cfg: mmio.Mmio(packed struct(u32) {
+                xtal_bk_aon: u2 = 0x1, //* [ 1: 0],        r/w,
+                xtal_capcode_extra_aon: u1 = 0x0, //* [    2],        r/w,
+                xtal_ext_sel_aon: u1 = 0x0, //* [    3],        r/w,
+                xtal_buf_en_aon: u4 = 0xe, //* [ 7: 4],        r/w,
+                xtal_buf_hp_aon: u4 = 0x0, //* [11: 8],        r/w,
+                xtal_fast_startup_aon: u1 = 0x1, //* [   12],        r/w,
+                xtal_sleep_aon: u1 = 0x1, //* [   13],        r/w,
+                xtal_amp_ctrl_aon: u2 = 0x3, //* [15:14],        r/w,
+                xtal_capcode_out_aon: u6 = 0x10, //* [21:16],        r/w,
+                xtal_capcode_in_aon: u6 = 0x10, //* [27:22],        r/w,
+                xtal_gm_boost_aon: u2 = 0x3, //* [29:28],        r/w,
+                xtal_rdy_sel_aon: u2 = 0x2, //* [31:30],        r/w,
+            }),
+
+            xtal_cfg2: mmio.Mmio(packed struct(u32) {
+                wifi_xtal_ldo33_bypass_aon: u1 = 0x0, //* [    0],        r/w,
+                wifi_xtal_ldo33_sel_aon: u3 = 0x0, //* [ 3: 1],        r/w,
+                wifi_xtal_ldo18_sel_aon: u2 = 0x1, //* [ 5: 4],        r/w,
+                wifi_xtal_ldo33_pu_aon: u1 = 0x1, //* [    6],        r/w,
+                wifi_xtal_ldo18_pu_aon: u1 = 0x1, //* [    7],        r/w,
+                reserved_8_9: u2 = 0x0, //* [ 9: 8],       rsvd,
+                wifi_xtal_reserve: u4 = 0x0, //* [13:10],        r/w,
+                reserved_14_15: u2 = 0x0, //* [15:14],       rsvd,
+                wifi_xtal_ldo18_short_filter_aon: u1 = 0x0, //* [   16],        r/w,
+                reserved_17_29: u13 = 0x0,
+                xtal_buf_drv_aon: u2 = 0x1, //* [31:30],        r/w,
+            }),
+
+            xtal_cfg3: mmio.Mmio(packed struct(u32) {
+                reserved_0_11: u12 = 0x0, //* [11: 0],       rsvd,
+                wifi_xtal_clk_inv_en_aon: u1 = 0x0, //* [   12],        r/w,
+                reserved_13_15: u3 = 0x0, //* [15:13],       rsvd,
+                wifi_xtal_cml_en_aon: u1 = 0x0, //* [   16],        r/w,
+                wifi_xtal_cml_r_sel_aon: u2 = 0x1, //* [18:17],        r/w,
+                reserved_19: u1 = 0x0, //* [   19],       rsvd,
+                wifi_xtal_clk_en_aon: u1 = 0x1, //* [   20],        r/w,
+                reserved_21_29: u9 = 0x0, //* [29:21],       rsvd,
+                wifi_xtal_buf_drv_aon: u2 = 0x1, //* [31:30],        r/w,
+            }),
+
+            tsen: mmio.Mmio(packed struct(u32) {
+                tsen_refcode_corner: u12 = 0x8ff, //* [11: 0],        r/w,      0x8ff
+                reserved_12_15: u4 = 0x0, //* [15:12],       rsvd,        0x0
+                tsen_refcode_rfcal: u12 = 0x8ff, //* [27:16],        r/w,      0x8ff
+                xtal_rdy: u1 = 0x1, //* [   28],          r,        0x1
+                xtal_inn_cfg_en_aon: u1 = 0x1, //* [   29],        r/w,        0x1
+                xtal_rdy_int_sel_aon: u2 = 0x1, //* [31:30],        r/w,        0x1
+            }),
+
+            reserved3: [12]u32,
+
+            ldo18io: mmio.Mmio(packed struct(u32) {
+                reserved_0: u1 = 0x0, //* [    0],       rsvd,
+                ldo18io_bypass_iso_aon: u1 = 0x0, //* [    1],        r/w,
+                ldo18io_pulldown_aon: u1 = 0x0, //* [    2],        r/w,
+                ldo18io_pulldown_sel_aon: u1 = 0x1, //* [    3],        r/w,
+                ldo18io_bm_aon: u3 = 0x3, //* [ 6: 4],        r/w,
+                reserved_7: u1 = 0x0, //* [    7],       rsvd,
+                ldo18io_cc_aon: u3 = 0x3, //* [10: 8],        r/w,
+                ldo18io_ocp_out_aon: u1 = 0x0, //* [   11],          r,
+                ldo18io_ocp_th_aon: u3 = 0x3, //* [14:12],        r/w,
+                ldo18io_ocp_en_aon: u1 = 0x1, //* [   15],        r/w,
+                ldo18io_sstart_delay_aon: u3 = 0x3, //* [18:16],        r/w,
+                ldo18io_sstart_en_aon: u1 = 0x1, //* [   19],        r/w,
+                ldo18io_vout_sel_aon: u4 = 0x5, //* [23:20],        r/w,
+                ldo18io_vout_trim_aon: u4 = 0x7, //* [27:24],        r/w,
+                reserved_28_31: u4 = 0x0, //* [31:28],       rsvd,
+            }),
+
+            reserved4: [14]u32,
+
+            acomp: [2]extern struct {
+                ctrl: mmio.Mmio(packed struct(u32) {
+                    en: u1 = 0x0, //* [    0],        r/w,
+                    reserved_1_3: u3 = 0x0, //* [ 3: 1],       rsvd,
+                    hyst_seln: u3 = 0x0, //* [ 6: 4],        r/w,
+                    hyst_selp: u3 = 0x0, //* [ 9: 7],        r/w,
+                    bias_prog: u2 = 0x0, //* [11:10],        r/w,
+                    level_sel: u6 = 0x0, //* [17:12],        r/w,
+                    neg_sel: u4 = 0x0, //* [21:18],        r/w,
+                    pos_sel: u4 = 0x0, //* [25:22],        r/w,
+                    muxen: u1 = 0x0, //* [   26],        r/w,
+                    reserved_27_31: u5 = 0x0, //* [31:27],       rsvd,
+                }),
+            },
+
+            acomp_ctrl: mmio.Mmio(packed struct(u32) {
+                acomp1_rstn_ana: u1 = 0x1, //* [    0],        r/w,
+                acomp0_rstn_ana: u1 = 0x1, //* [    1],        r/w,
+                reserved_2_7: u6 = 0x0, //* [ 7: 2],       rsvd,
+                acomp1_test_en: u1 = 0x0, //* [    8],        r/w,
+                acomp0_test_en: u1 = 0x0, //* [    9],        r/w,
+                acomp1_test_sel: u2 = 0x0, //* [11:10],        r/w,
+                acomp0_test_sel: u2 = 0x0, //* [13:12],        r/w,
+                reserved_14_16: u3 = 0x0, //* [16:14],       rsvd,
+                acomp1_out_raw: u1 = 0x0, //* [   17],          r,
+                reserved_18: u1 = 0x0, //* [   18],       rsvd,
+                acomp0_out_raw: u1 = 0x0, //* [   19],          r,
+                reserved_20_23: u4 = 0x0, //* [23:20],       rsvd,
+                acomp_vref_sel: u6 = 0x0, //* [29:24],        r/w,
+                acomp_reserved: u2 = 0x0, //* [31:30],        r/w,
+            }),
+
+            gpadc_reg_cmd: mmio.Mmio(packed struct(u32) {
+                gpadc_global_en: u1 = 0x0, //* [    0],        r/w,
+                gpadc_conv_start: u1 = 0x0, //* [    1],        r/w,
+                gpadc_soft_rst: u1 = 0x0, //* [    2],        r/w,
+                gpadc_neg_sel: u5 = 0xf, //* [ 7: 3],        r/w,
+                gpadc_pos_sel: u5 = 0xf, //* [12: 8],        r/w,
+                gpadc_neg_gnd: u1 = 0x0, //* [   13],        r/w,
+                gpadc_micbias_en: u1 = 0x0, //* [   14],        r/w,
+                gpadc_micpga_en: u1 = 0x0, //* [   15],        r/w,
+                gpadc_byp_micboost: u1 = 0x0, //* [   16],        r/w,
+                gpadc_rcal_en: u1 = 0x0, //* [   17],        r/w,
+                gpadc_dwa_en: u1 = 0x0, //* [   18],        r/w,
+                gpadc_mic2_diff: u1 = 0x0, //* [   19],        r/w,
+                gpadc_mic1_diff: u1 = 0x0, //* [   20],        r/w,
+                gpadc_mic_pga2_gain: u2 = 0x0, //* [22:21],        r/w,
+                gpadc_micboost_32db_en: u1 = 0x0, //* [   23],        r/w,
+                reserved_24_26: u3 = 0x0, //* [26:24],       rsvd,
+                gpadc_chip_sen_pu: u1 = 0x0, //* [   27],        r/w,
+                gpadc_sen_sel: u3 = 0x0, //* [30:28],        r/w,
+                gpadc_sen_test_en: u1 = 0x0, //* [   31],        r/w,
+            }),
+
+            gpadc_reg_config2: mmio.Mmio(packed struct(u32) {
+                reserved_0_1: u2 = 0x0, //* [ 1: 0],       rsvd,
+                gpadc_diff_mode: u1 = 0x0, //* [    2],        r/w,
+                gpadc_vref_sel: u1 = 0x0, //* [    3],        r/w,
+                gpadc_vbat_en: u1 = 0x0, //* [    4],        r/w,
+                gpadc_tsext_sel: u1 = 0x0, //* [    5],        r/w,
+                gpadc_ts_en: u1 = 0x0, //* [    6],        r/w,
+                gpadc_pga_vcm: u2 = 0x2, //* [ 8: 7],        r/w,
+                gpadc_pga_os_cal: u4 = 0x8, //* [12: 9],        r/w,
+                gpadc_pga_en: u1 = 0x0, //* [   13],        r/w,
+                gpadc_pga_vcmi_en: u1 = 0x0, //* [   14],        r/w,
+                gpadc_chop_mode: u2 = 0x3, //* [16:15],        r/w,
+                gpadc_bias_sel: u1 = 0x0, //* [   17],        r/w,
+                gpadc_test_en: u1 = 0x0, //* [   18],        r/w,
+                gpadc_test_sel: u3 = 0x0, //* [21:19],        r/w,
+                gpadc_pga2_gain: u3 = 0x0, //* [24:22],        r/w,
+                gpadc_pga1_gain: u3 = 0x0, //* [27:25],        r/w,
+                gpadc_dly_sel: u3 = 0x0, //* [30:28],        r/w,
+                gpadc_tsvbe_low: u1 = 0x0, //* [   31],        r/w,
+            }),
+
+            gpadc_reg_scn_pos: [2]mmio.Mmio(gpadc_reg_scn_type),
+            gpadc_reg_scn_neg: [2]mmio.Mmio(gpadc_reg_scn_type),
+
+            gpadc_reg_status: mmio.Mmio(packed struct(u32) {
+                gpadc_data_rdy: u1 = 0x0, //* [    0],          r,
+                reserved_1_15: u15 = 0x0, //* [15: 1],       rsvd,
+                gpadc_reserved: u16 = 0x0, //* [31:16],        r/w,
+            }),
+
+            gpadc_reg_isr: mmio.Mmio(packed struct(u32) {
+                gpadc_neg_satur: u1 = 0x0, //* [    0],          r,
+                gpadc_pos_satur: u1 = 0x0, //* [    1],          r,
+                reserved_2_3: u2 = 0x0, //* [ 3: 2],       rsvd,
+                gpadc_neg_satur_clr: u1 = 0x0, //* [    4],        r/w,
+                gpadc_pos_satur_clr: u1 = 0x0, //* [    5],        r/w,
+                reserved_6_7: u2 = 0x0, //* [ 7: 6],       rsvd,
+                gpadc_neg_satur_mask: u1 = 0x0, //* [    8],        r/w,
+                gpadc_pos_satur_mask: u1 = 0x0, //* [    9],        r/w,
+                reserved_10_31: u22 = 0x0, //* [31:10],       rsvd,
+            }),
+
+            gpadc_reg_result: mmio.Mmio(packed struct(u32) {
+                gpadc_data_out: u26 = 0x1ef0000, //* [25: 0],          r,
+                reserved_26_31: u6 = 0x0, //* [31:26],       rsvd,
+            }),
+
+            gpadc_reg_raw_result: mmio.Mmio(packed struct(u32) {
+                gpadc_raw_data: u12 = 0x0, //* [25: 0],          r,
+                reserved_12_31: u20 = 0x0, //* [31:26],       rsvd,
+            }),
+
+            gpadc_reg_define: mmio.Mmio(packed struct(u32) {
+                gpadc_os_cal_data: u16 = 0x0, //* [15: 0],        r/w,
+                reserved_16_31: u16 = 0x0, //* [31:16],       rsvd,
+            }),
+
+            hbncore_resv: [2]mmio.Mmio(packed struct(u32) {
+                data: u32, //* [15: 0],        r/w,
+            }),
         };
 
         ///  Hibernate (Deep sleep) control

@@ -25,7 +25,7 @@ pub const pine = struct {
 
 pub const sipeed = struct {
     pub const m1s = .{
-        .linkerscript = boards("sipeed/m1s/M0.ld"),
+        .linkerscript = boards("sipeed/m1s/M0_e907.ld"),
         .backing = .{
             .board = .{
                 .name = "Sipeed M1s Dock",
