@@ -81,14 +81,18 @@ pub const startup_logic = struct {
     extern var microzig_bss_end: u8;
     extern const microzig_data_load_start: u8;
 
+    const m0_stack_pointer = 0x6204cb20;
+    const m0_microzig_sptr = 0x62058000;
+    const m0_mz_build_sptr = microzig.config.end_of_stack;
+
     export fn _start() linksection("microzig_flash_start") callconv(.C) noreturn {
         microzig.cpu.disable_interrupts();
         asm volatile ("mv sp, %[eos]"
             :
-            : [eos] "r" (@as(u32, microzig.config.end_of_stack)),
+            : [eos] "r" (@as(u32, m0_stack_pointer)),
         );
         asm volatile ("la gp, __global_pointer$");
-        microzig.cpu.setStatusBit(.mtvec, microzig.config.end_of_stack);
+        microzig.cpu.setStatusBit(.mtvec, m0_stack_pointer);
         root.initialize_system_memories();
         microzig_main();
     }

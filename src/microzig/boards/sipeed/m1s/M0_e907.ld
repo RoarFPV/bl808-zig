@@ -9,15 +9,16 @@ ENTRY(_start);
 
 MEMORY
 {
-    fw_header_memory (rx)  : ORIGIN = 0x58000000 - 0x1000, LENGTH = 4K
-    flash0  (rx)  : ORIGIN = 0x58000000, LENGTH = 32M
-    xip_memory  (rx)  : ORIGIN = 0x58000000, LENGTH = 32M
-    itcm_memory (rx)  : ORIGIN = 0x62020000, LENGTH = 20K
-    dtcm_memory (rx)  : ORIGIN = 0x62025000, LENGTH = 4K
-    nocache_ram_memory (!rx) : ORIGIN = 0x22026000, LENGTH = 40K
+  ram0  (!rx) : ORIGIN = 0x62030000, LENGTH = 160K + 64K - 20K - 4K - 40K
+    /* fw_header_memory (rx)  : ORIGIN = 0x58000000 - 0x1000, LENGTH = 4K */
+    /* flash0  (rx)  : ORIGIN = 0x58000000, LENGTH = 32M */
+    /* xip_memory  (rx)  : ORIGIN = 0x58000000, LENGTH = 32M */
+    /* itcm_memory (rx)  : ORIGIN = 0x62020000, LENGTH = 20K */
+    /* dtcm_memory (rx)  : ORIGIN = 0x62025000, LENGTH = 4K */
+    /* nocache_ram_memory (!rx) : ORIGIN = 0x22026000, LENGTH = 40K */
     ram_memory  (!rx) : ORIGIN = 0x62030000, LENGTH = 160K + 64K - 20K - 4K - 40K
-    ram0  (!rx) : ORIGIN = 0x62030000, LENGTH = 160K + 64K - 20K - 4K - 40K
-    xram_memory  (!rx) : ORIGIN = 0x40000000, LENGTH = 16K
+    
+    /* xram_memory  (!rx) : ORIGIN = 0x40000000, LENGTH = 16K */
 
 
   /* fw_header_memory (rx!w) : ORIGIN = 0x58000000 - 0x1000, LENGTH = 0x00001000
@@ -34,16 +35,16 @@ MEMORY
 
 SECTIONS
 {
-  fw_header :
+  /* fw_header :
     {
         KEEP(*(bl_fw_header))
-    } > fw_header_memory
+    } > fw_header_memory */
 
   .text :
   {
      KEEP(*(microzig_flash_start))
      *(.text*)
-  } > flash0
+  } > ram0 
 
   .data :
   {
@@ -53,14 +54,16 @@ SECTIONS
      *(.rodata*)
      *(.data*)
      microzig_data_end = .;
-  } > ram0 AT> flash0
+  } > ram0  /*AT> ram0 */
 
   .bss (NOLOAD) :
   {
+
       microzig_bss_start = .;
       *(.bss*)
       microzig_bss_end = .;
-  } > ram0
+  } > ram0 
 
   microzig_data_load_start = LOADADDR(.data);
+  __stack_end = (ORIGIN(ram0) + LENGTH(ram0)-8);
 }

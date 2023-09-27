@@ -79,7 +79,7 @@ pub const bl808 = struct {
 
         .{ .kind = .flash, .offset = 0x58000000, .length = 32 * 1024 * 1024 },
         .{ .kind = xip_memory, .offset = 0x58000000, .length = 32 * 1024 * 1024 },
-        .{ .kind = .ram, .offset = 0x62030000, .length = 64 * 1024 * 1024 },
+        .{ .kind = .ram, .offset = 0x62030000, .length = 160 * 1024 },
         .{ .kind = .ram, .offset = 0x62020000, .length = 20 * 1024 }, // itcm_memory
         .{ .kind = .ram, .offset = 0x62025000, .length = 4 * 1024 }, // dtcm_memory
         .{ .kind = .ram, .offset = 0x22026000, .length = 16 * 1024 }, // nocache_ram_memory

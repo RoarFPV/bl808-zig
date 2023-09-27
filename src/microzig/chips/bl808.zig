@@ -10,7 +10,7 @@ fn Peripheral(comptime addr: u32, comptime PType: type) *volatile PType {
 pub const devices = struct {
     ///  Bouffalo BL808 chip
     pub const M0 = struct {
-        pub var bl_fw_header linksection("fw_header") = BootHeader{};
+        //pub var bl_fw_header linksection("fw_header") = BootHeader{};
 
         pub const properties = struct {
             pub const @"cpu.endian" = "little";

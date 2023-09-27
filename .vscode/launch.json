@@ -2,33 +2,80 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "gdb",
+      "request": "attach",
+      "name": "Attach to gdbserver",
+      "executable": "${workspaceFolder}/zig-out/bin/firmware.elf",
+      "target": ":50000",
+      "remote": true,
+      "cwd": "${workspaceRoot}",
+      "valuesFormatting": "parseText",
+      "gdbpath": "${workspaceFolder}/deps/openbouffalo/toolchain_gcc_t-head_windows/bin/riscv64-unknown-elf-gdb.exe"
+    },
+    {
+      "type": "gdb",
+      "request": "attach",
+      "name": "Debug Microcontroller",
+      "target": "extended-remote :3333",
+      "executable": "${workspaceFolder}/zig-out/bin/firmware.elf",
+      "debugger_args": [
+        "${workspaceFolder}/zig-out/bin/firmware.elf", 
+        "-x", "${workspaceFolder}/deps/openocd/gdbinit/bl808.init"
+      ],
+      "gdbpath": "${workspaceFolder}/deps/openbouffalo/toolchain_gcc_t-head_windows/bin/riscv64-unknown-elf-gdb.exe",
+      "cwd": "${workspaceFolder}",
+      "autorun": [
+        "interrupt",
+
+        // "interrupt",
+        // "load zig-out/bin/firmware.elf"
+      ],
+      "preLaunchTask": "Build Firmware",
+    },
+
+    
+    {
       "name": "Python: Macro Parser",
       "type": "python",
       "request": "launch",
-      "program": "macros.py",
+      "program": "${file}",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}/deps/bl-reg-parser",
+      // "args": ["--rst"],
       "justMyCode": true
     },
     {
-      "name": "Pico Probe SWD",
+      "type": "xslt",
+      "request": "launch",
+      "name": "Debug XSLT File",
+      "xslPath": "${workspaceFolder}/deps/bl-reg-parser/regdoc.xslt",
+      "sourcePath": "${workspaceFolder}/deps/bl-reg-parser/peripherals.xml",
+      "destinationPath": "${workspaceFolder}/svd.xml",
+      "parameters": {
+        "theseAreOptional": true,
+        "andCanBeOmmittedIfYou": "do not use them"
+      }
+    },
+    {
+      "name": "Tigard jtag",
       "cwd": "${workspaceRoot}",
       "executable": "${workspaceFolder}/zig-out/bin/firmware.elf",
       "request": "launch",
       "type": "cortex-debug",
       "servertype": "openocd",
-      "device": "EOS-S3",
+      //"device": "riscv32",
       "configFiles": [
-        "interface/cmsis-dap.cfg",
-        "target/eos_s3.cfg"
+        //"interface/cmsis-dap.cfg",
+        //"target/eos_s3.cfg"
+        "deps/openocd/tigard.cfg"
       ],
       "searchDir": [
         "C:/code/pico-sdk-win/openocd/scripts"
       ],
-      "svdFile": "${workspaceFolder}/deps/svd/eos-s3.svd",
+      "svdFile": "${workspaceFolder}/deps/svd/bl808.svd",
       "runToEntryPoint": "main",
       "liveWatch": {
-        "enabled": true,
+        "enabled": false,
         "samplesPerSecond": 4
       },
       "serverArgs": [
@@ -39,17 +86,6 @@
         "break main",
         "continue"
       ]
-    },
-    {
-      "cwd": "${workspaceFolder}",
-      "executable": "${workspaceRoot}/zig-out/bin/firmware.elf",
-      "name": "Debug with ST-Link",
-      "request": "launch",
-      "type": "cortex-debug",
-      "runToEntryPoint": "main",
-      "showDevDebugOutput": "both",
-      "servertype": "stlink",
-      "preLaunchTask": "Build Firmware"
     },
     {
       "type": "lldb",

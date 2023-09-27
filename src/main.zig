@@ -9,7 +9,7 @@ pub fn main() !void {
     while (true) {
         std.mem.doNotOptimizeAway(true);
 
-        var a = bl808.bl_fw_header.magiccode;
+        var a: u32 = 100000; // bl808.bl_fw_header.magiccode;
 
         while (a > 0) {
             std.mem.doNotOptimizeAway(true);
