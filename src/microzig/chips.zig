@@ -6,7 +6,7 @@ fn root_dir() []const u8 {
     return std.fs.path.dirname(@src().file) orelse ".";
 }
 
-const chip_path = LazyPath{ .path = std.fmt.comptimePrint("{s}/chips/bl808.zig", .{root_dir()}) };
+const chip_path = LazyPath{ .path = std.fmt.comptimePrint("{s}/chips/BL808/BL808.zig", .{root_dir()}) };
 const cpu_path = LazyPath{ .path = std.fmt.comptimePrint("{s}/cpus/riscv32.zig", .{root_dir()}) };
 
 const hal_path = LazyPath{ .path = std.fmt.comptimePrint("{s}/hal.zig", .{root_dir()}) };

@@ -6,13 +6,21 @@ fn root_dir() []const u8 {
     return std.fs.path.dirname(@src().file) orelse ".";
 }
 
+fn cpus(comptime file: []const u8) std.build.LazyPath {
+    return microzigFolder("cpus", file);
+}
+
 fn boards(comptime file: []const u8) std.build.LazyPath {
-    return .{ .path = std.fmt.comptimePrint("{s}/boards/{s}", .{ root_dir(), file }) };
+    return microzigFolder("boards", file);
+}
+
+fn microzigFolder(comptime folder: []const u8, comptime file: []const u8) std.build.LazyPath {
+    return .{ .path = std.fmt.comptimePrint("{s}/{s}/{s}", .{ root_dir(), folder, file }) };
 }
 
 pub const pine = struct {
     pub const ox64 = .{
-        .linkerscript = boards("pine/ox64/M0.ld"),
+        .linkerscript = cpus("M0.ld"),
         .backing = .{
             .board = .{
                 .name = "PINE Ox64",
@@ -25,7 +33,7 @@ pub const pine = struct {
 
 pub const sipeed = struct {
     pub const m1s = .{
-        .linkerscript = boards("sipeed/m1s/M0_e907.ld"),
+        .linkerscript = cpus("M0_e907.ld"),
         .backing = .{
             .board = .{
                 .name = "Sipeed M1s Dock",

@@ -12,5 +12,7 @@
         "editor.defaultFormatter": "ms-python.autopep8",
         "editor.tabSize": 2
     },
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "dotnet.defaultSolution": "disable",
+    "esbonio.server.enabled": false
 }
